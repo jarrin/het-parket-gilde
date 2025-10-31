@@ -223,10 +223,6 @@ function h($text) {
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 
-/**
- * Get navigation items
- * @return array
- */
 function getNavigation() {
     return [
         ['url' => '/index.php', 'label' => 'Home', 'page' => 'home'],
@@ -234,4 +230,81 @@ function getNavigation() {
         ['url' => '/over-ons.php', 'label' => 'Over Ons', 'page' => 'over-ons'],
         ['url' => '/contact.php', 'label' => 'Contact', 'page' => 'contact']
     ];
+}
+
+function handleImageUpload($fileInputName) {
+    if (!isset($_FILES[$fileInputName]) || $_FILES[$fileInputName]['error'] === UPLOAD_ERR_NO_FILE) {
+        return ['success' => false, 'message' => 'Geen bestand geselecteerd'];
+    }
+    
+    $file = $_FILES[$fileInputName];
+    
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        return ['success' => false, 'message' => 'Upload fout opgetreden'];
+    }
+    
+    if ($file['size'] > MAX_FILE_SIZE) {
+        return ['success' => false, 'message' => 'Bestand is te groot (max 5MB)'];
+    }
+    
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+    
+    if (!in_array($mimeType, ALLOWED_IMAGE_TYPES)) {
+        return ['success' => false, 'message' => 'Alleen JPG, PNG en WebP afbeeldingen zijn toegestaan'];
+    }
+    
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $newFileName = uniqid('img_', true) . '.' . $extension;
+    $uploadPath = UPLOAD_DIR . $newFileName;
+    
+    if (!is_dir(UPLOAD_DIR)) {
+        mkdir(UPLOAD_DIR, 0755, true);
+    }
+    
+    if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+        return [
+            'success' => true, 
+            'path' => 'assets/images/' . $newFileName,
+            'message' => 'Afbeelding succesvol geüpload'
+        ];
+    }
+    
+    return ['success' => false, 'message' => 'Fout bij opslaan van bestand'];
+}
+
+function deleteImage($imagePath) {
+    $fullPath = ROOT_PATH . '/' . $imagePath;
+    if (file_exists($fullPath) && strpos($imagePath, 'assets/images/') === 0) {
+        return unlink($fullPath);
+    }
+    return false;
+}
+
+function getUploadedImages() {
+    $images = [];
+    $dir = UPLOAD_DIR;
+    
+    if (is_dir($dir)) {
+        $files = scandir($dir);
+        foreach ($files as $file) {
+            if ($file !== '.' && $file !== '..' && $file !== 'README.txt') {
+                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
+                    $images[] = [
+                        'filename' => $file,
+                        'path' => 'assets/images/' . $file,
+                        'size' => filesize($dir . $file),
+                        'modified' => filemtime($dir . $file)
+                    ];
+                }
+            }
+        }
+        usort($images, function($a, $b) {
+            return $b['modified'] - $a['modified'];
+        });
+    }
+    
+    return $images;
 }

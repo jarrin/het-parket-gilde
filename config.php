@@ -20,11 +20,15 @@ define('DB_CHARSET', 'utf8mb4');
 define('SITE_NAME', 'Het Parket Gilde');
 define('BASE_URL', '/');
 
+// Image upload settings
+define('UPLOAD_DIR', ROOT_PATH . '/assets/images/');
+define('MAX_FILE_SIZE', 5 * 1024 * 1024);
+define('ALLOWED_IMAGE_TYPES', ['image/jpeg', 'image/png', 'image/jpg', 'image/webp']);
+
 // Security settings
 define('MAX_LOGIN_ATTEMPTS', 5);
-define('LOGIN_TIMEOUT', 15); // minutes
-define('SESSION_LIFETIME', 7200); // 2 hours in seconds
+define('LOGIN_TIMEOUT', 15);
+define('SESSION_LIFETIME', 7200);
 
-// Error reporting (set to 0 in production)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);

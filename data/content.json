@@ -8,6 +8,16 @@
             "address": "Voorbeeldstraat 123",
             "city": "Amsterdam",
             "zipcode": "1234 AB"
+        },
+        "colors": {
+            "primary": "#8B4513",
+            "secondary": "#D2691E",
+            "accent": "#CD853F",
+            "text": "#333333",
+            "textLight": "#666666",
+            "bgLight": "#f8f9fa",
+            "white": "#ffffff",
+            "border": "#e0e0e0"
         }
     },
     "home": {
