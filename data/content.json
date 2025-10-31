@@ -1,0 +1,165 @@
+{
+    "site": {
+        "title": "Het Parket Gilde",
+        "description": "Vakmanschap in hout - Specialist in parketvloeren",
+        "contact": {
+            "phone": "+31 6 12345678",
+            "email": "info@hetparketgilde.nl",
+            "address": "Voorbeeldstraat 123",
+            "city": "Amsterdam",
+            "zipcode": "1234 AB"
+        }
+    },
+    "home": {
+        "hero": {
+            "title": "Het Parket Gilde",
+            "subtitle": "Vakmanschap in hout",
+            "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
+            "image": "assets\/images\/hero-home.jpg"
+        },
+        "intro": {
+            "title": "Welkom bij Het Parket Gilde",
+            "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
+            "image": "assets\/images\/intro.jpg"
+        },
+        "vakmanschap": {
+            "title": "Vakmanschap in hout",
+            "subtitle": "Traditie en kwaliteit",
+            "text": "Elke vloer vertelt een verhaal. Wij combineren traditionele technieken met moderne innovaties om duurzame en tijdloze parketvloeren te creëren. Onze vakmannen werken met respect voor het materiaal en oog voor detail.",
+            "features": [
+                {
+                    "title": "Ervaring",
+                    "description": "Meer dan 15 jaar expertise in parketvloeren",
+                    "icon": "✓"
+                },
+                {
+                    "title": "Kwaliteit",
+                    "description": "Uitsluitend hoogwaardige materialen",
+                    "icon": "✓"
+                },
+                {
+                    "title": "Maatwerk",
+                    "description": "Elke vloer op maat gemaakt",
+                    "icon": "✓"
+                }
+            ]
+        }
+    },
+    "diensten": {
+        "hero": {
+            "title": "Onze Diensten",
+            "subtitle": "Compleet vakmanschap voor uw vloer",
+            "image": "assets\/images\/hero-diensten.jpg"
+        },
+        "services": [
+            {
+                "title": "Parketvloeren Leggen",
+                "description": "Wij leggen alle soorten parketvloeren, van klassieke visgraat tot moderne plankenvloeren. Elk project wordt met zorg en vakmanschap uitgevoerd.",
+                "image": "assets\/images\/service-leggen.jpg",
+                "features": [
+                    "Visgraatvloeren",
+                    "Plankenvloeren",
+                    "Hongaarse punt",
+                    "Mozaïekparket"
+                ]
+            },
+            {
+                "title": "Schade Herstel & Renovatie",
+                "description": "Is uw parketvloer beschadigd of verouderd? Wij herstellen beschadigingen en renoveren oude vloeren tot in hun oude glorie.",
+                "image": "assets\/images\/service-herstel.jpg",
+                "features": [
+                    "Krasverwijdering",
+                    "Deukenherstel",
+                    "Vervanging planken",
+                    "Volledig schuren en afwerken"
+                ]
+            },
+            {
+                "title": "Raamdecoratie",
+                "description": "Naast parketvloeren bieden wij ook maatwerk raamdecoratie. Van houten jaloezieën tot luxe shutters die perfect aansluiten bij uw interieur.",
+                "image": "assets\/images\/service-raam.jpg",
+                "features": [
+                    "Houten jaloezieën",
+                    "Plantation shutters",
+                    "Op maat gemaakt",
+                    "Professionele montage"
+                ]
+            }
+        ]
+    },
+    "over_ons": {
+        "hero": {
+            "title": "testttttttt",
+            "subtitle": "Passie voor hout sinds 2008",
+            "image": "assets\/images\/hero-over-ons.jpg"
+        },
+        "story": {
+            "title": "Het verhaal van Het Parket Gilde",
+            "paragraphs": [
+                "Het Parket Gilde is opgericht door Mathijs Gerrits, een vakman met een grote passie voor hout. Na jarenlange ervaring in de vloerbranche besloot Mathijs in 2008 zijn eigen bedrijf te starten, met als missie: vakmanschap en kwaliteit leveren aan elke klant.",
+                "Wat begon als een eenmanszaak is uitgegroeid tot een gerenommeerd bedrijf met een team van vakmensen. Elke medewerker deelt dezelfde passie voor het vak en streeft naar perfectie in elk project.",
+                "Bij Het Parket Gilde geloven we in eerlijk advies, transparante communicatie en het leveren van werk waar we trots op zijn. Uw tevredenheid is onze drijfveer."
+            ]
+        },
+        "founder": {
+            "name": "Mathijs Gerrits",
+            "title": "Oprichter & Vakman",
+            "quote": "Elke vloer is uniek, en verdient de volledige aandacht en toewijding van een vakman. Dat is wat wij elke dag bieden.",
+            "image": "assets\/images\/mathijs.jpg"
+        },
+        "values": [
+            {
+                "title": "Vakmanschap",
+                "description": "Traditionele technieken gecombineerd met moderne innovaties"
+            },
+            {
+                "title": "Betrouwbaarheid",
+                "description": "Afspraken nakomen en leveren wat we beloven"
+            },
+            {
+                "title": "Kwaliteit",
+                "description": "Alleen de beste materialen en perfecte afwerking"
+            },
+            {
+                "title": "Persoonlijk Contact",
+                "description": "Directe communicatie en maatwerk voor elke klant"
+            }
+        ]
+    },
+    "contact": {
+        "hero": {
+            "title": "Contact",
+            "subtitle": "Neem vrijblijvend contact met ons op",
+            "image": "assets\/images\/hero-contact.jpg"
+        },
+        "intro": {
+            "title": "Heeft u vragen of wilt u een vrijblijvende offerte?",
+            "text": "Neem gerust contact met ons op. Wij helpen u graag verder met advies of een op maat gemaakte offerte voor uw project."
+        },
+        "info": {
+            "phone": {
+                "label": "Telefoon",
+                "value": "+31 6 12345678",
+                "link": "tel:+31612345678"
+            },
+            "email": {
+                "label": "E-mail",
+                "value": "info@hetparketgilde.nl",
+                "link": "mailto:info@hetparketgilde.nl"
+            },
+            "address": {
+                "label": "Adres",
+                "street": "Voorbeeldstraat 123",
+                "city": "1234 AB Amsterdam"
+            }
+        },
+        "hours": {
+            "title": "Openingstijden",
+            "schedule": [
+                "Maandag - Vrijdag: 08:00 - 17:00",
+                "Zaterdag: Op afspraak",
+                "Zondag: Gesloten"
+            ]
+        }
+    }
+}
