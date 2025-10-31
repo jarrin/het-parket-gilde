@@ -1,5 +1,6 @@
 <?php
-require_once 'functions.php';
+// Functions are already loaded by the main page files
+// No need to require_once again here
 $content = loadContent();
 $site = $content['site'];
 $currentPage = getCurrentPage();

@@ -1,0 +1,55 @@
+﻿# Environment Variables
+.env
+
+# Docker
+docker-compose.override.yml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+error_log
+access_log
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Dependencies
+vendor/
+node_modules/
+
+# Uploaded files (optional - remove if you want to track uploaded images)
+# assets/images/*
+# !assets/images/.gitkeep
+
+# Database backups
+*.sql
+*.sql.gz
+backups/
+
+# Setup tools (should be deleted after initial setup)
+tools/setup_admin.php
+tools/db_setup.php
+
+# Old backup files
+*-old.php
+*.backup
+
+# Test files
+test/
+tests/
+*.test.php
+
+

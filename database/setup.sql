@@ -1,8 +1,8 @@
 -- Database setup for Het Parket Gilde Admin System
 -- Run this script to create the necessary tables
 
-CREATE DATABASE IF NOT EXISTS het_parket_gilde;
-USE het_parket_gilde;
+CREATE DATABASE IF NOT EXISTS parket_gilde_db;
+USE parket_gilde_db;
 
 -- Admin users table
 CREATE TABLE IF NOT EXISTS admin_users (

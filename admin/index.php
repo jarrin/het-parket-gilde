@@ -107,17 +107,7 @@ $currentSection = $_GET['section'] ?? 'site';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Het Parket Gilde</title>
     <link rel="stylesheet" href="/assets/css/admin.css">
-</head>
-<body>
-    <header class="admin-header">
-        <div class="container">
-            <h1>Admin Panel - Het Parket Gilde</h1>
-            <nav class="admin-nav">
-                <a href="/">Website Bekijken</a>
-                <a href="/admin/logout.php">Uitloggen</a>
-            </nav>
-        </div>
-    </header>
+    <style>
         body {
             background: #f5f5f5;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -348,8 +338,26 @@ $currentSection = $_GET['section'] ?? 'site';
             transition: background 0.3s;
         }
         .preview-link:hover {
+            background: #2980b9;
+        }
+        .upload-instructions {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="container">
+            <h1>Admin Panel - Het Parket Gilde</h1>
+            <nav class="admin-nav">
+                <a href="/">Website Bekijken</a>
+                <a href="/admin/logout.php">Uitloggen</a>
+            </nav>
+        </div>
+    </header>
 
-    
     <div class="admin-container">
         <div class="admin-panel">
             <div class="admin-layout">
@@ -358,6 +366,9 @@ $currentSection = $_GET['section'] ?? 'site';
                         <li><a href="?section=site" class="<?php echo $currentSection === 'site' ? 'active' : ''; ?>">Site Informatie</a></li>
                         <li><a href="?section=home" class="<?php echo $currentSection === 'home' ? 'active' : ''; ?>">Home Pagina</a></li>
                         <li><a href="?section=diensten" class="<?php echo $currentSection === 'diensten' ? 'active' : ''; ?>">Onze Diensten</a></li>
+                        <li style="border-top: 2px solid rgba(255,255,255,0.2); margin-top: 10px; padding-top: 10px;">
+                            <a href="media.php" style="color: #3498db;">📁 Media Manager</a>
+                        </li>
                         <li><a href="?section=over_ons" class="<?php echo $currentSection === 'over_ons' ? 'active' : ''; ?>">Over Ons</a></li>
                         <li><a href="?section=contact" class="<?php echo $currentSection === 'contact' ? 'active' : ''; ?>">Contact</a></li>
                     </ul>
@@ -745,6 +756,167 @@ $currentSection = $_GET['section'] ?? 'site';
                     <?php endif; ?>
                 </main>
             </div>
+
+    <script>
+        // Image upload functionality
+        function setupImageUpload(inputId, fieldName) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+
+            const container = input.closest('.form-group');
+            const textInput = container.querySelector('input[type="text"]');
+
+            // Create upload UI
+            const uploadDiv = document.createElement('div');
+            uploadDiv.className = 'image-upload-container';
+            uploadDiv.innerHTML = `
+                <input type="file" id="file_${inputId}" accept="image/*" style="display:none;">
+                <label for="file_${inputId}" class="upload-button">📁 Upload Nieuwe Afbeelding</label>
+                <p class="upload-instructions">Of sleep een afbeelding hierheen</p>
+                <div class="upload-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <img class="image-preview" alt="Preview">
+            `;
+
+            // Show current image if exists
+            if (textInput.value) {
+                const currentImg = document.createElement('img');
+                currentImg.src = '/' + textInput.value;
+                currentImg.className = 'current-image';
+                currentImg.alt = 'Current image';
+                currentImg.onerror = function() { this.style.display = 'none'; };
+                container.appendChild(currentImg);
+            }
+
+            container.appendChild(uploadDiv);
+
+            const fileInput = uploadDiv.querySelector('input[type="file"]');
+            const preview = uploadDiv.querySelector('.image-preview');
+            const progress = uploadDiv.querySelector('.upload-progress');
+            const progressFill = uploadDiv.querySelector('.progress-fill');
+
+            // Handle file selection
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    handleFile(e.target.files[0]);
+                }
+            });
+
+            // Drag and drop
+            uploadDiv.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadDiv.classList.add('dragover');
+            });
+
+            uploadDiv.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadDiv.classList.remove('dragover');
+            });
+
+            uploadDiv.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadDiv.classList.remove('dragover');
+
+                if (e.dataTransfer.files.length > 0) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            function handleFile(file) {
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    alert('Alleen afbeeldingen zijn toegestaan');
+                    return;
+                }
+
+                // Validate file size (5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Bestand is te groot. Maximum: 5MB');
+                    return;
+                }
+
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+
+                // Upload file
+                uploadFile(file);
+            }
+
+            function uploadFile(file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                const xhr = new XMLHttpRequest();
+
+                // Show progress
+                progress.style.display = 'block';
+
+                xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        const percent = (e.loaded / e.total) * 100;
+                        progressFill.style.width = percent + '%';
+                    }
+                });
+
+                xhr.addEventListener('load', function() {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            textInput.value = response.path;
+                            alert('✓ Afbeelding succesvol geüpload!');
+
+                            // Update current image display
+                            const currentImg = container.querySelector('.current-image');
+                            if (currentImg) {
+                                currentImg.src = '/' + response.path;
+                                currentImg.style.display = 'block';
+                            } else {
+                                const newImg = document.createElement('img');
+                                newImg.src = '/' + response.path;
+                                newImg.className = 'current-image';
+                                container.insertBefore(newImg, uploadDiv);
+                            }
+                        } else {
+                            alert('Upload mislukt: ' + response.message);
+                        }
+                    } else {
+                        alert('Upload mislukt: Server error');
+                    }
+
+                    progress.style.display = 'none';
+                    progressFill.style.width = '0%';
+                    preview.classList.remove('show');
+                });
+
+                xhr.addEventListener('error', function() {
+                    alert('Upload mislukt: Network error');
+                    progress.style.display = 'none';
+                    progressFill.style.width = '0%';
+                });
+
+                xhr.open('POST', '/admin/upload.php', true);
+                xhr.send(formData);
+            }
+        }
+
+        // Initialize upload for all image fields
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageFields = document.querySelectorAll('input[name$="_image"], input[name^="hero_image"], input[name^="intro_image"], input[name^="founder_image"], input[name^="service_image"]');
+            imageFields.forEach(function(field) {
+                if (field.type === 'text') {
+                    setupImageUpload(field.name, field.name);
+                }
+            });
+        });
+    </script>
         </div>
     </div>
 </body>
