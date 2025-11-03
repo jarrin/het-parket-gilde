@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<p><label><strong>Username:</strong><br><input type='text' name='username' required style='padding:8px;width:300px;'></label></p>";
     echo "<p><label><strong>New Password:</strong><br><input type='text' name='password' required style='padding:8px;width:300px;'></label></p>";
     echo "<p><small>Note: Use 'text' type so you can see the password you're setting</small></p>";
-    echo "<p><button type='submit' style='padding:10px 20px;background:#667eea;color:white;border:none;border-radius:4px;cursor:pointer;'>Update Password</button></p>";
+    echo "<p><button type='submit' style='padding:10px 20px;background:#3498db;color:white;border:none;border-radius:4px;cursor:pointer;'>Update Password</button></p>";
     echo "</form>";
 
     echo "<hr>";

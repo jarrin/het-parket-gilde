@@ -13,6 +13,20 @@ $currentPage = getCurrentPage();
     <title><?php echo h($site['title']); ?> - <?php echo ucfirst(str_replace('-', ' ', $currentPage)); ?></title>
     <meta name="description" content="<?php echo h($site['description']); ?>">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <?php if (isset($site['colors'])): ?>
+    <style>
+        :root {
+            --primary-color: <?php echo h($site['colors']['primary']); ?>;
+            --secondary-color: <?php echo h($site['colors']['secondary']); ?>;
+            --accent-color: <?php echo h($site['colors']['accent']); ?>;
+            --text-color: <?php echo h($site['colors']['text']); ?>;
+            --text-light: <?php echo h($site['colors']['textLight']); ?>;
+            --bg-light: <?php echo h($site['colors']['bgLight']); ?>;
+            --white: <?php echo h($site['colors']['white']); ?>;
+            --border-color: <?php echo h($site['colors']['border']); ?>;
+        }
+    </style>
+    <?php endif; ?>
 </head>
 <body>
     <header class="site-header">

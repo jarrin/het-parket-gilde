@@ -95,7 +95,7 @@ body {
 }
 
 .sidebar-menu a.active {
-    background: #667eea;
+    background: #3498db;
     color: white;
     font-weight: 600;
     border-left: 4px solid #fff;
@@ -136,7 +136,7 @@ body {
 .form-section h2 {
     margin-bottom: 10px;
     padding-bottom: 15px;
-    border-bottom: 3px solid #667eea;
+    border-bottom: 3px solid #3498db;
     color: #2c3e50;
     font-size: 26px;
 }
@@ -147,7 +147,7 @@ body {
     color: #34495e;
     font-size: 18px;
     padding-left: 10px;
-    border-left: 3px solid #667eea;
+    border-left: 3px solid #3498db;
 }
 
 .form-group {
@@ -183,8 +183,8 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .form-group small {
@@ -207,14 +207,14 @@ body {
 }
 
 .btn-primary {
-    background: #667eea;
+    background: #3498db;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #5568d3;
+    background: #2980b9;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
 }
 
 .btn-secondary {

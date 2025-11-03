@@ -1,6 +1,38 @@
 ﻿<?php
+ob_start(); // Start output buffering to prevent header warnings
 require_once '../functions.php';
 requireAdmin();
+ob_end_flush(); // Flush the buffer after authentication
+
+// Handle delete all request
+if (isset($_POST['delete_all']) && $_POST['delete_all'] === 'confirm') {
+    $deletedCount = 0;
+    $errorCount = 0;
+    
+    if (file_exists(UPLOAD_PATH)) {
+        $files = scandir(UPLOAD_PATH);
+        foreach ($files as $file) {
+            if ($file !== '.' && $file !== '..' && $file !== 'README.md') {
+                $filepath = UPLOAD_PATH . '/' . $file;
+                if (is_file($filepath)) {
+                    if (unlink($filepath)) {
+                        $deletedCount++;
+                    } else {
+                        $errorCount++;
+                    }
+                }
+            }
+        }
+    }
+    
+    if ($deletedCount > 0) {
+        $message = ['type' => 'success', 'text' => "$deletedCount afbeelding(en) succesvol verwijderd"];
+    } elseif ($errorCount > 0) {
+        $message = ['type' => 'error', 'text' => "Kon $errorCount afbeelding(en) niet verwijderen"];
+    } else {
+        $message = ['type' => 'info', 'text' => 'Geen afbeeldingen om te verwijderen'];
+    }
+}
 
 // Handle delete request
 if (isset($_POST['delete']) && isset($_POST['filename'])) {
@@ -61,7 +93,7 @@ if (file_exists(UPLOAD_PATH)) {
             transition: all 0.3s;
         }
         .media-item:hover {
-            border-color: #667eea;
+            border-color: #3498db;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transform: translateY(-2px);
         }
@@ -117,6 +149,45 @@ if (file_exists(UPLOAD_PATH)) {
         .btn-delete:hover {
             background: #c0392b;
         }
+        .images-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .images-header h2 {
+            margin: 0;
+        }
+        .delete-all-form {
+            margin: 0;
+        }
+        .btn-delete-all {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+        .btn-delete-all:hover {
+            background: #c0392b;
+        }
+        .delete-form {
+            display: inline;
+            margin: 0;
+        }
+        .upload-hint {
+            margin-top: 15px;
+            color: #7f8c8d;
+        }
+        .upload-info {
+            font-size: 13px;
+            color: #95a5a6;
+            margin-top: 10px;
+        }
         .upload-zone {
             border: 3px dashed #d0d0d0;
             border-radius: 8px;
@@ -127,8 +198,8 @@ if (file_exists(UPLOAD_PATH)) {
             transition: all 0.3s;
         }
         .upload-zone:hover, .upload-zone.dragover {
-            border-color: #667eea;
-            background: #f0f0ff;
+            border-color: #3498db;
+            background: #e3f2fd;
         }
         .upload-zone input[type="file"] {
             display: none;
@@ -136,7 +207,7 @@ if (file_exists(UPLOAD_PATH)) {
         .upload-zone label {
             display: inline-block;
             padding: 12px 30px;
-            background: #667eea;
+            background: #3498db;
             color: white;
             border-radius: 6px;
             cursor: pointer;
@@ -144,7 +215,7 @@ if (file_exists(UPLOAD_PATH)) {
             transition: background 0.3s;
         }
         .upload-zone label:hover {
-            background: #5568d3;
+            background: #2980b9;
         }
         .modal {
             display: none;
@@ -217,14 +288,24 @@ if (file_exists(UPLOAD_PATH)) {
                 <h2>Upload Nieuwe Afbeeldingen</h2>
                 <div class="upload-zone" id="uploadZone">
                     <input type="file" id="fileInput" accept="image/*" multiple>
-                    <label for="fileInput">📁 Selecteer Afbeeldingen</label>
-                    <p style="margin-top: 15px; color: #7f8c8d;">Of sleep afbeeldingen hierheen</p>
-                    <p style="font-size: 13px; color: #95a5a6; margin-top: 10px;">
-                        Maximaal 5MB per bestand • JPEG, PNG, GIF, WebP
+                    <label for="fileInput">Selecteer Afbeeldingen</label>
+                    <p class="upload-hint">Of sleep afbeeldingen hierheen</p>
+                    <p class="upload-info">
+                        Maximaal 5MB per bestand - JPEG, PNG, GIF, WebP
                     </p>
                 </div>
 
-                <h2>Geüploade Afbeeldingen (<?php echo count($images); ?>)</h2>
+                <div class="images-header">
+                    <h2>Geüploade Afbeeldingen (<?php echo count($images); ?>)</h2>
+                    <?php if (!empty($images)): ?>
+                        <form method="POST" class="delete-all-form" onsubmit="return confirm('WAARSCHUWING: Weet u ZEKER dat u ALLE <?php echo count($images); ?> afbeeldingen wilt verwijderen? Dit kan NIET ongedaan worden gemaakt!');">
+                            <input type="hidden" name="delete_all" value="confirm">
+                            <button type="submit" class="btn-delete-all">
+                                Verwijder Alle Afbeeldingen
+                            </button>
+                        </form>
+                    <?php endif; ?>
+                </div>
 
                 <?php if (empty($images)): ?>
                     <div class="empty-state">
@@ -252,11 +333,11 @@ if (file_exists(UPLOAD_PATH)) {
                                     </div>
                                     <div class="media-actions">
                                         <button class="btn-copy" onclick="copyPath('<?php echo h($image['path']); ?>')">
-                                            📋 Kopieer Pad
+                                            Kopieer Pad
                                         </button>
-                                        <form method="POST" style="display: inline;" onsubmit="return confirm('Weet u zeker dat u deze afbeelding wilt verwijderen?');">
+                                        <form method="POST" class="delete-form" onsubmit="return confirm('Weet u zeker dat u deze afbeelding wilt verwijderen?');">
                                             <input type="hidden" name="filename" value="<?php echo h($image['filename']); ?>">
-                                            <button type="submit" name="delete" class="btn-delete">🗑️</button>
+                                            <button type="submit" name="delete" class="btn-delete">Verwijder</button>
                                         </form>
                                     </div>
                                 </div>

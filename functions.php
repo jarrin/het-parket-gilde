@@ -235,3 +235,97 @@ function getNavigation() {
         ['url' => '/contact.php', 'label' => 'Contact', 'page' => 'contact']
     ];
 }
+
+/**
+ * Handle image upload
+ * @param string $fileInputName
+ * @return array
+ */
+function handleImageUpload($fileInputName) {
+    if (!isset($_FILES[$fileInputName]) || $_FILES[$fileInputName]['error'] === UPLOAD_ERR_NO_FILE) {
+        return ['success' => false, 'message' => 'Geen bestand geselecteerd'];
+    }
+    
+    $file = $_FILES[$fileInputName];
+    
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        return ['success' => false, 'message' => 'Upload fout: ' . $file['error']];
+    }
+    
+    if ($file['size'] > MAX_FILE_SIZE) {
+        return ['success' => false, 'message' => 'Bestand is te groot (max 5MB)'];
+    }
+    
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+    
+    if (!in_array($mimeType, ALLOWED_IMAGE_TYPES)) {
+        return ['success' => false, 'message' => 'Alleen JPG, PNG, GIF en WebP afbeeldingen zijn toegestaan'];
+    }
+    
+    $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    $newFileName = uniqid('img_', true) . '.' . $extension;
+    $uploadPath = UPLOAD_PATH . '/' . $newFileName;
+    
+    if (!is_dir(UPLOAD_PATH)) {
+        mkdir(UPLOAD_PATH, 0755, true);
+    }
+    
+    if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+        return [
+            'success' => true,
+            'path' => 'assets/images/' . $newFileName,
+            'message' => 'Afbeelding succesvol geüpload'
+        ];
+    }
+    
+    return ['success' => false, 'message' => 'Fout bij opslaan van bestand'];
+}
+
+/**
+ * Delete an uploaded image
+ * @param string $imagePath
+ * @return bool
+ */
+function deleteImage($imagePath) {
+    $fullPath = ROOT_PATH . '/' . $imagePath;
+    if (file_exists($fullPath) && strpos($imagePath, 'assets/images/') === 0) {
+        return unlink($fullPath);
+    }
+    return false;
+}
+
+/**
+ * Get list of uploaded images
+ * @return array
+ */
+function getUploadedImages() {
+    $images = [];
+    
+    if (!is_dir(UPLOAD_PATH)) {
+        return $images;
+    }
+    
+    $files = scandir(UPLOAD_PATH);
+    foreach ($files as $file) {
+        if ($file !== '.' && $file !== '..' && $file !== 'README.txt') {
+            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
+                $fullPath = UPLOAD_PATH . '/' . $file;
+                $images[] = [
+                    'filename' => $file,
+                    'path' => 'assets/images/' . $file,
+                    'size' => filesize($fullPath),
+                    'modified' => filemtime($fullPath)
+                ];
+            }
+        }
+    }
+    
+    usort($images, function($a, $b) {
+        return $b['modified'] - $a['modified'];
+    });
+    
+    return $images;
+}

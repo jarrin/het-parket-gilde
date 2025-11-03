@@ -1,6 +1,8 @@
 ﻿<?php
+ob_start(); // Start output buffering
 require_once '../functions.php';
 requireAdmin();
+ob_end_clean(); // Clear buffer before sending JSON
 
 header('Content-Type: application/json');
 
