@@ -83,6 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['contact']['info']['address']['street'] = $_POST['address_street'] ?? '';
                     $content['contact']['info']['address']['city'] = $_POST['address_city'] ?? '';
                     break;
+                    
+                case 'colors':
+                    $content['site']['colors']['primary'] = $_POST['color_primary'] ?? '';
+                    $content['site']['colors']['secondary'] = $_POST['color_secondary'] ?? '';
+                    $content['site']['colors']['accent'] = $_POST['color_accent'] ?? '';
+                    $content['site']['colors']['text'] = $_POST['color_text'] ?? '';
+                    $content['site']['colors']['textLight'] = $_POST['color_text_light'] ?? '';
+                    $content['site']['colors']['bgLight'] = $_POST['color_bg_light'] ?? '';
+                    $content['site']['colors']['white'] = $_POST['color_white'] ?? '';
+                    $content['site']['colors']['border'] = $_POST['color_border'] ?? '';
+                    break;
             }
             
             if (saveContent($content)) {
@@ -107,245 +118,6 @@ $currentSection = $_GET['section'] ?? 'site';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Het Parket Gilde</title>
     <link rel="stylesheet" href="/assets/css/admin.css">
-    <style>
-        body {
-            background: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        .admin-header {
-            background: #333;
-            color: white;
-            padding: 20px 0;
-            margin-bottom: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .admin-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .admin-header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
-        .admin-nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            transition: background 0.3s;
-            font-size: 14px;
-        }
-        .admin-nav a:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        .admin-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .admin-panel {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            min-height: calc(100vh - 80px);
-        }
-        .sidebar {
-            background: #2c3e50;
-            color: white;
-        }
-        .sidebar-menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar-menu li {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .sidebar-menu a {
-            display: block;
-            padding: 18px 20px;
-            color: #ecf0f1;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 15px;
-        }
-        .sidebar-menu a:hover {
-            background: rgba(255,255,255,0.1);
-            padding-left: 25px;
-        }
-        .sidebar-menu a.active {
-            background: #667eea;
-            color: white;
-            font-weight: 600;
-            border-left: 4px solid #fff;
-        }
-        .content-area {
-            padding: 30px 40px;
-        }
-        .message {
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 15px;
-        }
-        .message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            border-left: 4px solid #28a745;
-        }
-        .message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            border-left: 4px solid #dc3545;
-        }
-        .form-section {
-            margin-bottom: 30px;
-        }
-        .form-section h2 {
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
-            color: #2c3e50;
-            font-size: 26px;
-        }
-        .form-section h3 {
-            margin-top: 35px;
-            margin-bottom: 20px;
-            color: #34495e;
-            font-size: 18px;
-            padding-left: 10px;
-            border-left: 3px solid #667eea;
-        }
-        .form-group {
-            margin-bottom: 25px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #2c3e50;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 15px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        .form-group small {
-            display: block;
-            margin-top: 6px;
-            color: #7f8c8d;
-            font-size: 13px;
-            font-style: italic;
-        }
-        .btn {
-            padding: 12px 28px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-        }
-        .btn-secondary {
-            background: #95a5a6;
-            color: white;
-            margin-left: 10px;
-        }
-        .btn-secondary:hover {
-            background: #7f8c8d;
-        }
-        .form-actions {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 2px solid #ecf0f1;
-            display: flex;
-            gap: 10px;
-        }
-        .admin-layout {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 0;
-        }
-        @media (max-width: 768px) {
-            .admin-layout {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid #ddd;
-            }
-            .content-area {
-                padding: 20px;
-            }
-        }
-        .info-box {
-            background: #e8f4fd;
-            border-left: 4px solid #3498db;
-            padding: 15px 20px;
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
-        .info-box p {
-            margin: 0;
-            color: #2c3e50;
-            font-size: 14px;
-        }
-        .page-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        .preview-link {
-            background: #3498db;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        .preview-link:hover {
-            background: #2980b9;
-        }
-        .upload-instructions {
-            font-size: 13px;
-            color: #7f8c8d;
-            margin-top: 8px;
-        }
-    </style>
 </head>
 <body>
     <header class="admin-header">
@@ -364,11 +136,9 @@ $currentSection = $_GET['section'] ?? 'site';
                 <aside class="sidebar">
                     <ul class="sidebar-menu">
                         <li><a href="?section=site" class="<?php echo $currentSection === 'site' ? 'active' : ''; ?>">Site Informatie</a></li>
+                        <li><a href="?section=colors" class="<?php echo $currentSection === 'colors' ? 'active' : ''; ?>">Kleuren</a></li>
                         <li><a href="?section=home" class="<?php echo $currentSection === 'home' ? 'active' : ''; ?>">Home Pagina</a></li>
                         <li><a href="?section=diensten" class="<?php echo $currentSection === 'diensten' ? 'active' : ''; ?>">Onze Diensten</a></li>
-                        <li style="border-top: 2px solid rgba(255,255,255,0.2); margin-top: 10px; padding-top: 10px;">
-                            <a href="media.php" style="color: #3498db;">📁 Media Manager</a>
-                        </li>
                         <li><a href="?section=over_ons" class="<?php echo $currentSection === 'over_ons' ? 'active' : ''; ?>">Over Ons</a></li>
                         <li><a href="?section=contact" class="<?php echo $currentSection === 'contact' ? 'active' : ''; ?>">Contact</a></li>
                     </ul>
@@ -441,6 +211,130 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary">Wijzigingen Opslaan</button>
+                                    <button type="reset" class="btn btn-secondary">Annuleren</button>
+                                </div>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if ($currentSection === 'colors'): ?>
+                        <div class="form-section">
+                            <div class="page-title">
+                                <h2>Website Kleuren</h2>
+                            </div>
+                            <div class="info-box">
+                                <p>Pas de kleuren van uw website aan. Wijzigingen worden direct toegepast op alle pagina's.</p>
+                            </div>
+                            
+                            <div class="color-preview-container">
+                                <h3 class="color-preview-title">Kleur Voorbeelden</h3>
+                                <div class="color-preview-grid">
+                                    <div class="color-preview-item">
+                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['primary']); ?>;"></div>
+                                        <small class="color-preview-label">Primair</small>
+                                    </div>
+                                    <div class="color-preview-item">
+                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['secondary']); ?>;"></div>
+                                        <small class="color-preview-label">Secundair</small>
+                                    </div>
+                                    <div class="color-preview-item">
+                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['accent']); ?>;"></div>
+                                        <small class="color-preview-label">Accent</small>
+                                    </div>
+                                    <div class="color-preview-item">
+                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['text']); ?>;"></div>
+                                        <small class="color-preview-label">Tekst</small>
+                                    </div>
+                                    <div class="color-preview-item">
+                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['bgLight']); ?>;"></div>
+                                        <small class="color-preview-label">Achtergrond</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <form method="POST">
+                                <input type="hidden" name="section" value="colors">
+                                
+                                <h3>Hoofdkleuren</h3>
+                                
+                                <div class="form-group">
+                                    <label>Primaire Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_primary" value="<?php echo h($content['site']['colors']['primary']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['primary']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Wordt gebruikt voor knoppen, links en accenten</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Secundaire Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_secondary" value="<?php echo h($content['site']['colors']['secondary']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['secondary']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Hover effecten en secundaire elementen</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Accent Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_accent" value="<?php echo h($content['site']['colors']['accent']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['accent']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Voor speciale highlights en call-to-actions</small>
+                                </div>
+                                
+                                <h3>Tekstkleuren</h3>
+                                
+                                <div class="form-group">
+                                    <label>Tekst Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_text" value="<?php echo h($content['site']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Hoofdtekst kleur voor alle content</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Lichte Tekst Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_text_light" value="<?php echo h($content['site']['colors']['textLight']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['textLight']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Voor subtekst en minder belangrijke informatie</small>
+                                </div>
+                                
+                                <h3>Achtergrondkleuren</h3>
+                                
+                                <div class="form-group">
+                                    <label>Lichte Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_bg_light" value="<?php echo h($content['site']['colors']['bgLight']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['bgLight']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Voor secties met lichte achtergrond</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Witte Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_white" value="<?php echo h($content['site']['colors']['white']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['white']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Hoofdachtergrond kleur</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Rand Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="color_border" value="<?php echo h($content['site']['colors']['border']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['site']['colors']['border']); ?>" readonly class="color-text-input">
+                                    </div>
+                                    <small>Voor randen rondom elementen en kaarten</small>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
                                     <button type="reset" class="btn btn-secondary">Annuleren</button>
                                 </div>
                             </form>
@@ -756,167 +650,6 @@ $currentSection = $_GET['section'] ?? 'site';
                     <?php endif; ?>
                 </main>
             </div>
-
-    <script>
-        // Image upload functionality
-        function setupImageUpload(inputId, fieldName) {
-            const input = document.getElementById(inputId);
-            if (!input) return;
-
-            const container = input.closest('.form-group');
-            const textInput = container.querySelector('input[type="text"]');
-
-            // Create upload UI
-            const uploadDiv = document.createElement('div');
-            uploadDiv.className = 'image-upload-container';
-            uploadDiv.innerHTML = `
-                <input type="file" id="file_${inputId}" accept="image/*" style="display:none;">
-                <label for="file_${inputId}" class="upload-button">📁 Upload Nieuwe Afbeelding</label>
-                <p class="upload-instructions">Of sleep een afbeelding hierheen</p>
-                <div class="upload-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                <img class="image-preview" alt="Preview">
-            `;
-
-            // Show current image if exists
-            if (textInput.value) {
-                const currentImg = document.createElement('img');
-                currentImg.src = '/' + textInput.value;
-                currentImg.className = 'current-image';
-                currentImg.alt = 'Current image';
-                currentImg.onerror = function() { this.style.display = 'none'; };
-                container.appendChild(currentImg);
-            }
-
-            container.appendChild(uploadDiv);
-
-            const fileInput = uploadDiv.querySelector('input[type="file"]');
-            const preview = uploadDiv.querySelector('.image-preview');
-            const progress = uploadDiv.querySelector('.upload-progress');
-            const progressFill = uploadDiv.querySelector('.progress-fill');
-
-            // Handle file selection
-            fileInput.addEventListener('change', function(e) {
-                if (e.target.files.length > 0) {
-                    handleFile(e.target.files[0]);
-                }
-            });
-
-            // Drag and drop
-            uploadDiv.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                uploadDiv.classList.add('dragover');
-            });
-
-            uploadDiv.addEventListener('dragleave', function(e) {
-                e.preventDefault();
-                uploadDiv.classList.remove('dragover');
-            });
-
-            uploadDiv.addEventListener('drop', function(e) {
-                e.preventDefault();
-                uploadDiv.classList.remove('dragover');
-
-                if (e.dataTransfer.files.length > 0) {
-                    handleFile(e.dataTransfer.files[0]);
-                }
-            });
-
-            function handleFile(file) {
-                // Validate file type
-                if (!file.type.startsWith('image/')) {
-                    alert('Alleen afbeeldingen zijn toegestaan');
-                    return;
-                }
-
-                // Validate file size (5MB)
-                if (file.size > 5 * 1024 * 1024) {
-                    alert('Bestand is te groot. Maximum: 5MB');
-                    return;
-                }
-
-                // Show preview
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.classList.add('show');
-                };
-                reader.readAsDataURL(file);
-
-                // Upload file
-                uploadFile(file);
-            }
-
-            function uploadFile(file) {
-                const formData = new FormData();
-                formData.append('image', file);
-
-                const xhr = new XMLHttpRequest();
-
-                // Show progress
-                progress.style.display = 'block';
-
-                xhr.upload.addEventListener('progress', function(e) {
-                    if (e.lengthComputable) {
-                        const percent = (e.loaded / e.total) * 100;
-                        progressFill.style.width = percent + '%';
-                    }
-                });
-
-                xhr.addEventListener('load', function() {
-                    if (xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.success) {
-                            textInput.value = response.path;
-                            alert('✓ Afbeelding succesvol geüpload!');
-
-                            // Update current image display
-                            const currentImg = container.querySelector('.current-image');
-                            if (currentImg) {
-                                currentImg.src = '/' + response.path;
-                                currentImg.style.display = 'block';
-                            } else {
-                                const newImg = document.createElement('img');
-                                newImg.src = '/' + response.path;
-                                newImg.className = 'current-image';
-                                container.insertBefore(newImg, uploadDiv);
-                            }
-                        } else {
-                            alert('Upload mislukt: ' + response.message);
-                        }
-                    } else {
-                        alert('Upload mislukt: Server error');
-                    }
-
-                    progress.style.display = 'none';
-                    progressFill.style.width = '0%';
-                    preview.classList.remove('show');
-                });
-
-                xhr.addEventListener('error', function() {
-                    alert('Upload mislukt: Network error');
-                    progress.style.display = 'none';
-                    progressFill.style.width = '0%';
-                });
-
-                xhr.open('POST', '/admin/upload.php', true);
-                xhr.send(formData);
-            }
-        }
-
-        // Initialize upload for all image fields
-        document.addEventListener('DOMContentLoaded', function() {
-            const imageFields = document.querySelectorAll('input[name$="_image"], input[name^="hero_image"], input[name^="intro_image"], input[name^="founder_image"], input[name^="service_image"]');
-            imageFields.forEach(function(field) {
-                if (field.type === 'text') {
-                    setupImageUpload(field.name, field.name);
-                }
-            });
-        });
-    </script>
         </div>
     </div>
 </body>
