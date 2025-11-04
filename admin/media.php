@@ -78,191 +78,7 @@ if (file_exists(UPLOAD_PATH)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Manager - Het Parket Gilde</title>
     <link rel="stylesheet" href="/assets/css/admin.css">
-    <style>
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .media-item {
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-            transition: all 0.3s;
-        }
-        .media-item:hover {
-            border-color: #3498db;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transform: translateY(-2px);
-        }
-        .media-thumbnail {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-        .media-info {
-            padding: 12px;
-        }
-        .media-filename {
-            font-size: 12px;
-            color: #2c3e50;
-            margin-bottom: 8px;
-            word-break: break-all;
-            font-weight: 600;
-        }
-        .media-meta {
-            font-size: 11px;
-            color: #7f8c8d;
-            margin-bottom: 10px;
-        }
-        .media-actions {
-            display: flex;
-            gap: 8px;
-        }
-        .btn-copy {
-            flex: 1;
-            padding: 6px 12px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn-copy:hover {
-            background: #2980b9;
-        }
-        .btn-delete {
-            padding: 6px 12px;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn-delete:hover {
-            background: #c0392b;
-        }
-        .images-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .images-header h2 {
-            margin: 0;
-        }
-        .delete-all-form {
-            margin: 0;
-        }
-        .btn-delete-all {
-            padding: 10px 20px;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 600;
-        }
-        .btn-delete-all:hover {
-            background: #c0392b;
-        }
-        .delete-form {
-            display: inline;
-            margin: 0;
-        }
-        .upload-hint {
-            margin-top: 15px;
-            color: #7f8c8d;
-        }
-        .upload-info {
-            font-size: 13px;
-            color: #95a5a6;
-            margin-top: 10px;
-        }
-        .upload-zone {
-            border: 3px dashed #d0d0d0;
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            background: #fafafa;
-            margin-bottom: 30px;
-            transition: all 0.3s;
-        }
-        .upload-zone:hover, .upload-zone.dragover {
-            border-color: #3498db;
-            background: #e3f2fd;
-        }
-        .upload-zone input[type="file"] {
-            display: none;
-        }
-        .upload-zone label {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #3498db;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-        .upload-zone label:hover {
-            background: #2980b9;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal.show {
-            display: flex;
-        }
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        .modal img {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 8px;
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
-            color: white;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #7f8c8d;
-        }
-        .empty-state svg {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/media.css">
 </head>
 <body>
     <header class="admin-header">
@@ -322,7 +138,7 @@ if (file_exists(UPLOAD_PATH)) {
                                 <img src="<?php echo h($image['url']); ?>"
                                      alt="<?php echo h($image['filename']); ?>"
                                      class="media-thumbnail"
-                                     onclick="showModal('<?php echo h($image['url']); ?>')">
+                                     data-modal-url="<?php echo h($image['url']); ?>">
                                 <div class="media-info">
                                     <div class="media-filename" title="<?php echo h($image['filename']); ?>">
                                         <?php echo h(strlen($image['filename']) > 30 ? substr($image['filename'], 0, 27) . '...' : $image['filename']); ?>
@@ -332,10 +148,10 @@ if (file_exists(UPLOAD_PATH)) {
                                         <?php echo date('d-m-Y H:i', $image['modified']); ?>
                                     </div>
                                     <div class="media-actions">
-                                        <button class="btn-copy" onclick="copyPath('<?php echo h($image['path']); ?>')">
+                                        <button class="btn-copy" data-path="<?php echo h($image['path']); ?>">
                                             Kopieer Pad
                                         </button>
-                                        <form method="POST" class="delete-form" onsubmit="return confirm('Weet u zeker dat u deze afbeelding wilt verwijderen?');">
+                                        <form method="POST" class="delete-form" data-confirm="Weet u zeker dat u deze afbeelding wilt verwijderen?">
                                             <input type="hidden" name="filename" value="<?php echo h($image['filename']); ?>">
                                             <button type="submit" name="delete" class="btn-delete">Verwijder</button>
                                         </form>
@@ -349,94 +165,14 @@ if (file_exists(UPLOAD_PATH)) {
         </div>
     </div>
 
-    <div class="modal" id="imageModal" onclick="hideModal()">
-        <button class="modal-close" onclick="hideModal()">×</button>
+    <div class="modal" id="imageModal">
+        <button class="modal-close">×</button>
         <div class="modal-content">
             <img id="modalImage" src="" alt="Full size">
         </div>
     </div>
 
-    <script>
-        // Upload functionality
-        const uploadZone = document.getElementById('uploadZone');
-        const fileInput = document.getElementById('fileInput');
-
-        uploadZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadZone.classList.add('dragover');
-        });
-
-        uploadZone.addEventListener('dragleave', () => {
-            uploadZone.classList.remove('dragover');
-        });
-
-        uploadZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadZone.classList.remove('dragover');
-            handleFiles(e.dataTransfer.files);
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            handleFiles(e.target.files);
-        });
-
-        function handleFiles(files) {
-            Array.from(files).forEach(uploadFile);
-        }
-
-        function uploadFile(file) {
-            if (!file.type.startsWith('image/')) {
-                alert('Alleen afbeeldingen zijn toegestaan');
-                return;
-            }
-
-            if (file.size > 5 * 1024 * 1024) {
-                alert('Bestand te groot: ' + file.name);
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('image', file);
-
-            fetch('/admin/upload.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert('Upload mislukt: ' + data.message);
-                }
-            })
-            .catch(error => {
-                alert('Upload mislukt: ' + error.message);
-            });
-        }
-
-        function copyPath(path) {
-            navigator.clipboard.writeText(path).then(() => {
-                alert('✓ Pad gekopieerd naar klembord: ' + path);
-            });
-        }
-
-        function showModal(url) {
-            document.getElementById('modalImage').src = url;
-            document.getElementById('imageModal').classList.add('show');
-        }
-
-        function hideModal() {
-            document.getElementById('imageModal').classList.remove('show');
-        }
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                hideModal();
-            }
-        });
-    </script>
+    <script src="/assets/js/media.js"></script>
 </body>
 </html>
 

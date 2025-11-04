@@ -33,5 +33,6 @@
         </div>
     </footer>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/live-edit.js"></script>
 </body>
 </html>

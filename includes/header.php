@@ -13,39 +13,8 @@ $currentPage = getCurrentPage();
     <title><?php echo h($site['title']); ?> - <?php echo ucfirst(str_replace('-', ' ', $currentPage)); ?></title>
     <meta name="description" content="<?php echo h($site['description']); ?>">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <?php if (isset($site['colors'])): ?>
-    <style>
-        :root {
-            --primary-color: <?php echo h($site['colors']['primary']); ?>;
-            --secondary-color: <?php echo h($site['colors']['secondary']); ?>;
-            --accent-color: <?php echo h($site['colors']['accent']); ?>;
-            --text-color: <?php echo h($site['colors']['text']); ?>;
-            --text-light: <?php echo h($site['colors']['textLight']); ?>;
-            --bg-light: <?php echo h($site['colors']['bgLight']); ?>;
-            --white: <?php echo h($site['colors']['white']); ?>;
-            --border-color: <?php echo h($site['colors']['border']); ?>;
-            <?php
-            // Add page-specific colors based on current page
-            $pageKey = str_replace('-', '_', $currentPage);
-            if ($pageKey === 'index') $pageKey = 'home';
-            if ($pageKey === 'over_ons') $pageKey = 'over_ons';
-            
-            if (isset($content[$pageKey]['colors'])) {
-                $pageColors = $content[$pageKey]['colors'];
-                if (isset($pageColors['header'])) {
-                    echo '--page-header-bg: ' . h($pageColors['header']) . ';' . "\n            ";
-                }
-                if (isset($pageColors['heroText'])) {
-                    echo '--page-hero-text: ' . h($pageColors['heroText']) . ';' . "\n            ";
-                }
-                if (isset($pageColors['sectionBg'])) {
-                    echo '--page-section-bg: ' . h($pageColors['sectionBg']) . ';' . "\n            ";
-                }
-            }
-            ?>
-        }
-    </style>
-    <?php endif; ?>
+    <link rel="stylesheet" href="/assets/css/dynamic-colors.php?page=<?php echo urlencode($currentPage); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="site-header" style="background-color: <?php echo h($site['colors']['header']['background']); ?>; color: <?php echo h($site['colors']['header']['text']); ?>;">

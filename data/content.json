@@ -10,31 +10,31 @@
             "zipcode": "1234 AB"
         },
         "colors": {
-            "primary": "#f5f19a",
-            "secondary": "#8ae86a",
-            "accent": "#dd8944",
-            "text": "#3fb88a",
-            "textLight": "#e628d2",
-            "bgLight": "#cf0716",
-            "white": "#161623",
-            "border": "#000000",
+            "primary": "#2B3A52",
+            "secondary": "#D4AF7A",
+            "accent": "#8B6F47",
+            "text": "#FFFFFF",
+            "textLight": "#E8E8E8",
+            "bgLight": "#F5F5F5",
+            "white": "#FFFFFF",
+            "border": "#3D4F6B",
             "header": {
-                "background": "#FFFFFF",
-                "text": "#333333",
-                "logo": "#3498db"
+                "background": "#2B3A52",
+                "text": "#FFFFFF",
+                "logo": "#D4AF7A"
             },
             "footer": {
-                "background": "#2C3E50",
-                "text": "#FFFFFF",
-                "links": "#3498db"
+                "background": "#1E2838",
+                "text": "#E8E8E8",
+                "links": "#D4AF7A"
             }
         }
     },
     "home": {
         "colors": {
-            "header": "#8B4513",
+            "header": "#2B3A52",
             "heroText": "#FFFFFF",
-            "sectionBg": "#F5F5DC"
+            "sectionBg": "#F5F5F5"
         },
         "hero": {
             "title": "Het Parket Gilde",
@@ -42,9 +42,9 @@
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
             "image": "assets\/images\/img_6909d4032460f2.94093668.jpg",
             "colors": {
-                "background": "#8ffc47",
-                "text": "#fd029f",
-                "overlay": "rgba(0, 0, 0, 0.5)"
+                "background": "#2B3A52",
+                "text": "#FFFFFF",
+                "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
         "intro": {
@@ -52,9 +52,9 @@
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
             "image": "assets\/images\/intro.jpg",
             "colors": {
-                "background": "#5ffe43",
-                "text": "#00ffff",
-                "title": "#fe0701"
+                "background": "#F5F5F5",
+                "text": "#2B3A52",
+                "title": "#D4AF7A"
             }
         },
         "vakmanschap": {
@@ -62,43 +62,43 @@
             "subtitle": "Traditie en kwaliteit",
             "text": "Elke vloer vertelt een verhaal. Wij combineren traditionele technieken met moderne innovaties om duurzame en tijdloze parketvloeren te creëren. Onze vakmannen werken met respect voor het materiaal en oog voor detail.",
             "colors": {
-                "background": "#00ff00",
-                "text": "#000000",
-                "title": "#ff0080"
+                "background": "#2B3A52",
+                "text": "#FFFFFF",
+                "title": "#D4AF7A"
             },
             "features": [
                 {
                     "title": "Ervaring",
                     "description": "Meer dan 15 jaar expertise in parketvloeren",
-                    "icon": "✓"
+                    "icon": "+"
                 },
                 {
                     "title": "Kwaliteit",
                     "description": "Uitsluitend hoogwaardige materialen",
-                    "icon": "✓"
+                    "icon": "+"
                 },
                 {
                     "title": "Maatwerk",
                     "description": "Elke vloer op maat gemaakt",
-                    "icon": "✓"
+                    "icon": "+"
                 }
             ]
         }
     },
     "diensten": {
         "colors": {
-            "header": "#186351",
-            "heroText": "#ffffff",
-            "sectionBg": "#ecf0f1"
+            "header": "#2B3A52",
+            "heroText": "#FFFFFF",
+            "sectionBg": "#F5F5F5"
         },
         "hero": {
             "title": "Onze Diensten",
             "subtitle": "Compleet vakmanschap voor uw vloer",
             "image": "assets\/images\/hero-diensten.jpg",
             "colors": {
-                "background": "#00ff00",
-                "text": "#00ff00",
-                "overlay": "rgba(0, 0, 0, 0.5)"
+                "background": "#2B3A52",
+                "text": "#FFFFFF",
+                "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
         "services": [
@@ -107,9 +107,9 @@
                 "description": "Wij leggen alle soorten parketvloeren, van klassieke visgraat tot moderne plankenvloeren. Elk project wordt met zorg en vakmanschap uitgevoerd.",
                 "image": "assets\/images\/service-leggen.jpg",
                 "colors": {
-                    "background": "#00ff00",
-                    "text": "#333333",
-                    "title": "#2c3e50"
+                    "background": "#2B3A52",
+                    "text": "#E8E8E8",
+                    "title": "#D4AF7A"
                 },
                 "features": [
                     "Visgraatvloeren",
@@ -123,9 +123,9 @@
                 "description": "Is uw parketvloer beschadigd of verouderd? Wij herstellen beschadigingen en renoveren oude vloeren tot in hun oude glorie.",
                 "image": "assets\/images\/service-herstel.jpg",
                 "colors": {
-                    "background": "#f8f9fa",
-                    "text": "#333333",
-                    "title": "#2c3e50"
+                    "background": "#F5F5F5",
+                    "text": "#2B3A52",
+                    "title": "#D4AF7A"
                 },
                 "features": [
                     "Krasverwijdering",
@@ -139,9 +139,9 @@
                 "description": "Naast parketvloeren bieden wij ook maatwerk raamdecoratie. Van houten jaloezieën tot luxe shutters die perfect aansluiten bij uw interieur.",
                 "image": "assets\/images\/service-raam.jpg",
                 "colors": {
-                    "background": "#ffffff",
-                    "text": "#333333",
-                    "title": "#2c3e50"
+                    "background": "#2B3A52",
+                    "text": "#E8E8E8",
+                    "title": "#D4AF7A"
                 },
                 "features": [
                     "Houten jaloezieën",
@@ -154,18 +154,18 @@
     },
     "over_ons": {
         "colors": {
-            "header": "#34495E",
+            "header": "#2B3A52",
             "heroText": "#FFFFFF",
-            "sectionBg": "#BDC3C7"
+            "sectionBg": "#F5F5F5"
         },
         "hero": {
-            "title": "testttttttt",
+            "title": "Over Het Parket Gilde",
             "subtitle": "Passie voor hout sinds 2008",
             "image": "assets\/images\/hero-over-ons.jpg",
             "colors": {
-                "background": "#2C3E50",
+                "background": "#2B3A52",
                 "text": "#FFFFFF",
-                "overlay": "rgba(0, 0, 0, 0.5)"
+                "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
         "story": {
@@ -176,9 +176,9 @@
                 "Bij Het Parket Gilde geloven we in eerlijk advies, transparante communicatie en het leveren van werk waar we trots op zijn. Uw tevredenheid is onze drijfveer."
             ],
             "colors": {
-                "background": "#F8F9FA",
-                "text": "#333333",
-                "title": "#2C3E50"
+                "background": "#F5F5F5",
+                "text": "#2B3A52",
+                "title": "#D4AF7A"
             }
         },
         "founder": {
@@ -187,9 +187,9 @@
             "quote": "Elke vloer is uniek, en verdient de volledige aandacht en toewijding van een vakman. Dat is wat wij elke dag bieden.",
             "image": "assets\/images\/mathijs.jpg",
             "colors": {
-                "background": "#FFFFFF",
-                "text": "#555555",
-                "title": "#2C3E50"
+                "background": "#2B3A52",
+                "text": "#E8E8E8",
+                "title": "#D4AF7A"
             }
         },
         "values": [
@@ -211,34 +211,34 @@
             }
         ],
         "values_colors": {
-            "background": "#ECF0F1",
-            "text": "#333333",
-            "title": "#2C3E50"
+            "background": "#F5F5F5",
+            "text": "#2B3A52",
+            "title": "#D4AF7A"
         }
     },
     "contact": {
         "colors": {
-            "header": "#16A085",
+            "header": "#2B3A52",
             "heroText": "#FFFFFF",
-            "sectionBg": "#D5F4E6"
+            "sectionBg": "#F5F5F5"
         },
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
             "image": "assets\/images\/hero-contact.jpg",
             "colors": {
-                "background": "#16A085",
+                "background": "#2B3A52",
                 "text": "#FFFFFF",
-                "overlay": "rgba(0, 0, 0, 0.5)"
+                "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
         "intro": {
             "title": "Heeft u vragen of wilt u een vrijblijvende offerte?",
             "text": "Neem gerust contact met ons op. Wij helpen u graag verder met advies of een op maat gemaakte offerte voor uw project.",
             "colors": {
-                "background": "#F8F9FA",
-                "text": "#333333",
-                "title": "#2C3E50"
+                "background": "#F5F5F5",
+                "text": "#2B3A52",
+                "title": "#D4AF7A"
             }
         },
         "info": {
@@ -258,9 +258,9 @@
                 "city": "1234 AB Amsterdam"
             },
             "colors": {
-                "background": "#FFFFFF",
-                "text": "#333333",
-                "title": "#2C3E50"
+                "background": "#2B3A52",
+                "text": "#E8E8E8",
+                "title": "#D4AF7A"
             }
         },
         "hours": {
@@ -271,9 +271,9 @@
                 "Zondag: Gesloten"
             ],
             "colors": {
-                "background": "#ECF0F1",
-                "text": "#555555",
-                "title": "#2C3E50"
+                "background": "#F5F5F5",
+                "text": "#2B3A52",
+                "title": "#D4AF7A"
             }
         }
     }
