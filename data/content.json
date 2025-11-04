@@ -30,7 +30,7 @@
         "intro": {
             "title": "Welkom bij Het Parket Gilde",
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
-            "image": "assets\/images\/img_6904b136713e25.96289023.jpg"
+            "image": "assets\/images\/intro.jpg"
         },
         "vakmanschap": {
             "title": "Vakmanschap in hout",
@@ -99,7 +99,7 @@
     },
     "over_ons": {
         "hero": {
-            "title": "over ons",
+            "title": "testttttttt",
             "subtitle": "Passie voor hout sinds 2008",
             "image": "assets\/images\/hero-over-ons.jpg"
         },
@@ -140,7 +140,7 @@
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/img_6904b1dcee5f85.09783917.jpg"
+            "image": "assets\/images\/hero-contact.jpg"
         },
         "intro": {
             "title": "Heeft u vragen of wilt u een vrijblijvende offerte?",
