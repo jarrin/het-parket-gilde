@@ -24,42 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['site']['contact']['zipcode'] = $_POST['contact_zipcode'] ?? '';
                     break;
                     
-                case 'colors':
-                    $content['site']['colors']['primary'] = $_POST['color_primary'] ?? '#8B4513';
-                    $content['site']['colors']['secondary'] = $_POST['color_secondary'] ?? '#D2691E';
-                    $content['site']['colors']['accent'] = $_POST['color_accent'] ?? '#CD853F';
-                    $content['site']['colors']['text'] = $_POST['color_text'] ?? '#333333';
-                    $content['site']['colors']['textLight'] = $_POST['color_text_light'] ?? '#666666';
-                    $content['site']['colors']['bgLight'] = $_POST['color_bg_light'] ?? '#f8f9fa';
-                    $content['site']['colors']['white'] = $_POST['color_white'] ?? '#ffffff';
-                    $content['site']['colors']['border'] = $_POST['color_border'] ?? '#e0e0e0';
-                    break;
-                    
                 case 'home':
                     $content['home']['hero']['title'] = $_POST['hero_title'] ?? '';
                     $content['home']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
                     $content['home']['hero']['description'] = $_POST['hero_description'] ?? '';
-                    
-                    if (!empty($_FILES['hero_image_upload']['name'])) {
-                        $uploadResult = handleImageUpload('hero_image_upload');
-                        if ($uploadResult['success']) {
-                            $content['home']['hero']['image'] = $uploadResult['path'];
-                        }
-                    } else {
-                        $content['home']['hero']['image'] = $_POST['hero_image'] ?? '';
-                    }
+                    $content['home']['hero']['image'] = $_POST['hero_image'] ?? '';
                     
                     $content['home']['intro']['title'] = $_POST['intro_title'] ?? '';
                     $content['home']['intro']['text'] = $_POST['intro_text'] ?? '';
-                    
-                    if (!empty($_FILES['intro_image_upload']['name'])) {
-                        $uploadResult = handleImageUpload('intro_image_upload');
-                        if ($uploadResult['success']) {
-                            $content['home']['intro']['image'] = $uploadResult['path'];
-                        }
-                    } else {
-                        $content['home']['intro']['image'] = $_POST['intro_image'] ?? '';
-                    }
+                    $content['home']['intro']['image'] = $_POST['intro_image'] ?? '';
                     
                     $content['home']['vakmanschap']['title'] = $_POST['vak_title'] ?? '';
                     $content['home']['vakmanschap']['subtitle'] = $_POST['vak_subtitle'] ?? '';
@@ -69,29 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 case 'diensten':
                     $content['diensten']['hero']['title'] = $_POST['hero_title'] ?? '';
                     $content['diensten']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
+                    $content['diensten']['hero']['image'] = $_POST['hero_image'] ?? '';
                     
-                    if (!empty($_FILES['hero_image_upload']['name'])) {
-                        $uploadResult = handleImageUpload('hero_image_upload');
-                        if ($uploadResult['success']) {
-                            $content['diensten']['hero']['image'] = $uploadResult['path'];
-                        }
-                    } else {
-                        $content['diensten']['hero']['image'] = $_POST['hero_image'] ?? '';
-                    }
-                    
+                    // Update services
                     for ($i = 0; $i < 3; $i++) {
                         if (isset($_POST['service_title_' . $i])) {
                             $content['diensten']['services'][$i]['title'] = $_POST['service_title_' . $i];
                             $content['diensten']['services'][$i]['description'] = $_POST['service_desc_' . $i] ?? '';
-                            
-                            if (!empty($_FILES['service_image_upload_' . $i]['name'])) {
-                                $uploadResult = handleImageUpload('service_image_upload_' . $i);
-                                if ($uploadResult['success']) {
-                                    $content['diensten']['services'][$i]['image'] = $uploadResult['path'];
-                                }
-                            } else {
-                                $content['diensten']['services'][$i]['image'] = $_POST['service_image_' . $i] ?? '';
-                            }
+                            $content['diensten']['services'][$i]['image'] = $_POST['service_image_' . $i] ?? '';
                         }
                     }
                     break;
@@ -99,15 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 case 'over_ons':
                     $content['over_ons']['hero']['title'] = $_POST['hero_title'] ?? '';
                     $content['over_ons']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
-                    
-                    if (!empty($_FILES['hero_image_upload']['name'])) {
-                        $uploadResult = handleImageUpload('hero_image_upload');
-                        if ($uploadResult['success']) {
-                            $content['over_ons']['hero']['image'] = $uploadResult['path'];
-                        }
-                    } else {
-                        $content['over_ons']['hero']['image'] = $_POST['hero_image'] ?? '';
-                    }
+                    $content['over_ons']['hero']['image'] = $_POST['hero_image'] ?? '';
                     
                     $content['over_ons']['story']['title'] = $_POST['story_title'] ?? '';
                     $content['over_ons']['story']['paragraphs'][0] = $_POST['story_p1'] ?? '';
@@ -117,29 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['over_ons']['founder']['name'] = $_POST['founder_name'] ?? '';
                     $content['over_ons']['founder']['title'] = $_POST['founder_title'] ?? '';
                     $content['over_ons']['founder']['quote'] = $_POST['founder_quote'] ?? '';
-                    
-                    if (!empty($_FILES['founder_image_upload']['name'])) {
-                        $uploadResult = handleImageUpload('founder_image_upload');
-                        if ($uploadResult['success']) {
-                            $content['over_ons']['founder']['image'] = $uploadResult['path'];
-                        }
-                    } else {
-                        $content['over_ons']['founder']['image'] = $_POST['founder_image'] ?? '';
-                    }
+                    $content['over_ons']['founder']['image'] = $_POST['founder_image'] ?? '';
                     break;
                     
                 case 'contact':
                     $content['contact']['hero']['title'] = $_POST['hero_title'] ?? '';
                     $content['contact']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
-                    
-                    if (!empty($_FILES['hero_image_upload']['name'])) {
-                        $uploadResult = handleImageUpload('hero_image_upload');
-                        if ($uploadResult['success']) {
-                            $content['contact']['hero']['image'] = $uploadResult['path'];
-                        }
-                    } else {
-                        $content['contact']['hero']['image'] = $_POST['hero_image'] ?? '';
-                    }
+                    $content['contact']['hero']['image'] = $_POST['hero_image'] ?? '';
                     
                     $content['contact']['intro']['title'] = $_POST['intro_title'] ?? '';
                     $content['contact']['intro']['text'] = $_POST['intro_text'] ?? '';
@@ -244,7 +178,7 @@ $currentSection = $_GET['section'] ?? 'site';
             padding-left: 25px;
         }
         .sidebar-menu a.active {
-            background: #3498db;
+            background: #667eea;
             color: white;
             font-weight: 600;
             border-left: 4px solid #fff;
@@ -276,7 +210,7 @@ $currentSection = $_GET['section'] ?? 'site';
         .form-section h2 {
             margin-bottom: 10px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #667eea;
             color: #2c3e50;
             font-size: 26px;
         }
@@ -286,7 +220,7 @@ $currentSection = $_GET['section'] ?? 'site';
             color: #34495e;
             font-size: 18px;
             padding-left: 10px;
-            border-left: 3px solid #3498db;
+            border-left: 3px solid #667eea;
         }
         .form-group {
             margin-bottom: 25px;
@@ -316,8 +250,8 @@ $currentSection = $_GET['section'] ?? 'site';
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         .form-group small {
             display: block;
@@ -336,13 +270,13 @@ $currentSection = $_GET['section'] ?? 'site';
             transition: all 0.3s;
         }
         .btn-primary {
-            background: #3498db;
+            background: #667eea;
             color: white;
         }
         .btn-primary:hover {
-            background: #2980b9;
+            background: #5568d3;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
         }
         .btn-secondary {
             background: #95a5a6;
@@ -430,7 +364,6 @@ $currentSection = $_GET['section'] ?? 'site';
                 <aside class="sidebar">
                     <ul class="sidebar-menu">
                         <li><a href="?section=site" class="<?php echo $currentSection === 'site' ? 'active' : ''; ?>">Site Informatie</a></li>
-                        <li><a href="?section=colors" class="<?php echo $currentSection === 'colors' ? 'active' : ''; ?>">🎨 Kleuren & Styling</a></li>
                         <li><a href="?section=home" class="<?php echo $currentSection === 'home' ? 'active' : ''; ?>">Home Pagina</a></li>
                         <li><a href="?section=diensten" class="<?php echo $currentSection === 'diensten' ? 'active' : ''; ?>">Onze Diensten</a></li>
                         <li style="border-top: 2px solid rgba(255,255,255,0.2); margin-top: 10px; padding-top: 10px;">
@@ -514,131 +447,6 @@ $currentSection = $_GET['section'] ?? 'site';
                         </div>
                     <?php endif; ?>
                     
-                    <?php if ($currentSection === 'colors'): ?>
-                        <div class="form-section">
-                            <div class="page-title">
-                                <h2>🎨 Kleuren & Styling</h2>
-                                <a href="/index.php" target="_blank" class="preview-link">Bekijk Website</a>
-                            </div>
-                            <div class="info-box">
-                                <p>Pas de kleuren van de website aan. Wijzigingen zijn direct zichtbaar op alle pagina's na opslaan. Gebruik de kleurkiezer om kleuren te selecteren.</p>
-                            </div>
-                            
-                            <div style="background: white; padding: 25px; border-radius: 8px; margin-bottom: 30px; border: 2px solid #e0e0e0;">
-                                <h3 style="margin-top: 0; margin-bottom: 20px; color: #2c3e50;">Kleur Voorbeelden</h3>
-                                <div id="colorPreview" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
-                                    <div style="text-align: center;">
-                                        <div id="preview_primary" style="width: 100%; height: 80px; border-radius: 6px; background: <?php echo h($content['site']['colors']['primary']); ?>; margin-bottom: 8px; border: 1px solid #ddd;"></div>
-                                        <small style="color: #666; font-size: 12px;">Primair</small>
-                                    </div>
-                                    <div style="text-align: center;">
-                                        <div id="preview_secondary" style="width: 100%; height: 80px; border-radius: 6px; background: <?php echo h($content['site']['colors']['secondary']); ?>; margin-bottom: 8px; border: 1px solid #ddd;"></div>
-                                        <small style="color: #666; font-size: 12px;">Secundair</small>
-                                    </div>
-                                    <div style="text-align: center;">
-                                        <div id="preview_accent" style="width: 100%; height: 80px; border-radius: 6px; background: <?php echo h($content['site']['colors']['accent']); ?>; margin-bottom: 8px; border: 1px solid #ddd;"></div>
-                                        <small style="color: #666; font-size: 12px;">Accent</small>
-                                    </div>
-                                    <div style="text-align: center;">
-                                        <div id="preview_text" style="width: 100%; height: 80px; border-radius: 6px; background: <?php echo h($content['site']['colors']['text']); ?>; margin-bottom: 8px; border: 1px solid #ddd;"></div>
-                                        <small style="color: #666; font-size: 12px;">Tekst</small>
-                                    </div>
-                                    <div style="text-align: center;">
-                                        <div id="preview_bgLight" style="width: 100%; height: 80px; border-radius: 6px; background: <?php echo h($content['site']['colors']['bgLight']); ?>; margin-bottom: 8px; border: 1px solid #ddd;"></div>
-                                        <small style="color: #666; font-size: 12px;">Achtergrond</small>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <form method="POST" id="colorForm">
-                                <input type="hidden" name="section" value="colors">
-                                
-                                <h3>Hoofdkleuren</h3>
-                                
-                                <div class="form-group">
-                                    <label>Primaire Kleur (Primary Color)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_primary" id="color_primary" value="<?php echo h($content['site']['colors']['primary']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_primary" value="<?php echo h($content['site']['colors']['primary']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Wordt gebruikt voor knoppen, links en accenten</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Secundaire Kleur (Secondary Color)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_secondary" id="color_secondary" value="<?php echo h($content['site']['colors']['secondary']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_secondary" value="<?php echo h($content['site']['colors']['secondary']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Hover effecten en secundaire elementen</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Accent Kleur (Accent Color)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_accent" id="color_accent" value="<?php echo h($content['site']['colors']['accent']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_accent" value="<?php echo h($content['site']['colors']['accent']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Voor speciale highlights en call-to-actions</small>
-                                </div>
-                                
-                                <h3>Tekstkleuren</h3>
-                                
-                                <div class="form-group">
-                                    <label>Tekst Kleur (Text Color)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_text" id="color_text" value="<?php echo h($content['site']['colors']['text']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_text" value="<?php echo h($content['site']['colors']['text']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Hoofdtekst kleur voor alle content</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Lichte Tekst Kleur (Light Text)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_text_light" id="color_text_light" value="<?php echo h($content['site']['colors']['textLight']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_text_light" value="<?php echo h($content['site']['colors']['textLight']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Voor subtekst en minder belangrijke informatie</small>
-                                </div>
-                                
-                                <h3>Achtergrondkleuren</h3>
-                                
-                                <div class="form-group">
-                                    <label>Lichte Achtergrond (Background Light)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_bg_light" id="color_bg_light" value="<?php echo h($content['site']['colors']['bgLight']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_bg_light" value="<?php echo h($content['site']['colors']['bgLight']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Voor secties met lichte achtergrond</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Witte Achtergrond (White)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_white" id="color_white" value="<?php echo h($content['site']['colors']['white']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_white" value="<?php echo h($content['site']['colors']['white']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Hoofdachtergrond kleur</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Rand Kleur (Border Color)</label>
-                                    <div style="display: flex; gap: 15px; align-items: center;">
-                                        <input type="color" name="color_border" id="color_border" value="<?php echo h($content['site']['colors']['border']); ?>" style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 6px; cursor: pointer;">
-                                        <input type="text" id="text_border" value="<?php echo h($content['site']['colors']['border']); ?>" readonly style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: monospace; font-size: 14px; background: #f8f9fa;">
-                                    </div>
-                                    <small>Voor randen rondom elementen en kaarten</small>
-                                </div>
-                                
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
-                                    <button type="reset" class="btn btn-secondary">Annuleren</button>
-                                </div>
-                            </form>
-                        </div>
-                    <?php endif; ?>
-                    
                     <?php if ($currentSection === 'home'): ?>
                         <div class="form-section">
                             <div class="page-title">
@@ -649,7 +457,7 @@ $currentSection = $_GET['section'] ?? 'site';
                                 <p>Bewerk de content van de home pagina. Dit is de eerste pagina die bezoekers zien.</p>
                             </div>
                             
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST">
                                 <input type="hidden" name="section" value="home">
                                 
                                 <h3>Hero Sectie (Grote Banner Bovenaan)</h3>
@@ -673,15 +481,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label>Hero Achtergrond Afbeelding (Pad)</label>
+                                    <label>Hero Achtergrond Afbeelding</label>
                                     <input type="text" name="hero_image" value="<?php echo h($content['home']['hero']['image']); ?>" required>
-                                    <small>Huidige: <?php echo h($content['home']['hero']['image']); ?></small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>📤 Upload Nieuwe Hero Afbeelding</label>
-                                    <input type="file" name="hero_image_upload" accept="image/jpeg,image/png,image/gif,image/webp">
-                                    <small>Selecteer een nieuwe afbeelding om te uploaden (max 5MB, JPG/PNG/GIF/WebP)</small>
+                                    <small>Pad: assets/images/hero-home.jpg</small>
                                 </div>
                                 
                                 <h3>Intro Sectie (Welkom Sectie)</h3>
@@ -698,15 +500,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label>Intro Afbeelding (Pad)</label>
+                                    <label>Intro Afbeelding</label>
                                     <input type="text" name="intro_image" value="<?php echo h($content['home']['intro']['image']); ?>" required>
-                                    <small>Huidige: <?php echo h($content['home']['intro']['image']); ?></small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>📤 Upload Nieuwe Intro Afbeelding</label>
-                                    <input type="file" name="intro_image_upload" accept="image/jpeg,image/png,image/gif,image/webp">
-                                    <small>Selecteer een nieuwe afbeelding om te uploaden (max 5MB, JPG/PNG/GIF/WebP)</small>
+                                    <small>Pad: assets/images/intro.jpg</small>
                                 </div>
                                 
                                 <h3>Vakmanschap Sectie</h3>
@@ -744,7 +540,7 @@ $currentSection = $_GET['section'] ?? 'site';
                                 <p>Bewerk de diensten die u aanbiedt. Momenteel zijn er 3 diensten zichtbaar op de website.</p>
                             </div>
                             
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST">
                                 <input type="hidden" name="section" value="diensten">
                                 
                                 <h3>Hero Sectie</h3>
@@ -760,15 +556,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label>Hero Achtergrond Afbeelding (Pad)</label>
+                                    <label>Hero Achtergrond Afbeelding</label>
                                     <input type="text" name="hero_image" value="<?php echo h($content['diensten']['hero']['image']); ?>" required>
-                                    <small>Huidige: <?php echo h($content['diensten']['hero']['image']); ?></small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>📤 Upload Nieuwe Hero Afbeelding</label>
-                                    <input type="file" name="hero_image_upload" accept="image/jpeg,image/png,image/gif,image/webp">
-                                    <small>Selecteer een nieuwe afbeelding om te uploaden (max 5MB)</small>
+                                    <small>Pad: assets/images/hero-diensten.jpg</small>
                                 </div>
                                 
                                 <?php foreach ($content['diensten']['services'] as $index => $service): ?>
@@ -786,15 +576,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label>Dienst Afbeelding (Pad)</label>
+                                        <label>Dienst Afbeelding</label>
                                         <input type="text" name="service_image_<?php echo $index; ?>" value="<?php echo h($service['image']); ?>" required>
-                                        <small>Huidige: <?php echo h($service['image']); ?></small>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>📤 Upload Nieuwe Dienst Afbeelding</label>
-                                        <input type="file" name="service_image_upload_<?php echo $index; ?>" accept="image/jpeg,image/png,image/gif,image/webp">
-                                        <small>Upload nieuwe afbeelding (max 5MB)</small>
+                                        <small>Pad: assets/images/service-<?php echo $index + 1; ?>.jpg</small>
                                     </div>
                                 <?php endforeach; ?>
                                 
@@ -816,7 +600,7 @@ $currentSection = $_GET['section'] ?? 'site';
                                 <p>Vertel uw verhaal. Laat klanten kennismaken met uw bedrijf en de mensen erachter.</p>
                             </div>
                             
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST">
                                 <input type="hidden" name="section" value="over_ons">
                                 
                                 <h3>Hero Sectie</h3>
@@ -832,15 +616,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label>Hero Achtergrond Afbeelding (Pad)</label>
+                                    <label>Hero Achtergrond Afbeelding</label>
                                     <input type="text" name="hero_image" value="<?php echo h($content['over_ons']['hero']['image']); ?>" required>
-                                    <small>Huidige: <?php echo h($content['over_ons']['hero']['image']); ?></small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>📤 Upload Nieuwe Hero Afbeelding</label>
-                                    <input type="file" name="hero_image_upload" accept="image/jpeg,image/png,image/gif,image/webp">
-                                    <small>Upload nieuwe afbeelding (max 5MB)</small>
+                                    <small>Pad: assets/images/hero-over-ons.jpg</small>
                                 </div>
                                 
                                 <h3>Bedrijfsverhaal</h3>
@@ -888,15 +666,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label>Foto van Oprichter (Pad)</label>
+                                    <label>Foto van Oprichter</label>
                                     <input type="text" name="founder_image" value="<?php echo h($content['over_ons']['founder']['image']); ?>" required>
-                                    <small>Huidige: <?php echo h($content['over_ons']['founder']['image']); ?></small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>📤 Of upload een nieuwe foto van oprichter</label>
-                                    <input type="file" name="founder_image_upload" accept="image/jpeg,image/png,image/gif,image/webp">
-                                    <small>Selecteer een nieuwe afbeelding om te uploaden (max 5MB)</small>
+                                    <small>Pad: assets/images/mathijs.jpg</small>
                                 </div>
                                 
                                 <div class="form-actions">
@@ -917,7 +689,7 @@ $currentSection = $_GET['section'] ?? 'site';
                                 <p>Zorg dat klanten weten hoe ze contact met u kunnen opnemen.</p>
                             </div>
                             
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST">
                                 <input type="hidden" name="section" value="contact">
                                 
                                 <h3>Hero Sectie</h3>
@@ -933,15 +705,9 @@ $currentSection = $_GET['section'] ?? 'site';
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label>Hero Achtergrond Afbeelding (Pad)</label>
+                                    <label>Hero Achtergrond Afbeelding</label>
                                     <input type="text" name="hero_image" value="<?php echo h($content['contact']['hero']['image']); ?>" required>
-                                    <small>Huidige: <?php echo h($content['contact']['hero']['image']); ?></small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>📤 Of upload een nieuwe hero afbeelding</label>
-                                    <input type="file" name="hero_image_upload" accept="image/jpeg,image/png,image/gif,image/webp">
-                                    <small>Selecteer een nieuwe afbeelding om te uploaden (max 5MB)</small>
+                                    <small>Pad: assets/images/hero-contact.jpg</small>
                                 </div>
                                 
                                 <h3>Intro Tekst</h3>
@@ -1149,26 +915,6 @@ $currentSection = $_GET['section'] ?? 'site';
                     setupImageUpload(field.name, field.name);
                 }
             });
-        });
-    </script>
-    
-    <script>
-        const colorInputs = ['primary', 'secondary', 'accent', 'text', 'text_light', 'bg_light', 'white', 'border'];
-        
-        colorInputs.forEach(colorName => {
-            const colorInput = document.getElementById('color_' + colorName);
-            const textInput = document.getElementById('text_' + colorName);
-            const previewDiv = document.getElementById('preview_' + colorName);
-            
-            if (colorInput && textInput) {
-                colorInput.addEventListener('input', function() {
-                    const color = this.value.toUpperCase();
-                    textInput.value = color;
-                    if (previewDiv) {
-                        previewDiv.style.background = color;
-                    }
-                });
-            }
         });
     </script>
         </div>
