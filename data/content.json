@@ -10,14 +10,14 @@
             "zipcode": "1234 AB"
         },
         "colors": {
-            "primary": "#9c0101",
-            "secondary": "#ffffff",
-            "accent": "#0b0602",
-            "text": "#333333",
-            "textLight": "#666666",
-            "bgLight": "#f8f9fa",
-            "white": "#ffffff",
-            "border": "#e0e0e0"
+            "primary": "#f5f19a",
+            "secondary": "#8ae86a",
+            "accent": "#dd8944",
+            "text": "#3fb88a",
+            "textLight": "#e628d2",
+            "bgLight": "#cf0716",
+            "white": "#161623",
+            "border": "#000000"
         }
     },
     "home": {
@@ -25,7 +25,7 @@
             "title": "Het Parket Gilde",
             "subtitle": "Vakmanschap in hout",
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
-            "image": "assets\/images\/hero-home.jpg"
+            "image": "assets\/images\/img_6909d4032460f2.94093668.jpg"
         },
         "intro": {
             "title": "Welkom bij Het Parket Gilde",
