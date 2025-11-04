@@ -373,4 +373,25 @@ body {
     .color-picker-input {
         width: 100%;
     }
+    
+    .image-input-group {
+        flex-direction: column;
+    }
+}
+
+/* Image Input Group */
+.image-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.image-input-group input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+.image-input-group .btn-secondary {
+    margin-left: 0;
+    white-space: nowrap;
 }

@@ -51,7 +51,7 @@ include 'includes/header.php';
         <div class="values-grid">
             <?php foreach ($overOns['values'] as $value): ?>
                 <div class="value-card">
-                    <h3><?php echo h($value['title']); ?></h3>
+                    <h3 style="color: <?php echo h($overOns['values_colors']['title']); ?>;"><?php echo h($value['title']); ?></h3>
                     <p><?php echo h($value['description']); ?></p>
                 </div>
             <?php endforeach; ?>

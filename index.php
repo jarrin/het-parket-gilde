@@ -48,7 +48,7 @@ include 'includes/header.php';
             <?php foreach ($home['vakmanschap']['features'] as $feature): ?>
                 <div class="feature-card">
                     <div class="feature-icon"><?php echo h($feature['icon']); ?></div>
-                    <h3><?php echo h($feature['title']); ?></h3>
+                    <h3 style="color: <?php echo h($home['vakmanschap']['colors']['title']); ?>;"><?php echo h($feature['title']); ?></h3>
                     <p><?php echo h($feature['description']); ?></p>
                 </div>
             <?php endforeach; ?>

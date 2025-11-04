@@ -43,7 +43,7 @@
             "image": "assets\/images\/img_6909d4032460f2.94093668.jpg",
             "colors": {
                 "background": "#8ffc47",
-                "text": "#80ff00",
+                "text": "#fd029f",
                 "overlay": "rgba(0, 0, 0, 0.5)"
             }
         },
@@ -53,8 +53,8 @@
             "image": "assets\/images\/intro.jpg",
             "colors": {
                 "background": "#5ffe43",
-                "text": "#00ff00",
-                "title": "#00ff00"
+                "text": "#00ffff",
+                "title": "#fe0701"
             }
         },
         "vakmanschap": {
@@ -63,8 +63,8 @@
             "text": "Elke vloer vertelt een verhaal. Wij combineren traditionele technieken met moderne innovaties om duurzame en tijdloze parketvloeren te creëren. Onze vakmannen werken met respect voor het materiaal en oog voor detail.",
             "colors": {
                 "background": "#00ff00",
-                "text": "#00ff00",
-                "title": "#00ff00"
+                "text": "#000000",
+                "title": "#ff0080"
             },
             "features": [
                 {

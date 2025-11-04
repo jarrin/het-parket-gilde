@@ -272,7 +272,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-group">
                                     <label>Hero Achtergrond Afbeelding</label>
-                                    <input type="text" name="hero_image" value="<?php echo h($content['home']['hero']['image']); ?>" required>
+                                    <div class="image-input-group">
+                                        <input type="text" name="hero_image" id="hero_image" value="<?php echo h($content['home']['hero']['image']); ?>" required>
+                                        <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('hero_image')">📁 Bladeren</button>
+                                    </div>
                                     <small>Pad: assets/images/hero-home.jpg</small>
                                 </div>
                                 
@@ -291,7 +294,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-group">
                                     <label>Intro Afbeelding</label>
-                                    <input type="text" name="intro_image" value="<?php echo h($content['home']['intro']['image']); ?>" required>
+                                    <div class="image-input-group">
+                                        <input type="text" name="intro_image" id="intro_image" value="<?php echo h($content['home']['intro']['image']); ?>" required>
+                                        <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('intro_image')">📁 Bladeren</button>
+                                    </div>
                                     <small>Pad: assets/images/intro.jpg</small>
                                 </div>
                                 
@@ -433,7 +439,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-group">
                                     <label>Hero Achtergrond Afbeelding</label>
-                                    <input type="text" name="hero_image" value="<?php echo h($content['diensten']['hero']['image']); ?>" required>
+                                    <div class="image-input-group">
+                                        <input type="text" name="hero_image" id="diensten_hero_image" value="<?php echo h($content['diensten']['hero']['image']); ?>" required>
+                                        <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('diensten_hero_image')">📁 Bladeren</button>
+                                    </div>
                                     <small>Pad: assets/images/hero-diensten.jpg</small>
                                 </div>
                                 
@@ -453,7 +462,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                     
                                     <div class="form-group">
                                         <label>Dienst Afbeelding</label>
-                                        <input type="text" name="service_image_<?php echo $index; ?>" value="<?php echo h($service['image']); ?>" required>
+                                        <div class="image-input-group">
+                                            <input type="text" name="service_image_<?php echo $index; ?>" id="service_image_<?php echo $index; ?>" value="<?php echo h($service['image']); ?>" required>
+                                            <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('service_image_<?php echo $index; ?>')">📁 Bladeren</button>
+                                        </div>
                                         <small>Pad: assets/images/service-<?php echo $index + 1; ?>.jpg</small>
                                     </div>
                                 <?php endforeach; ?>
@@ -556,7 +568,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-group">
                                     <label>Hero Achtergrond Afbeelding</label>
-                                    <input type="text" name="hero_image" value="<?php echo h($content['over_ons']['hero']['image']); ?>" required>
+                                    <div class="image-input-group">
+                                        <input type="text" name="hero_image" id="over_ons_hero_image" value="<?php echo h($content['over_ons']['hero']['image']); ?>" required>
+                                        <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('over_ons_hero_image')">📁 Bladeren</button>
+                                    </div>
                                     <small>Pad: assets/images/hero-over-ons.jpg</small>
                                 </div>
                                 
@@ -606,7 +621,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-group">
                                     <label>Foto van Oprichter</label>
-                                    <input type="text" name="founder_image" value="<?php echo h($content['over_ons']['founder']['image']); ?>" required>
+                                    <div class="image-input-group">
+                                        <input type="text" name="founder_image" id="founder_image" value="<?php echo h($content['over_ons']['founder']['image']); ?>" required>
+                                        <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('founder_image')">📁 Bladeren</button>
+                                    </div>
                                     <small>Pad: assets/images/mathijs.jpg</small>
                                 </div>
                                 
@@ -755,7 +773,10 @@ $currentSection = $_GET['section'] ?? 'site';
                                 
                                 <div class="form-group">
                                     <label>Hero Achtergrond Afbeelding</label>
-                                    <input type="text" name="hero_image" value="<?php echo h($content['contact']['hero']['image']); ?>" required>
+                                    <div class="image-input-group">
+                                        <input type="text" name="hero_image" id="contact_hero_image" value="<?php echo h($content['contact']['hero']['image']); ?>" required>
+                                        <button type="button" class="btn btn-secondary" onclick="openMediaBrowser('contact_hero_image')">📁 Bladeren</button>
+                                    </div>
                                     <small>Pad: assets/images/hero-contact.jpg</small>
                                 </div>
                                 
@@ -919,6 +940,30 @@ $currentSection = $_GET['section'] ?? 'site';
     </div>
     
     <script>
+        // Media Browser functionality
+        let currentInputId = null;
+        
+        function openMediaBrowser(inputId) {
+            currentInputId = inputId;
+            const width = 1000;
+            const height = 700;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+            
+            window.open(
+                '/admin/media-browser.php',
+                'mediaBrowser',
+                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
+            );
+        }
+        
+        // This function will be called from the media browser popup
+        window.selectImage = function(imagePath) {
+            if (currentInputId) {
+                document.getElementById(currentInputId).value = imagePath;
+            }
+        };
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Per-page color live updates
             const pageColorMappings = [
