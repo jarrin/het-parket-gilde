@@ -24,16 +24,35 @@ $currentPage = getCurrentPage();
             --bg-light: <?php echo h($site['colors']['bgLight']); ?>;
             --white: <?php echo h($site['colors']['white']); ?>;
             --border-color: <?php echo h($site['colors']['border']); ?>;
+            <?php
+            // Add page-specific colors based on current page
+            $pageKey = str_replace('-', '_', $currentPage);
+            if ($pageKey === 'index') $pageKey = 'home';
+            if ($pageKey === 'over_ons') $pageKey = 'over_ons';
+            
+            if (isset($content[$pageKey]['colors'])) {
+                $pageColors = $content[$pageKey]['colors'];
+                if (isset($pageColors['header'])) {
+                    echo '--page-header-bg: ' . h($pageColors['header']) . ';' . "\n            ";
+                }
+                if (isset($pageColors['heroText'])) {
+                    echo '--page-hero-text: ' . h($pageColors['heroText']) . ';' . "\n            ";
+                }
+                if (isset($pageColors['sectionBg'])) {
+                    echo '--page-section-bg: ' . h($pageColors['sectionBg']) . ';' . "\n            ";
+                }
+            }
+            ?>
         }
     </style>
     <?php endif; ?>
 </head>
 <body>
-    <header class="site-header">
+    <header class="site-header" style="background-color: <?php echo h($site['colors']['header']['background']); ?>; color: <?php echo h($site['colors']['header']['text']); ?>;">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1><a href="/index.php"><?php echo h($site['title']); ?></a></h1>
+                    <h1><a href="/index.php" style="color: <?php echo h($site['colors']['header']['logo']); ?>;"><?php echo h($site['title']); ?></a></h1>
                 </div>
                 <nav class="main-nav">
                     <button class="mobile-menu-toggle" aria-label="Menu">
@@ -45,7 +64,8 @@ $currentPage = getCurrentPage();
                         <?php foreach (getNavigation() as $nav): ?>
                             <li>
                                 <a href="<?php echo h($nav['url']); ?>" 
-                                   class="<?php echo isActivePage($nav['page']) ? 'active' : ''; ?>">
+                                   class="<?php echo isActivePage($nav['page']) ? 'active' : ''; ?>"
+                                   style="color: <?php echo h($site['colors']['header']['logo']); ?>;">
                                     <?php echo h($nav['label']); ?>
                                 </a>
                             </li>

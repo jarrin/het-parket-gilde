@@ -6,10 +6,10 @@ $pageTitle = 'Onze Diensten';
 include 'includes/header.php';
 ?>
 
-<section class="hero" style="background-image: url('<?php echo h($diensten['hero']['image']); ?>');">
-    <div class="hero-overlay">
+<section class="hero" style="background-image: url('<?php echo h($diensten['hero']['image']); ?>'); background-color: <?php echo h($diensten['hero']['colors']['background']); ?>;">
+    <div class="hero-overlay" style="background: <?php echo h($diensten['hero']['colors']['overlay']); ?>;">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" style="color: <?php echo h($diensten['hero']['colors']['text']); ?>;">
                 <h1 class="hero-title"><?php echo h($diensten['hero']['title']); ?></h1>
                 <p class="hero-subtitle"><?php echo h($diensten['hero']['subtitle']); ?></p>
             </div>
@@ -20,7 +20,7 @@ include 'includes/header.php';
 <section class="section services-section">
     <div class="container">
         <?php foreach ($diensten['services'] as $index => $service): ?>
-            <div class="service-item <?php echo $index % 2 === 0 ? 'service-left' : 'service-right'; ?>">
+            <div class="service-item <?php echo $index % 2 === 0 ? 'service-left' : 'service-right'; ?>" style="background-color: <?php echo h($service['colors']['background']); ?>; color: <?php echo h($service['colors']['text']); ?>;">
                 <div class="row">
                     <div class="col-md-6 <?php echo $index % 2 === 0 ? '' : 'order-md-2'; ?>">
                         <img src="<?php echo h($service['image']); ?>" 
@@ -29,7 +29,7 @@ include 'includes/header.php';
                     </div>
                     <div class="col-md-6 <?php echo $index % 2 === 0 ? '' : 'order-md-1'; ?>">
                         <div class="service-content">
-                            <h2><?php echo h($service['title']); ?></h2>
+                            <h2 style="color: <?php echo h($service['colors']['title']); ?>;"><?php echo h($service['title']); ?></h2>
                             <p><?php echo h($service['description']); ?></p>
                             <ul class="service-features">
                                 <?php foreach ($service['features'] as $feature): ?>

@@ -17,25 +17,55 @@
             "textLight": "#e628d2",
             "bgLight": "#cf0716",
             "white": "#161623",
-            "border": "#000000"
+            "border": "#000000",
+            "header": {
+                "background": "#FFFFFF",
+                "text": "#333333",
+                "logo": "#3498db"
+            },
+            "footer": {
+                "background": "#2C3E50",
+                "text": "#FFFFFF",
+                "links": "#3498db"
+            }
         }
     },
     "home": {
+        "colors": {
+            "header": "#8B4513",
+            "heroText": "#FFFFFF",
+            "sectionBg": "#F5F5DC"
+        },
         "hero": {
             "title": "Het Parket Gilde",
             "subtitle": "Vakmanschap in hout",
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
-            "image": "assets\/images\/img_6909d4032460f2.94093668.jpg"
+            "image": "assets\/images\/img_6909d4032460f2.94093668.jpg",
+            "colors": {
+                "background": "#8ffc47",
+                "text": "#80ff00",
+                "overlay": "rgba(0, 0, 0, 0.5)"
+            }
         },
         "intro": {
             "title": "Welkom bij Het Parket Gilde",
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
-            "image": "assets\/images\/intro.jpg"
+            "image": "assets\/images\/intro.jpg",
+            "colors": {
+                "background": "#5ffe43",
+                "text": "#00ff00",
+                "title": "#00ff00"
+            }
         },
         "vakmanschap": {
             "title": "Vakmanschap in hout",
             "subtitle": "Traditie en kwaliteit",
             "text": "Elke vloer vertelt een verhaal. Wij combineren traditionele technieken met moderne innovaties om duurzame en tijdloze parketvloeren te creëren. Onze vakmannen werken met respect voor het materiaal en oog voor detail.",
+            "colors": {
+                "background": "#00ff00",
+                "text": "#00ff00",
+                "title": "#00ff00"
+            },
             "features": [
                 {
                     "title": "Ervaring",
@@ -56,16 +86,31 @@
         }
     },
     "diensten": {
+        "colors": {
+            "header": "#186351",
+            "heroText": "#ffffff",
+            "sectionBg": "#ecf0f1"
+        },
         "hero": {
             "title": "Onze Diensten",
             "subtitle": "Compleet vakmanschap voor uw vloer",
-            "image": "assets\/images\/hero-diensten.jpg"
+            "image": "assets\/images\/hero-diensten.jpg",
+            "colors": {
+                "background": "#00ff00",
+                "text": "#00ff00",
+                "overlay": "rgba(0, 0, 0, 0.5)"
+            }
         },
         "services": [
             {
                 "title": "Parketvloeren Leggen",
                 "description": "Wij leggen alle soorten parketvloeren, van klassieke visgraat tot moderne plankenvloeren. Elk project wordt met zorg en vakmanschap uitgevoerd.",
                 "image": "assets\/images\/service-leggen.jpg",
+                "colors": {
+                    "background": "#00ff00",
+                    "text": "#333333",
+                    "title": "#2c3e50"
+                },
                 "features": [
                     "Visgraatvloeren",
                     "Plankenvloeren",
@@ -77,6 +122,11 @@
                 "title": "Schade Herstel & Renovatie",
                 "description": "Is uw parketvloer beschadigd of verouderd? Wij herstellen beschadigingen en renoveren oude vloeren tot in hun oude glorie.",
                 "image": "assets\/images\/service-herstel.jpg",
+                "colors": {
+                    "background": "#f8f9fa",
+                    "text": "#333333",
+                    "title": "#2c3e50"
+                },
                 "features": [
                     "Krasverwijdering",
                     "Deukenherstel",
@@ -88,6 +138,11 @@
                 "title": "Raamdecoratie",
                 "description": "Naast parketvloeren bieden wij ook maatwerk raamdecoratie. Van houten jaloezieën tot luxe shutters die perfect aansluiten bij uw interieur.",
                 "image": "assets\/images\/service-raam.jpg",
+                "colors": {
+                    "background": "#ffffff",
+                    "text": "#333333",
+                    "title": "#2c3e50"
+                },
                 "features": [
                     "Houten jaloezieën",
                     "Plantation shutters",
@@ -98,10 +153,20 @@
         ]
     },
     "over_ons": {
+        "colors": {
+            "header": "#34495E",
+            "heroText": "#FFFFFF",
+            "sectionBg": "#BDC3C7"
+        },
         "hero": {
             "title": "testttttttt",
             "subtitle": "Passie voor hout sinds 2008",
-            "image": "assets\/images\/hero-over-ons.jpg"
+            "image": "assets\/images\/hero-over-ons.jpg",
+            "colors": {
+                "background": "#2C3E50",
+                "text": "#FFFFFF",
+                "overlay": "rgba(0, 0, 0, 0.5)"
+            }
         },
         "story": {
             "title": "Het verhaal van Het Parket Gilde",
@@ -109,13 +174,23 @@
                 "Het Parket Gilde is opgericht door Mathijs Gerrits, een vakman met een grote passie voor hout. Na jarenlange ervaring in de vloerbranche besloot Mathijs in 2008 zijn eigen bedrijf te starten, met als missie: vakmanschap en kwaliteit leveren aan elke klant.",
                 "Wat begon als een eenmanszaak is uitgegroeid tot een gerenommeerd bedrijf met een team van vakmensen. Elke medewerker deelt dezelfde passie voor het vak en streeft naar perfectie in elk project.",
                 "Bij Het Parket Gilde geloven we in eerlijk advies, transparante communicatie en het leveren van werk waar we trots op zijn. Uw tevredenheid is onze drijfveer."
-            ]
+            ],
+            "colors": {
+                "background": "#F8F9FA",
+                "text": "#333333",
+                "title": "#2C3E50"
+            }
         },
         "founder": {
             "name": "Mathijs Gerrits",
             "title": "Oprichter & Vakman",
             "quote": "Elke vloer is uniek, en verdient de volledige aandacht en toewijding van een vakman. Dat is wat wij elke dag bieden.",
-            "image": "assets\/images\/mathijs.jpg"
+            "image": "assets\/images\/mathijs.jpg",
+            "colors": {
+                "background": "#FFFFFF",
+                "text": "#555555",
+                "title": "#2C3E50"
+            }
         },
         "values": [
             {
@@ -134,17 +209,37 @@
                 "title": "Persoonlijk Contact",
                 "description": "Directe communicatie en maatwerk voor elke klant"
             }
-        ]
+        ],
+        "values_colors": {
+            "background": "#ECF0F1",
+            "text": "#333333",
+            "title": "#2C3E50"
+        }
     },
     "contact": {
+        "colors": {
+            "header": "#16A085",
+            "heroText": "#FFFFFF",
+            "sectionBg": "#D5F4E6"
+        },
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/hero-contact.jpg"
+            "image": "assets\/images\/hero-contact.jpg",
+            "colors": {
+                "background": "#16A085",
+                "text": "#FFFFFF",
+                "overlay": "rgba(0, 0, 0, 0.5)"
+            }
         },
         "intro": {
             "title": "Heeft u vragen of wilt u een vrijblijvende offerte?",
-            "text": "Neem gerust contact met ons op. Wij helpen u graag verder met advies of een op maat gemaakte offerte voor uw project."
+            "text": "Neem gerust contact met ons op. Wij helpen u graag verder met advies of een op maat gemaakte offerte voor uw project.",
+            "colors": {
+                "background": "#F8F9FA",
+                "text": "#333333",
+                "title": "#2C3E50"
+            }
         },
         "info": {
             "phone": {
@@ -161,6 +256,11 @@
                 "label": "Adres",
                 "street": "Voorbeeldstraat 123",
                 "city": "1234 AB Amsterdam"
+            },
+            "colors": {
+                "background": "#FFFFFF",
+                "text": "#333333",
+                "title": "#2C3E50"
             }
         },
         "hours": {
@@ -169,7 +269,12 @@
                 "Maandag - Vrijdag: 08:00 - 17:00",
                 "Zaterdag: Op afspraak",
                 "Zondag: Gesloten"
-            ]
+            ],
+            "colors": {
+                "background": "#ECF0F1",
+                "text": "#555555",
+                "title": "#2C3E50"
+            }
         }
     }
 }

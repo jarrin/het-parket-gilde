@@ -22,6 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['site']['contact']['address'] = $_POST['contact_address'] ?? '';
                     $content['site']['contact']['city'] = $_POST['contact_city'] ?? '';
                     $content['site']['contact']['zipcode'] = $_POST['contact_zipcode'] ?? '';
+                    
+                    // Header kleuren
+                    $content['site']['colors']['header']['background'] = $_POST['header_bg'] ?? '';
+                    $content['site']['colors']['header']['text'] = $_POST['header_text'] ?? '';
+                    $content['site']['colors']['header']['logo'] = $_POST['header_logo'] ?? '';
+                    
+                    // Footer kleuren
+                    $content['site']['colors']['footer']['background'] = $_POST['footer_bg'] ?? '';
+                    $content['site']['colors']['footer']['text'] = $_POST['footer_text'] ?? '';
+                    $content['site']['colors']['footer']['links'] = $_POST['footer_links'] ?? '';
                     break;
                     
                 case 'home':
@@ -39,6 +49,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['home']['vakmanschap']['text'] = $_POST['vak_text'] ?? '';
                     break;
                     
+                case 'home_colors':
+                    // Hero sectie kleuren
+                    $content['home']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
+                    $content['home']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
+                    $content['home']['hero']['colors']['overlay'] = $_POST['hero_overlay'] ?? '';
+                    
+                    // Intro sectie kleuren
+                    $content['home']['intro']['colors']['background'] = $_POST['intro_bg'] ?? '';
+                    $content['home']['intro']['colors']['text'] = $_POST['intro_text'] ?? '';
+                    $content['home']['intro']['colors']['title'] = $_POST['intro_title'] ?? '';
+                    
+                    // Vakmanschap sectie kleuren
+                    $content['home']['vakmanschap']['colors']['background'] = $_POST['vak_bg'] ?? '';
+                    $content['home']['vakmanschap']['colors']['text'] = $_POST['vak_text'] ?? '';
+                    $content['home']['vakmanschap']['colors']['title'] = $_POST['vak_title'] ?? '';
+                    break;
+                    
                 case 'diensten':
                     $content['diensten']['hero']['title'] = $_POST['hero_title'] ?? '';
                     $content['diensten']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
@@ -50,6 +77,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $content['diensten']['services'][$i]['title'] = $_POST['service_title_' . $i];
                             $content['diensten']['services'][$i]['description'] = $_POST['service_desc_' . $i] ?? '';
                             $content['diensten']['services'][$i]['image'] = $_POST['service_image_' . $i] ?? '';
+                        }
+                    }
+                    break;
+                    
+                case 'diensten_colors':
+                    // Hero sectie kleuren
+                    $content['diensten']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
+                    $content['diensten']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
+                    $content['diensten']['hero']['colors']['overlay'] = $_POST['hero_overlay'] ?? '';
+                    
+                    // Service secties kleuren
+                    for ($i = 0; $i < 3; $i++) {
+                        if (isset($_POST['service_bg_' . $i])) {
+                            $content['diensten']['services'][$i]['colors']['background'] = $_POST['service_bg_' . $i];
+                            $content['diensten']['services'][$i]['colors']['text'] = $_POST['service_text_' . $i] ?? '';
+                            $content['diensten']['services'][$i]['colors']['title'] = $_POST['service_title_' . $i] ?? '';
                         }
                     }
                     break;
@@ -70,6 +113,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['over_ons']['founder']['image'] = $_POST['founder_image'] ?? '';
                     break;
                     
+                case 'over_ons_colors':
+                    // Hero sectie
+                    $content['over_ons']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
+                    $content['over_ons']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
+                    $content['over_ons']['hero']['colors']['overlay'] = $_POST['hero_overlay'] ?? '';
+                    
+                    // Story sectie
+                    $content['over_ons']['story']['colors']['background'] = $_POST['story_bg'] ?? '';
+                    $content['over_ons']['story']['colors']['text'] = $_POST['story_text'] ?? '';
+                    $content['over_ons']['story']['colors']['title'] = $_POST['story_title'] ?? '';
+                    
+                    // Founder sectie
+                    $content['over_ons']['founder']['colors']['background'] = $_POST['founder_bg'] ?? '';
+                    $content['over_ons']['founder']['colors']['text'] = $_POST['founder_text'] ?? '';
+                    $content['over_ons']['founder']['colors']['title'] = $_POST['founder_title'] ?? '';
+                    
+                    // Values sectie
+                    $content['over_ons']['values_colors']['background'] = $_POST['values_bg'] ?? '';
+                    $content['over_ons']['values_colors']['text'] = $_POST['values_text'] ?? '';
+                    $content['over_ons']['values_colors']['title'] = $_POST['values_title'] ?? '';
+                    break;
+                    
                 case 'contact':
                     $content['contact']['hero']['title'] = $_POST['hero_title'] ?? '';
                     $content['contact']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
@@ -84,15 +149,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $content['contact']['info']['address']['city'] = $_POST['address_city'] ?? '';
                     break;
                     
-                case 'colors':
-                    $content['site']['colors']['primary'] = $_POST['color_primary'] ?? '';
-                    $content['site']['colors']['secondary'] = $_POST['color_secondary'] ?? '';
-                    $content['site']['colors']['accent'] = $_POST['color_accent'] ?? '';
-                    $content['site']['colors']['text'] = $_POST['color_text'] ?? '';
-                    $content['site']['colors']['textLight'] = $_POST['color_text_light'] ?? '';
-                    $content['site']['colors']['bgLight'] = $_POST['color_bg_light'] ?? '';
-                    $content['site']['colors']['white'] = $_POST['color_white'] ?? '';
-                    $content['site']['colors']['border'] = $_POST['color_border'] ?? '';
+                case 'contact_colors':
+                    // Hero sectie
+                    $content['contact']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
+                    $content['contact']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
+                    $content['contact']['hero']['colors']['overlay'] = $_POST['hero_overlay'] ?? '';
+                    
+                    // Intro sectie
+                    $content['contact']['intro']['colors']['background'] = $_POST['intro_bg'] ?? '';
+                    $content['contact']['intro']['colors']['text'] = $_POST['intro_text'] ?? '';
+                    $content['contact']['intro']['colors']['title'] = $_POST['intro_title'] ?? '';
+                    
+                    // Info sectie
+                    $content['contact']['info']['colors']['background'] = $_POST['info_bg'] ?? '';
+                    $content['contact']['info']['colors']['text'] = $_POST['info_text'] ?? '';
+                    $content['contact']['info']['colors']['title'] = $_POST['info_title'] ?? '';
+                    
+                    // Hours sectie
+                    $content['contact']['hours']['colors']['background'] = $_POST['hours_bg'] ?? '';
+                    $content['contact']['hours']['colors']['text'] = $_POST['hours_text'] ?? '';
+                    $content['contact']['hours']['colors']['title'] = $_POST['hours_title'] ?? '';
                     break;
             }
             
@@ -136,11 +212,11 @@ $currentSection = $_GET['section'] ?? 'site';
                 <aside class="sidebar">
                     <ul class="sidebar-menu">
                         <li><a href="?section=site" class="<?php echo $currentSection === 'site' ? 'active' : ''; ?>">Site Informatie</a></li>
-                        <li><a href="?section=colors" class="<?php echo $currentSection === 'colors' ? 'active' : ''; ?>">Kleuren</a></li>
                         <li><a href="?section=home" class="<?php echo $currentSection === 'home' ? 'active' : ''; ?>">Home Pagina</a></li>
                         <li><a href="?section=diensten" class="<?php echo $currentSection === 'diensten' ? 'active' : ''; ?>">Onze Diensten</a></li>
                         <li><a href="?section=over_ons" class="<?php echo $currentSection === 'over_ons' ? 'active' : ''; ?>">Over Ons</a></li>
                         <li><a href="?section=contact" class="<?php echo $currentSection === 'contact' ? 'active' : ''; ?>">Contact</a></li>
+                        <li><a href="media-manager.php" style="border-top: 1px solid #ddd; margin-top: 10px; padding-top: 10px;">📁 Media Manager</a></li>
                     </ul>
                 </aside>
                 
@@ -158,187 +234,7 @@ $currentSection = $_GET['section'] ?? 'site';
                     <?php endif; ?>
                     
                     <?php if ($currentSection === 'site'): ?>
-                        <div class="form-section">
-                            <div class="page-title">
-                                <h2>Site Informatie</h2>
-                            </div>
-                            <div class="info-box">
-                                <p>Deze informatie wordt gebruikt op alle pagina's van de website (footer, contact info, etc.).</p>
-                            </div>
-                            
-                            <form method="POST">
-                                <input type="hidden" name="section" value="site">
-                                
-                                <div class="form-group">
-                                    <label>Website Titel</label>
-                                    <input type="text" name="site_title" value="<?php echo h($content['site']['title']); ?>" required>
-                                    <small>De hoofdnaam van uw bedrijf</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Website Beschrijving</label>
-                                    <input type="text" name="site_description" value="<?php echo h($content['site']['description']); ?>" required>
-                                    <small>Korte omschrijving van uw bedrijf</small>
-                                </div>
-                                
-                                <h3>Contact Gegevens</h3>
-                                
-                                <div class="form-group">
-                                    <label>Telefoon</label>
-                                    <input type="text" name="contact_phone" value="<?php echo h($content['site']['contact']['phone']); ?>" required>
-                                    <small>Bijvoorbeeld: +31 6 12345678</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input type="email" name="contact_email" value="<?php echo h($content['site']['contact']['email']); ?>" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Straat en Huisnummer</label>
-                                    <input type="text" name="contact_address" value="<?php echo h($content['site']['contact']['address']); ?>" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Stad</label>
-                                    <input type="text" name="contact_city" value="<?php echo h($content['site']['contact']['city']); ?>" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Postcode</label>
-                                    <input type="text" name="contact_zipcode" value="<?php echo h($content['site']['contact']['zipcode']); ?>" required>
-                                </div>
-                                
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-primary">Wijzigingen Opslaan</button>
-                                    <button type="reset" class="btn btn-secondary">Annuleren</button>
-                                </div>
-                            </form>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if ($currentSection === 'colors'): ?>
-                        <div class="form-section">
-                            <div class="page-title">
-                                <h2>Website Kleuren</h2>
-                            </div>
-                            <div class="info-box">
-                                <p>Pas de kleuren van uw website aan. Wijzigingen worden direct toegepast op alle pagina's.</p>
-                            </div>
-                            
-                            <div class="color-preview-container">
-                                <h3 class="color-preview-title">Kleur Voorbeelden</h3>
-                                <div class="color-preview-grid">
-                                    <div class="color-preview-item">
-                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['primary']); ?>;"></div>
-                                        <small class="color-preview-label">Primair</small>
-                                    </div>
-                                    <div class="color-preview-item">
-                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['secondary']); ?>;"></div>
-                                        <small class="color-preview-label">Secundair</small>
-                                    </div>
-                                    <div class="color-preview-item">
-                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['accent']); ?>;"></div>
-                                        <small class="color-preview-label">Accent</small>
-                                    </div>
-                                    <div class="color-preview-item">
-                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['text']); ?>;"></div>
-                                        <small class="color-preview-label">Tekst</small>
-                                    </div>
-                                    <div class="color-preview-item">
-                                        <div class="color-preview-box" style="background: <?php echo h($content['site']['colors']['bgLight']); ?>;"></div>
-                                        <small class="color-preview-label">Achtergrond</small>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <form method="POST">
-                                <input type="hidden" name="section" value="colors">
-                                
-                                <h3>Hoofdkleuren</h3>
-                                
-                                <div class="form-group">
-                                    <label>Primaire Kleur</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_primary" value="<?php echo h($content['site']['colors']['primary']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['primary']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Wordt gebruikt voor knoppen, links en accenten</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Secundaire Kleur</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_secondary" value="<?php echo h($content['site']['colors']['secondary']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['secondary']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Hover effecten en secundaire elementen</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Accent Kleur</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_accent" value="<?php echo h($content['site']['colors']['accent']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['accent']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Voor speciale highlights en call-to-actions</small>
-                                </div>
-                                
-                                <h3>Tekstkleuren</h3>
-                                
-                                <div class="form-group">
-                                    <label>Tekst Kleur</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_text" value="<?php echo h($content['site']['colors']['text']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['text']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Hoofdtekst kleur voor alle content</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Lichte Tekst Kleur</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_text_light" value="<?php echo h($content['site']['colors']['textLight']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['textLight']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Voor subtekst en minder belangrijke informatie</small>
-                                </div>
-                                
-                                <h3>Achtergrondkleuren</h3>
-                                
-                                <div class="form-group">
-                                    <label>Lichte Achtergrond</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_bg_light" value="<?php echo h($content['site']['colors']['bgLight']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['bgLight']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Voor secties met lichte achtergrond</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Witte Achtergrond</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_white" value="<?php echo h($content['site']['colors']['white']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['white']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Hoofdachtergrond kleur</small>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Rand Kleur</label>
-                                    <div class="color-input-group">
-                                        <input type="color" name="color_border" value="<?php echo h($content['site']['colors']['border']); ?>" class="color-picker-input">
-                                        <input type="text" value="<?php echo h($content['site']['colors']['border']); ?>" readonly class="color-text-input">
-                                    </div>
-                                    <small>Voor randen rondom elementen en kaarten</small>
-                                </div>
-                                
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
-                                    <button type="reset" class="btn btn-secondary">Annuleren</button>
-                                </div>
-                            </form>
-                        </div>
+                        <?php include __DIR__ . '/sections/site.php'; ?>
                     <?php endif; ?>
                     
                     <?php if ($currentSection === 'home'): ?>
@@ -421,6 +317,92 @@ $currentSection = $_GET['section'] ?? 'site';
                                     <button type="reset" class="btn btn-secondary">Annuleren</button>
                                 </div>
                             </form>
+                            
+                            <form method="POST" style="margin-top: 30px;">
+                                <input type="hidden" name="section" value="home_colors">
+                                
+                                <h3>Sectie Kleuren (Home Pagina)</h3>
+                                <div class="info-box" style="margin-bottom: 20px;">
+                                    <p>Pas de kleuren aan per sectie op de Home pagina.</p>
+                                </div>
+                                
+                                <h4>Hero Sectie (Banner Bovenaan)</h4>
+                                <div class="form-group">
+                                    <label for="home_hero_bg">Hero Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input id="home_hero_bg" type="color" name="hero_bg" value="<?php echo h($content['home']['hero']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['hero']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="home_hero_text">Hero Tekst Kleur</label>
+                                    <div class="color-input-group">
+                                        <input id="home_hero_text" type="color" name="hero_text" value="<?php echo h($content['home']['hero']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['hero']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="home_hero_overlay">Hero Overlay (donkere laag)</label>
+                                    <input id="home_hero_overlay" type="text" name="hero_overlay" value="<?php echo h($content['home']['hero']['colors']['overlay']); ?>" placeholder="rgba(0, 0, 0, 0.5)">
+                                    <small>Bijvoorbeeld: rgba(0, 0, 0, 0.5) voor 50% zwart</small>
+                                </div>
+                                
+                                <h4>Intro Sectie (Welkom Tekst)</h4>
+                                <div class="form-group">
+                                    <label for="home_intro_bg">Intro Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input id="home_intro_bg" type="color" name="intro_bg" value="<?php echo h($content['home']['intro']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['intro']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="home_intro_text">Intro Tekst Kleur</label>
+                                    <div class="color-input-group">
+                                        <input id="home_intro_text" type="color" name="intro_text" value="<?php echo h($content['home']['intro']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['intro']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="home_intro_title">Intro Titel Kleur</label>
+                                    <div class="color-input-group">
+                                        <input id="home_intro_title" type="color" name="intro_title" value="<?php echo h($content['home']['intro']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['intro']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <h4>Vakmanschap Sectie</h4>
+                                <div class="form-group">
+                                    <label for="home_vak_bg">Vakmanschap Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input id="home_vak_bg" type="color" name="vak_bg" value="<?php echo h($content['home']['vakmanschap']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['vakmanschap']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="home_vak_text">Vakmanschap Tekst Kleur</label>
+                                    <div class="color-input-group">
+                                        <input id="home_vak_text" type="color" name="vak_text" value="<?php echo h($content['home']['vakmanschap']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['vakmanschap']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="home_vak_title">Vakmanschap Titel Kleur</label>
+                                    <div class="color-input-group">
+                                        <input id="home_vak_title" type="color" name="vak_title" value="<?php echo h($content['home']['vakmanschap']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['home']['vakmanschap']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
+                                </div>
+                            </form>
                         </div>
                     <?php endif; ?>
                     
@@ -479,6 +461,69 @@ $currentSection = $_GET['section'] ?? 'site';
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary">Wijzigingen Opslaan</button>
                                     <button type="reset" class="btn btn-secondary">Annuleren</button>
+                                </div>
+                            </form>
+                            
+                            <form method="POST" style="margin-top: 30px;">
+                                <input type="hidden" name="section" value="diensten_colors">
+                                
+                                <h3>Sectie Kleuren (Diensten Pagina)</h3>
+                                <div class="info-box" style="margin-bottom: 20px;">
+                                    <p>Pas de kleuren aan per sectie op de Diensten pagina.</p>
+                                </div>
+                                
+                                <h4>Hero Sectie (Banner Bovenaan)</h4>
+                                <div class="form-group">
+                                    <label>Hero Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hero_bg" value="<?php echo h($content['diensten']['hero']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['diensten']['hero']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Hero Tekst Kleur</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hero_text" value="<?php echo h($content['diensten']['hero']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['diensten']['hero']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Hero Overlay</label>
+                                    <input type="text" name="hero_overlay" value="<?php echo h($content['diensten']['hero']['colors']['overlay']); ?>" placeholder="rgba(0, 0, 0, 0.5)">
+                                </div>
+                                
+                                <?php foreach ($content['diensten']['services'] as $index => $service): ?>
+                                    <h4>Dienst <?php echo $index + 1; ?>: <?php echo h($service['title']); ?></h4>
+                                    
+                                    <div class="form-group">
+                                        <label>Achtergrond Kleur</label>
+                                        <div class="color-input-group">
+                                            <input type="color" name="service_bg_<?php echo $index; ?>" value="<?php echo h($service['colors']['background']); ?>" class="color-picker-input">
+                                            <input type="text" value="<?php echo h($service['colors']['background']); ?>" readonly class="color-text-input">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Tekst Kleur</label>
+                                        <div class="color-input-group">
+                                            <input type="color" name="service_text_<?php echo $index; ?>" value="<?php echo h($service['colors']['text']); ?>" class="color-picker-input">
+                                            <input type="text" value="<?php echo h($service['colors']['text']); ?>" readonly class="color-text-input">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Titel Kleur</label>
+                                        <div class="color-input-group">
+                                            <input type="color" name="service_title_<?php echo $index; ?>" value="<?php echo h($service['colors']['title']); ?>" class="color-picker-input">
+                                            <input type="text" value="<?php echo h($service['colors']['title']); ?>" readonly class="color-text-input">
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
                                 </div>
                             </form>
                         </div>
@@ -570,6 +615,116 @@ $currentSection = $_GET['section'] ?? 'site';
                                     <button type="reset" class="btn btn-secondary">Annuleren</button>
                                 </div>
                             </form>
+                            
+                            <form method="POST" style="margin-top: 30px;">
+                                <input type="hidden" name="section" value="over_ons_colors">
+                                
+                                <h3>Sectie Kleuren (Over Ons Pagina)</h3>
+                                <div class="info-box" style="margin-bottom: 20px;">
+                                    <p>Pas de kleuren aan per sectie op de Over Ons pagina.</p>
+                                </div>
+                                
+                                <h4>Hero Sectie</h4>
+                                <div class="form-group">
+                                    <label>Hero Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hero_bg" value="<?php echo h($content['over_ons']['hero']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['hero']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Hero Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hero_text" value="<?php echo h($content['over_ons']['hero']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['hero']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Hero Overlay</label>
+                                    <input type="text" name="hero_overlay" value="<?php echo h($content['over_ons']['hero']['colors']['overlay']); ?>" placeholder="rgba(0, 0, 0, 0.5)">
+                                </div>
+                                
+                                <h4>Verhaal Sectie</h4>
+                                <div class="form-group">
+                                    <label>Verhaal Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="story_bg" value="<?php echo h($content['over_ons']['story']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['story']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Verhaal Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="story_text" value="<?php echo h($content['over_ons']['story']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['story']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Verhaal Titel</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="story_title" value="<?php echo h($content['over_ons']['story']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['story']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <h4>Oprichter Sectie</h4>
+                                <div class="form-group">
+                                    <label>Oprichter Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="founder_bg" value="<?php echo h($content['over_ons']['founder']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['founder']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Oprichter Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="founder_text" value="<?php echo h($content['over_ons']['founder']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['founder']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Oprichter Titel</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="founder_title" value="<?php echo h($content['over_ons']['founder']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['founder']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <h4>Waarden Sectie</h4>
+                                <div class="form-group">
+                                    <label>Waarden Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="values_bg" value="<?php echo h($content['over_ons']['values_colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['values_colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Waarden Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="values_text" value="<?php echo h($content['over_ons']['values_colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['values_colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Waarden Titel</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="values_title" value="<?php echo h($content['over_ons']['values_colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['over_ons']['values_colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
+                                </div>
+                            </form>
                         </div>
                     <?php endif; ?>
                     
@@ -646,11 +801,156 @@ $currentSection = $_GET['section'] ?? 'site';
                                     <button type="reset" class="btn btn-secondary">Annuleren</button>
                                 </div>
                             </form>
+                            
+                            <form method="POST" style="margin-top: 30px;">
+                                <input type="hidden" name="section" value="contact_colors">
+                                
+                                <h3>Sectie Kleuren (Contact Pagina)</h3>
+                                <div class="info-box" style="margin-bottom: 20px;">
+                                    <p>Pas de kleuren aan per sectie op de Contact pagina.</p>
+                                </div>
+                                
+                                <h4>Hero Sectie</h4>
+                                <div class="form-group">
+                                    <label>Hero Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hero_bg" value="<?php echo h($content['contact']['hero']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['hero']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Hero Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hero_text" value="<?php echo h($content['contact']['hero']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['hero']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Hero Overlay</label>
+                                    <input type="text" name="hero_overlay" value="<?php echo h($content['contact']['hero']['colors']['overlay']); ?>" placeholder="rgba(0, 0, 0, 0.5)">
+                                </div>
+                                
+                                <h4>Intro Sectie</h4>
+                                <div class="form-group">
+                                    <label>Intro Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="intro_bg" value="<?php echo h($content['contact']['intro']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['intro']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Intro Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="intro_text" value="<?php echo h($content['contact']['intro']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['intro']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Intro Titel</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="intro_title" value="<?php echo h($content['contact']['intro']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['intro']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <h4>Contact Info Sectie</h4>
+                                <div class="form-group">
+                                    <label>Info Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="info_bg" value="<?php echo h($content['contact']['info']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['info']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Info Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="info_text" value="<?php echo h($content['contact']['info']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['info']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Info Titel</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="info_title" value="<?php echo h($content['contact']['info']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['info']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <h4>Openingstijden Sectie</h4>
+                                <div class="form-group">
+                                    <label>Openingstijden Achtergrond</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hours_bg" value="<?php echo h($content['contact']['hours']['colors']['background']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['hours']['colors']['background']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Openingstijden Tekst</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hours_text" value="<?php echo h($content['contact']['hours']['colors']['text']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['hours']['colors']['text']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Openingstijden Titel</label>
+                                    <div class="color-input-group">
+                                        <input type="color" name="hours_title" value="<?php echo h($content['contact']['hours']['colors']['title']); ?>" class="color-picker-input">
+                                        <input type="text" value="<?php echo h($content['contact']['hours']['colors']['title']); ?>" readonly class="color-text-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
+                                </div>
+                            </form>
                         </div>
                     <?php endif; ?>
                 </main>
             </div>
         </div>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Per-page color live updates
+            const pageColorMappings = [
+                // Home colors
+                { colorId: 'home_color_header', textId: 'home_text_header' },
+                { colorId: 'home_color_hero_text', textId: 'home_text_hero_text' },
+                { colorId: 'home_color_section_bg', textId: 'home_text_section_bg' },
+                // Diensten colors
+                { colorId: 'diensten_color_header', textId: 'diensten_text_header' },
+                { colorId: 'diensten_color_hero_text', textId: 'diensten_text_hero_text' },
+                { colorId: 'diensten_color_section_bg', textId: 'diensten_text_section_bg' },
+                // Over Ons colors
+                { colorId: 'over_ons_color_header', textId: 'over_ons_text_header' },
+                { colorId: 'over_ons_color_hero_text', textId: 'over_ons_text_hero_text' },
+                { colorId: 'over_ons_color_section_bg', textId: 'over_ons_text_section_bg' },
+                // Contact colors
+                { colorId: 'contact_color_header', textId: 'contact_text_header' },
+                { colorId: 'contact_color_hero_text', textId: 'contact_text_hero_text' },
+                { colorId: 'contact_color_section_bg', textId: 'contact_text_section_bg' }
+            ];
+            
+            pageColorMappings.forEach(mapping => {
+                const colorInput = document.getElementById(mapping.colorId);
+                const textInput = document.getElementById(mapping.textId);
+                
+                if (colorInput && textInput) {
+                    colorInput.addEventListener('input', function() {
+                        textInput.value = this.value.toUpperCase();
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -6,10 +6,10 @@ $pageTitle = 'Contact';
 include 'includes/header.php';
 ?>
 
-<section class="hero" style="background-image: url('<?php echo h($contact['hero']['image']); ?>');">
-    <div class="hero-overlay">
+<section class="hero" style="background-image: url('<?php echo h($contact['hero']['image']); ?>'); background-color: <?php echo h($contact['hero']['colors']['background']); ?>;">
+    <div class="hero-overlay" style="background: <?php echo h($contact['hero']['colors']['overlay']); ?>;">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" style="color: <?php echo h($contact['hero']['colors']['text']); ?>;">
                 <h1 class="hero-title"><?php echo h($contact['hero']['title']); ?></h1>
                 <p class="hero-subtitle"><?php echo h($contact['hero']['subtitle']); ?></p>
             </div>
@@ -17,18 +17,18 @@ include 'includes/header.php';
     </div>
 </section>
 
-<section class="section contact-section">
+<section class="section contact-section" style="background-color: <?php echo h($contact['intro']['colors']['background']); ?>; color: <?php echo h($contact['intro']['colors']['text']); ?>;">
     <div class="container">
         <div class="section-header text-center">
-            <h2><?php echo h($contact['intro']['title']); ?></h2>
+            <h2 style="color: <?php echo h($contact['intro']['colors']['title']); ?>;"><?php echo h($contact['intro']['title']); ?></h2>
             <p><?php echo h($contact['intro']['text']); ?></p>
         </div>
         
-        <div class="row contact-info">
+        <div class="row contact-info" style="background-color: <?php echo h($contact['info']['colors']['background']); ?>; color: <?php echo h($contact['info']['colors']['text']); ?>;">
             <div class="col-md-4">
                 <div class="contact-card">
                     <div class="contact-icon">📞</div>
-                    <h3><?php echo h($contact['info']['phone']['label']); ?></h3>
+                    <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['phone']['label']); ?></h3>
                     <p>
                         <a href="<?php echo h($contact['info']['phone']['link']); ?>">
                             <?php echo h($contact['info']['phone']['value']); ?>
@@ -40,7 +40,7 @@ include 'includes/header.php';
             <div class="col-md-4">
                 <div class="contact-card">
                     <div class="contact-icon">✉️</div>
-                    <h3><?php echo h($contact['info']['email']['label']); ?></h3>
+                    <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['email']['label']); ?></h3>
                     <p>
                         <a href="<?php echo h($contact['info']['email']['link']); ?>">
                             <?php echo h($contact['info']['email']['value']); ?>
@@ -52,7 +52,7 @@ include 'includes/header.php';
             <div class="col-md-4">
                 <div class="contact-card">
                     <div class="contact-icon">📍</div>
-                    <h3><?php echo h($contact['info']['address']['label']); ?></h3>
+                    <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['address']['label']); ?></h3>
                     <p>
                         <?php echo h($contact['info']['address']['street']); ?><br>
                         <?php echo h($contact['info']['address']['city']); ?>
@@ -63,9 +63,9 @@ include 'includes/header.php';
     </div>
 </section>
 
-<section class="section hours-section">
+<section class="section hours-section" style="background-color: <?php echo h($contact['hours']['colors']['background']); ?>; color: <?php echo h($contact['hours']['colors']['text']); ?>;">
     <div class="container">
-        <h2 class="text-center"><?php echo h($contact['hours']['title']); ?></h2>
+        <h2 class="text-center" style="color: <?php echo h($contact['hours']['colors']['title']); ?>;"><?php echo h($contact['hours']['title']); ?></h2>
         <div class="hours-list">
             <?php foreach ($contact['hours']['schedule'] as $schedule): ?>
                 <p><?php echo h($schedule); ?></p>

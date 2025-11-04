@@ -83,6 +83,7 @@ a:hover {
 
 .section {
     padding: 80px 0;
+    background-color: var(--page-section-bg, transparent);
 }
 
 .text-center {
@@ -113,7 +114,7 @@ p {
    Header & Navigation
    ========================================== */
 .site-header {
-    background: var(--white);
+    background: var(--page-header-bg, var(--white));
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -213,7 +214,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    color: var(--page-hero-text, var(--white));
 }
 
 .hero-overlay {

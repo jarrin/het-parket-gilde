@@ -6,10 +6,10 @@ $pageTitle = 'Home';
 include 'includes/header.php';
 ?>
 
-<section class="hero" style="background-image: url('<?php echo h($home['hero']['image']); ?>');">
-    <div class="hero-overlay">
+<section class="hero" style="background-image: url('<?php echo h($home['hero']['image']); ?>'); background-color: <?php echo h($home['hero']['colors']['background']); ?>;">
+    <div class="hero-overlay" style="background: <?php echo h($home['hero']['colors']['overlay']); ?>;">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" style="color: <?php echo h($home['hero']['colors']['text']); ?>;">
                 <h1 class="hero-title"><?php echo h($home['hero']['title']); ?></h1>
                 <p class="hero-subtitle"><?php echo h($home['hero']['subtitle']); ?></p>
                 <p class="hero-description"><?php echo h($home['hero']['description']); ?></p>
@@ -19,11 +19,11 @@ include 'includes/header.php';
     </div>
 </section>
 
-<section class="section intro-section">
+<section class="section intro-section" style="background-color: <?php echo h($home['intro']['colors']['background']); ?>; color: <?php echo h($home['intro']['colors']['text']); ?>;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2><?php echo h($home['intro']['title']); ?></h2>
+                <h2 style="color: <?php echo h($home['intro']['colors']['title']); ?>;"><?php echo h($home['intro']['title']); ?></h2>
                 <p><?php echo h($home['intro']['text']); ?></p>
                 <a href="/over-ons.php" class="btn btn-secondary">Meer over ons</a>
             </div>
@@ -36,10 +36,10 @@ include 'includes/header.php';
     </div>
 </section>
 
-<section class="section vakmanschap-section">
+<section class="section vakmanschap-section" style="background-color: <?php echo h($home['vakmanschap']['colors']['background']); ?>; color: <?php echo h($home['vakmanschap']['colors']['text']); ?>;">
     <div class="container">
         <div class="section-header text-center">
-            <h2><?php echo h($home['vakmanschap']['title']); ?></h2>
+            <h2 style="color: <?php echo h($home['vakmanschap']['colors']['title']); ?>;"><?php echo h($home['vakmanschap']['title']); ?></h2>
             <p class="section-subtitle"><?php echo h($home['vakmanschap']['subtitle']); ?></p>
             <p><?php echo h($home['vakmanschap']['text']); ?></p>
         </div>
