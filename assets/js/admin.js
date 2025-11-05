@@ -175,21 +175,28 @@ function initDienstenManager() {
         });
     });
     
-    // Remove service handlers
+    // Remove service handlers for existing services
     container.querySelectorAll('.remove-service-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Remove button clicked');
             removeService(this.closest('.service-block'));
         });
     });
 }
 
 function removeService(block) {
-    if (document.querySelectorAll('.service-block').length <= 1) {
+    console.log('removeService called', block);
+    const totalServices = document.querySelectorAll('.service-block').length;
+    console.log('Total services:', totalServices);
+    
+    if (totalServices <= 1) {
         alert('Je moet minimaal 1 dienst hebben!');
         return;
     }
     
     if (confirm('Weet je zeker dat je deze dienst wilt verwijderen?')) {
+        console.log('User confirmed removal');
         block.remove();
         
         // Renumber remaining services

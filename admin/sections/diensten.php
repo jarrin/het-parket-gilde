@@ -157,6 +157,27 @@
         </div>
         
         <div class="form-group">
+            <label>Titel</label>
+            <input type="text" name="cta_title" value="<?php echo h($content['diensten']['cta']['title'] ?? ''); ?>">
+        </div>
+        
+        <div class="form-group">
+            <label>Ondertitel</label>
+            <textarea name="cta_subtitle" rows="3"><?php echo h($content['diensten']['cta']['subtitle'] ?? ''); ?></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Button Tekst</label>
+            <input type="text" name="cta_button_text" value="<?php echo h($content['diensten']['cta']['button_text'] ?? ''); ?>">
+        </div>
+        
+        <div class="form-group">
+            <label>Button Link</label>
+            <input type="text" name="cta_button_link" value="<?php echo h($content['diensten']['cta']['button_link'] ?? ''); ?>">
+            <small>Gebruik /contact.php voor contact pagina, tel:+31612345678 voor telefoon, of mailto:email@voorbeeld.nl</small>
+        </div>
+        
+        <div class="form-group">
             <label>CTA Achtergrond Afbeelding</label>
             <div class="image-input-group">
                 <input type="text" name="cta_image" id="diensten_cta_image" value="<?php echo h($content['diensten']['cta']['image'] ?? ''); ?>">
@@ -165,8 +186,19 @@
             <small>Optioneel - achtergrondafbeelding voor de CTA sectie (aanbevolen: 1920x400px)</small>
         </div>
         
+        <h4>Kleuren</h4>
+        <div class="form-group">
+            <label>Achtergrondkleur</label>
+            <input type="color" name="cta_bg" value="<?php echo h($content['diensten']['cta']['colors']['background'] ?? '#222e40'); ?>">
+        </div>
+        
+        <div class="form-group">
+            <label>Tekstkleur</label>
+            <input type="color" name="cta_text" value="<?php echo h($content['diensten']['cta']['colors']['text'] ?? '#ffffff'); ?>">
+        </div>
+        
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">CTA Afbeelding Opslaan</button>
+            <button type="submit" class="btn btn-primary">CTA Wijzigingen Opslaan</button>
         </div>
     </form>
 </div>
