@@ -51,7 +51,7 @@
         "intro": {
             "title": "Welkom bij Het Parket Gilde",
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
-            "image": "assets\/images\/img_690b09812104b_1762331009.JPG",
+            "image": "assets\/images\/img_690b31e68c246_1762341350.jpg",
             "colors": {
                 "background": "#222e40",
                 "text": "#ffffff",
@@ -72,19 +72,19 @@
                     "title": "Ervaring",
                     "description": "Meer dan 15 jaar expertise in parketvloeren",
                     "icon": "+",
-                    "image": "assets\/images\/img_690b27af99b35_1762338735.JPG"
+                    "image": "assets\/images\/img_690b3258e3405_1762341464.jpg"
                 },
                 {
                     "title": "Kwaliteit",
                     "description": "Uitsluitend hoogwaardige materialen",
                     "icon": "+",
-                    "image": "assets\/images\/img_690b27c6134e9_1762338758.JPG"
+                    "image": "assets\/images\/img_690b32f2ccfad_1762341618.jpg"
                 },
                 {
                     "title": "Maatwerk",
                     "description": "Elke vloer op maat gemaakt",
                     "icon": "+",
-                    "image": "assets\/images\/img_690b27da234a4_1762338778.JPG"
+                    "image": "assets\/images\/img_690b333b6b5ac_1762341691.jpg"
                 }
             ]
         },
@@ -93,7 +93,7 @@
             "subtitle": "Wilt u meer weten of een vrijblijvende offerte aanvragen?",
             "button_text": "Contacteer ons",
             "button_link": "\/contact.php",
-            "image": "assets\/images\/img_690b29639835f_1762339171.JPG",
+            "image": "assets\/images\/img_690b31cdd5864_1762341325.jpg",
             "colors": {
                 "background": "#d4af7a",
                 "text": "#ffffff",
