@@ -26,7 +26,7 @@
                 <?php if (isAdmin()): ?>
                     <p class="admin-link">
                         <a href="/admin/" style="color: <?php echo h($site['colors']['footer']['links']); ?>;">Admin Panel</a> | 
-                        <a href="/admin/logout.php" style="color: <?php echo h($site['colors']['footer']['links']); ?>;">Uitloggen</a>
+                        <a href="/admin/live-edit-page.php" style="color: <?php echo h($site['colors']['footer']['links']); ?>;">Live Edit</a>
                     </p>
                 <?php endif; ?>
             </div>

@@ -44,6 +44,42 @@
         <textarea name="intro_text" rows="3" required><?php echo h($content['contact']['intro']['text']); ?></textarea>
     </div>
     
+    <h3>Contactgegevens</h3>
+    
+    <div class="form-group">
+        <label>Telefoonnummer (Weergave)</label>
+        <input type="text" name="phone_value" value="<?php echo h($content['contact']['info']['phone']['value']); ?>" required>
+        <small>Bijvoorbeeld: +31 6 12345678</small>
+    </div>
+    
+    <div class="form-group">
+        <label>Telefoonnummer (Link)</label>
+        <input type="text" name="phone_link" value="<?php echo h($content['contact']['info']['phone']['link']); ?>" required>
+        <small>Bijvoorbeeld: tel:+31612345678 (geen spaties!)</small>
+    </div>
+    
+    <div class="form-group">
+        <label>Email Adres</label>
+        <input type="email" name="email_value" value="<?php echo h($content['contact']['info']['email']['value']); ?>" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Email Link</label>
+        <input type="text" name="email_link" value="<?php echo h($content['contact']['info']['email']['link']); ?>" required>
+        <small>Bijvoorbeeld: mailto:info@hetparketgilde.nl</small>
+    </div>
+    
+    <div class="form-group">
+        <label>Straat + Huisnummer</label>
+        <input type="text" name="address_street" value="<?php echo h($content['contact']['info']['address']['street']); ?>" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Postcode + Stad</label>
+        <input type="text" name="address_city" value="<?php echo h($content['contact']['info']['address']['city']); ?>" required>
+        <small>Bijvoorbeeld: 1234 AB Amsterdam</small>
+    </div>
+    
     <h3>Openingstijden</h3>
     
     <div class="form-group">

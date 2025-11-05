@@ -135,17 +135,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['contact']['intro']['title'] = $_POST['intro_title'] ?? '';
             $content['contact']['intro']['text'] = $_POST['intro_text'] ?? '';
             
+            // Contact info
             $content['contact']['info']['phone']['value'] = $_POST['phone_value'] ?? '';
+            $content['contact']['info']['phone']['link'] = $_POST['phone_link'] ?? '';
             $content['contact']['info']['email']['value'] = $_POST['email_value'] ?? '';
+            $content['contact']['info']['email']['link'] = $_POST['email_link'] ?? '';
             $content['contact']['info']['address']['street'] = $_POST['address_street'] ?? '';
             $content['contact']['info']['address']['city'] = $_POST['address_city'] ?? '';
+            
+            // Hours
+            $content['contact']['hours']['title'] = $_POST['hours_title'] ?? '';
+            $content['contact']['hours']['schedule'] = [
+                $_POST['schedule_0'] ?? '',
+                $_POST['schedule_1'] ?? '',
+                $_POST['schedule_2'] ?? ''
+            ];
             break;
             
         case 'contact_colors':
+            // Page level colors
+            $content['contact']['colors']['header'] = $_POST['color_header'] ?? '';
+            $content['contact']['colors']['heroText'] = $_POST['color_hero_text'] ?? '';
+            $content['contact']['colors']['sectionBg'] = $_POST['color_section_bg'] ?? '';
+            
             // Hero sectie
             $content['contact']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
             $content['contact']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
-            $content['contact']['hero']['colors']['overlay'] = $_POST['hero_overlay'] ?? '';
+            if (isset($_POST['hero_overlay'])) {
+                $content['contact']['hero']['colors']['overlay'] = $_POST['hero_overlay'];
+            }
             
             // Intro sectie
             $content['contact']['intro']['colors']['background'] = $_POST['intro_bg'] ?? '';

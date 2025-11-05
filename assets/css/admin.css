@@ -44,6 +44,15 @@ body {
     background: rgba(255,255,255,0.2);
 }
 
+.admin-nav a.btn-live-edit {
+    background: #4CAF50;
+    font-weight: 600;
+}
+
+.admin-nav a.btn-live-edit:hover {
+    background: #45a049;
+}
+
 /* Container */
 .admin-container {
     max-width: 1400px;

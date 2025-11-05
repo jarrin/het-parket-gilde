@@ -335,31 +335,46 @@ async function saveChanges(element, newText) {
     // Bepaal wat er gewijzigd is op basis van context
     const dataPath = determineDataPath(element);
     
+    console.log('Save Changes:', {
+        element: element,
+        page: currentPage,
+        path: dataPath,
+        value: newText
+    });
+    
     if (!dataPath) {
         showSaveIndicator('Kon locatie niet bepalen', false);
+        console.error('Geen data path gevonden voor element');
         return;
     }
+    
+    const payload = {
+        page: currentPage,
+        path: dataPath,
+        value: newText
+    };
+    
+    console.log('Sending to server:', payload);
     
     try {
         const response = await fetch('/admin/live-edit.php', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                page: currentPage,
-                path: dataPath,
-                value: newText
-            })
+            body: JSON.stringify(payload)
         });
         
         const data = await response.json();
+        console.log('Server response:', data);
         
         if (data.success) {
             showSaveIndicator('Opgeslagen!', true);
         } else {
-            showSaveIndicator('Fout bij opslaan', false);
+            showSaveIndicator('Fout: ' + (data.error || 'Onbekend'), false);
+            console.error('Save error:', data);
         }
     } catch (error) {
         showSaveIndicator('Fout bij opslaan', false);
+        console.error('Network error:', error);
     }
 }
 
@@ -394,6 +409,40 @@ function determineDataPath(element) {
         }
         current = current.parentElement;
     }
+    
+    // Fallback: probeer automatisch te detecteren op basis van klasse/sectie
+    const text = element.textContent.trim();
+    const tagName = element.tagName.toLowerCase();
+    
+    // Detecteer op basis van parent sectie
+    let section = element.closest('section, .hero, .intro, .story, .services, .founder, .values, .contact-info, .hours');
+    
+    if (!section) {
+        console.warn('Kon geen sectie vinden voor element', element);
+        return null;
+    }
+    
+    // Probeer te detecteren welke sectie en veld
+    if (section.classList.contains('hero') || section.querySelector('.hero-content')) {
+        if (tagName === 'h1') return 'hero.title';
+        if (tagName === 'h2' || tagName === 'p') return 'hero.subtitle';
+    }
+    
+    if (section.classList.contains('intro')) {
+        if (tagName === 'h2') return 'intro.title';
+        if (tagName === 'p') return 'intro.text';
+    }
+    
+    if (section.classList.contains('story')) {
+        if (tagName === 'h2') return 'story.title';
+        if (tagName === 'p') {
+            const paragraphs = section.querySelectorAll('p');
+            const index = Array.from(paragraphs).indexOf(element);
+            return `story.paragraphs.${index}`;
+        }
+    }
+    
+    console.warn('Kon geen data path bepalen voor', element);
     return null;
 }
 

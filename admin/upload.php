@@ -16,6 +16,13 @@ ob_clean();
 
 // Set header
 header('Content-Type: text/plain');
+
+// Check authentication
+if (!isset($_SESSION['admin_user_id']) && !isset($_SESSION['admin_logged_in'])) {
+    http_response_code(401);
+    die('ERROR: Unauthorized - Please login first');
+}
+
 // Define constants
 define('ROOT_PATH', dirname(__DIR__));
 define('UPLOAD_PATH', ROOT_PATH . '/assets/images');
@@ -39,11 +46,11 @@ if ($file['error'] !== UPLOAD_ERR_OK) {
     die('ERROR: File upload error: ' . $file['error']);
 }
 
-// Check file size (5MB)
+// Check file size (10MB)
 $maxSize = 10 * 1024 * 1024;
 if ($file['size'] > $maxSize) {
     http_response_code(400);
-    die('ERROR: File too large. Max size: 5MB');
+    die('ERROR: File too large. Max size: 10MB');
 }
 
 // Check file type
