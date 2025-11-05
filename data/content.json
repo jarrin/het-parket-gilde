@@ -40,7 +40,7 @@
             "title": "Het Parket Gilde",
             "subtitle": "Vakmanschap in hout",
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
-            "image": "assets\/images\/img_690b07e011ee2_1762330592.png",
+            "image": "assets\/images\/img_690b0b8a25f7b_1762331530.JPG",
             "colors": {
                 "background": "#2B3A52",
                 "text": "#FFFFFF",
@@ -161,7 +161,7 @@
         "hero": {
             "title": "Over Het Parket Gilde",
             "subtitle": "Passie voor hout sinds 2008",
-            "image": "assets\/images\/img_690b09fdcfaf8_1762331133.jpg",
+            "image": "assets\/images\/img_690b0b9720ede_1762331543.png",
             "colors": {
                 "background": "#2b3a52",
                 "text": "#ffffff",
@@ -185,7 +185,7 @@
             "name": "Mathijs Gerrits",
             "title": "Oprichter & Vakman",
             "quote": "Elke vloer is uniek, en verdient de volledige aandacht en toewijding van een vakman. Dat is wat wij elke dag bieden.",
-            "image": "assets\/images\/mathijs.jpg",
+            "image": "assets\/images\/img_690b0ce8ce7d7_1762331880.JPG",
             "colors": {
                 "background": "#2b3a52",
                 "text": "#e8e8e8",
@@ -225,7 +225,7 @@
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/hero-contact.jpg",
+            "image": "assets\/images\/img_690b0bb49d6fd_1762331572.JPG",
             "colors": {
                 "background": "#2B3A52",
                 "text": "#FFFFFF",
@@ -244,18 +244,18 @@
         "info": {
             "phone": {
                 "label": "Telefoon",
-                "value": "+31 6 12345678",
+                "value": "",
                 "link": "tel:+31612345678"
             },
             "email": {
                 "label": "E-mail",
-                "value": "info@hetparketgilde.nl",
+                "value": "",
                 "link": "mailto:info@hetparketgilde.nl"
             },
             "address": {
                 "label": "Adres",
-                "street": "Voorbeeldstraat 123",
-                "city": "1234 AB Amsterdam"
+                "street": "",
+                "city": ""
             },
             "colors": {
                 "background": "#2B3A52",

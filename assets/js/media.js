@@ -86,7 +86,7 @@ function uploadFile(file) {
         return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > 15 * 1024 * 1024) {
         alert('Bestand te groot: ' + file.name);
         return;
     }
