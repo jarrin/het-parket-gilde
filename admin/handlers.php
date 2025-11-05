@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
         case 'site':
             $content['site']['title'] = $_POST['site_title'] ?? '';
             $content['site']['description'] = $_POST['site_description'] ?? '';
+            $content['site']['logo'] = $_POST['site_logo'] ?? '';
             $content['site']['contact']['phone'] = $_POST['contact_phone'] ?? '';
             $content['site']['contact']['email'] = $_POST['contact_email'] ?? '';
             $content['site']['contact']['address'] = $_POST['contact_address'] ?? '';
@@ -39,6 +40,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['home']['vakmanschap']['title'] = $_POST['vak_title'] ?? '';
             $content['home']['vakmanschap']['subtitle'] = $_POST['vak_subtitle'] ?? '';
             $content['home']['vakmanschap']['text'] = $_POST['vak_text'] ?? '';
+            
+            // Update feature boxes
+            $content['home']['vakmanschap']['features'][0]['title'] = $_POST['feature1_title'] ?? '';
+            $content['home']['vakmanschap']['features'][0]['description'] = $_POST['feature1_description'] ?? '';
+            $content['home']['vakmanschap']['features'][0]['image'] = $_POST['feature1_image'] ?? '';
+            
+            $content['home']['vakmanschap']['features'][1]['title'] = $_POST['feature2_title'] ?? '';
+            $content['home']['vakmanschap']['features'][1]['description'] = $_POST['feature2_description'] ?? '';
+            $content['home']['vakmanschap']['features'][1]['image'] = $_POST['feature2_image'] ?? '';
+            
+            $content['home']['vakmanschap']['features'][2]['title'] = $_POST['feature3_title'] ?? '';
+            $content['home']['vakmanschap']['features'][2]['description'] = $_POST['feature3_description'] ?? '';
+            $content['home']['vakmanschap']['features'][2]['image'] = $_POST['feature3_image'] ?? '';
+            
+            // Update CTA section
+            $content['home']['cta']['title'] = $_POST['cta_title'] ?? '';
+            $content['home']['cta']['subtitle'] = $_POST['cta_subtitle'] ?? '';
+            $content['home']['cta']['button_text'] = $_POST['cta_button_text'] ?? '';
+            $content['home']['cta']['button_link'] = $_POST['cta_button_link'] ?? '';
+            $content['home']['cta']['image'] = $_POST['cta_image'] ?? '';
             break;
             
         case 'home_colors':
@@ -56,6 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['home']['vakmanschap']['colors']['background'] = $_POST['vak_bg'] ?? '';
             $content['home']['vakmanschap']['colors']['text'] = $_POST['vak_text'] ?? '';
             $content['home']['vakmanschap']['colors']['title'] = $_POST['vak_title'] ?? '';
+            
+            // CTA sectie kleuren
+            $content['home']['cta']['colors']['background'] = $_POST['cta_bg'] ?? '';
+            $content['home']['cta']['colors']['text'] = $_POST['cta_text'] ?? '';
+            $content['home']['cta']['colors']['overlay'] = $_POST['cta_overlay'] ?? '';
             break;
             
         case 'diensten':
@@ -63,14 +89,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['diensten']['hero']['subtitle'] = $_POST['hero_subtitle'] ?? '';
             $content['diensten']['hero']['image'] = $_POST['hero_image'] ?? '';
             
-            // Update services
-            for ($i = 0; $i < 3; $i++) {
+            // Update services dynamically
+            $serviceCount = intval($_POST['service_count'] ?? 0);
+            $newServices = [];
+            
+            for ($i = 0; $i < $serviceCount; $i++) {
                 if (isset($_POST['service_title_' . $i])) {
-                    $content['diensten']['services'][$i]['title'] = $_POST['service_title_' . $i];
-                    $content['diensten']['services'][$i]['description'] = $_POST['service_desc_' . $i] ?? '';
-                    $content['diensten']['services'][$i]['image'] = $_POST['service_image_' . $i] ?? '';
+                    $features = [];
+                    if (!empty($_POST['service_features_' . $i])) {
+                        $features = array_filter(
+                            array_map('trim', explode("\n", $_POST['service_features_' . $i])),
+                            function($line) { return !empty($line); }
+                        );
+                    }
+                    
+                    // Preserve existing colors if they exist
+                    $existingColors = $content['diensten']['services'][$i]['colors'] ?? [
+                        'background' => '#F5F5F5',
+                        'text' => '#333333',
+                        'title' => '#2B3A52'
+                    ];
+                    
+                    $newServices[] = [
+                        'title' => $_POST['service_title_' . $i],
+                        'description' => $_POST['service_desc_' . $i] ?? '',
+                        'image' => $_POST['service_image_' . $i] ?? '',
+                        'features' => $features,
+                        'colors' => $existingColors
+                    ];
                 }
             }
+            
+            $content['diensten']['services'] = $newServices;
             break;
             
         case 'diensten_colors':
@@ -82,8 +132,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['diensten']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
             $content['diensten']['hero']['colors']['overlay'] = $_POST['hero_overlay'] ?? '';
             
-            // Service secties kleuren
-            for ($i = 0; $i < 3; $i++) {
+            // Service secties kleuren - dynamisch aantal
+            $serviceCount = count($content['diensten']['services']);
+            for ($i = 0; $i < $serviceCount; $i++) {
                 if (isset($_POST['service_bg_' . $i])) {
                     $content['diensten']['services'][$i]['colors']['background'] = $_POST['service_bg_' . $i];
                     $content['diensten']['services'][$i]['colors']['text'] = $_POST['service_text_' . $i] ?? '';

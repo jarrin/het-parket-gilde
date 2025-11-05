@@ -21,6 +21,20 @@
             <small>Korte omschrijving van uw bedrijf</small>
         </div>
         
+        <div class="form-group">
+            <label>Logo</label>
+            <div class="image-input-group">
+                <input type="text" name="site_logo" id="site_logo" value="<?php echo h($content['site']['logo'] ?? ''); ?>" placeholder="assets/images/logo.png">
+                <button type="button" class="btn btn-secondary" data-media-input="site_logo">Bladeren</button>
+            </div>
+            <small>Upload uw bedrijfslogo (formaten: PNG, SVG, JPG - aanbevolen: SVG of PNG met transparante achtergrond, max 200px hoog)</small>
+            <?php if (!empty($content['site']['logo'])): ?>
+                <div style="margin-top: 10px;">
+                    <img src="/<?php echo h($content['site']['logo']); ?>" alt="Logo preview" style="max-height: 80px; border: 1px solid #ddd; padding: 5px; background: #f5f5f5;">
+                </div>
+            <?php endif; ?>
+        </div>
+        
         <h3>Contact Gegevens</h3>
         
         <div class="form-group">

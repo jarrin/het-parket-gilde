@@ -54,14 +54,14 @@ if ($file['size'] > $maxSize) {
 }
 
 // Check file type
-$allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+$allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
 $finfo = finfo_open(FILEINFO_MIME_TYPE);
 $mimeType = finfo_file($finfo, $file['tmp_name']);
 finfo_close($finfo);
 
 if (!in_array($mimeType, $allowedTypes)) {
     http_response_code(400);
-    die('ERROR: Invalid file type. Allowed: JPEG, PNG, GIF, WebP');
+    die('ERROR: Invalid file type. Allowed: JPEG, PNG, GIF, WebP, SVG');
 }
 
 // Generate unique filename

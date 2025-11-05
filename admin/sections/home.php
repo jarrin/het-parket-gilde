@@ -78,6 +78,101 @@
             <textarea name="vak_text" required><?php echo h($content['home']['vakmanschap']['text']); ?></textarea>
         </div>
         
+        <h4>Feature Box 1 - Ervaring</h4>
+        
+        <div class="form-group">
+            <label>Ervaring Titel</label>
+            <input type="text" name="feature1_title" value="<?php echo h($content['home']['vakmanschap']['features'][0]['title']); ?>" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Ervaring Beschrijving</label>
+            <textarea name="feature1_description" required><?php echo h($content['home']['vakmanschap']['features'][0]['description']); ?></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Ervaring Afbeelding</label>
+            <div class="image-input-group">
+                <input type="text" name="feature1_image" id="feature1_image" value="<?php echo h($content['home']['vakmanschap']['features'][0]['image'] ?? ''); ?>">
+                <button type="button" class="btn btn-secondary" data-media-input="feature1_image">Bladeren</button>
+            </div>
+            <small>Optioneel - afbeelding voor de Ervaring box</small>
+        </div>
+        
+        <h4>Feature Box 2 - Kwaliteit</h4>
+        
+        <div class="form-group">
+            <label>Kwaliteit Titel</label>
+            <input type="text" name="feature2_title" value="<?php echo h($content['home']['vakmanschap']['features'][1]['title']); ?>" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Kwaliteit Beschrijving</label>
+            <textarea name="feature2_description" required><?php echo h($content['home']['vakmanschap']['features'][1]['description']); ?></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Kwaliteit Afbeelding</label>
+            <div class="image-input-group">
+                <input type="text" name="feature2_image" id="feature2_image" value="<?php echo h($content['home']['vakmanschap']['features'][1]['image'] ?? ''); ?>">
+                <button type="button" class="btn btn-secondary" data-media-input="feature2_image">Bladeren</button>
+            </div>
+            <small>Optioneel - afbeelding voor de Kwaliteit box</small>
+        </div>
+        
+        <h4>Feature Box 3 - Maatwerk</h4>
+        
+        <div class="form-group">
+            <label>Maatwerk Titel</label>
+            <input type="text" name="feature3_title" value="<?php echo h($content['home']['vakmanschap']['features'][2]['title']); ?>" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Maatwerk Beschrijving</label>
+            <textarea name="feature3_description" required><?php echo h($content['home']['vakmanschap']['features'][2]['description']); ?></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Maatwerk Afbeelding</label>
+            <div class="image-input-group">
+                <input type="text" name="feature3_image" id="feature3_image" value="<?php echo h($content['home']['vakmanschap']['features'][2]['image'] ?? ''); ?>">
+                <button type="button" class="btn btn-secondary" data-media-input="feature3_image">Bladeren</button>
+            </div>
+            <small>Optioneel - afbeelding voor de Maatwerk box</small>
+        </div>
+        
+        <h3>CTA Sectie (Contact Oproep Onderaan)</h3>
+        
+        <div class="form-group">
+            <label>CTA Titel</label>
+            <input type="text" name="cta_title" value="<?php echo h($content['home']['cta']['title']); ?>" required>
+        </div>
+        
+        <div class="form-group">
+            <label>CTA Ondertitel</label>
+            <input type="text" name="cta_subtitle" value="<?php echo h($content['home']['cta']['subtitle']); ?>" required>
+        </div>
+        
+        <div class="form-group">
+            <label>CTA Knop Tekst</label>
+            <input type="text" name="cta_button_text" value="<?php echo h($content['home']['cta']['button_text']); ?>" required>
+        </div>
+        
+        <div class="form-group">
+            <label>CTA Knop Link</label>
+            <input type="text" name="cta_button_link" value="<?php echo h($content['home']['cta']['button_link']); ?>" required>
+            <small>Bijvoorbeeld: /contact.php</small>
+        </div>
+        
+        <div class="form-group">
+            <label>CTA Achtergrond Afbeelding</label>
+            <div class="image-input-group">
+                <input type="text" name="cta_image" id="cta_image" value="<?php echo h($content['home']['cta']['image'] ?? ''); ?>">
+                <button type="button" class="btn btn-secondary" data-media-input="cta_image">Bladeren</button>
+            </div>
+            <small>Optioneel - achtergrondafbeelding voor de CTA sectie (aanbevolen: 1920x400px)</small>
+        </div>
+        
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Wijzigingen Opslaan</button>
             <button type="reset" class="btn btn-secondary">Annuleren</button>
@@ -163,6 +258,30 @@
                 <input id="home_vak_title" type="color" name="vak_title" value="<?php echo h($content['home']['vakmanschap']['colors']['title']); ?>" class="color-picker-input">
                 <input type="text" value="<?php echo h($content['home']['vakmanschap']['colors']['title']); ?>" readonly class="color-text-input">
             </div>
+        </div>
+        
+        <h4>CTA Sectie (Contact Oproep)</h4>
+        <div class="form-group">
+            <label for="home_cta_bg">CTA Achtergrond Kleur</label>
+            <div class="color-input-group">
+                <input id="home_cta_bg" type="color" name="cta_bg" value="<?php echo h($content['home']['cta']['colors']['background']); ?>" class="color-picker-input">
+                <input type="text" value="<?php echo h($content['home']['cta']['colors']['background']); ?>" readonly class="color-text-input">
+            </div>
+            <small>Wordt gebruikt als fallback als er geen afbeelding is</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="home_cta_text">CTA Tekst Kleur</label>
+            <div class="color-input-group">
+                <input id="home_cta_text" type="color" name="cta_text" value="<?php echo h($content['home']['cta']['colors']['text']); ?>" class="color-picker-input">
+                <input type="text" value="<?php echo h($content['home']['cta']['colors']['text']); ?>" readonly class="color-text-input">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="home_cta_overlay">CTA Overlay</label>
+            <input id="home_cta_overlay" type="text" name="cta_overlay" value="<?php echo h($content['home']['cta']['colors']['overlay']); ?>" placeholder="rgba(0, 0, 0, 0.5)">
+            <small>Donkere laag over de afbeelding voor betere leesbaarheid</small>
         </div>
         
         <div class="form-actions">

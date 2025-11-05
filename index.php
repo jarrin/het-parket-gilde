@@ -48,7 +48,13 @@ include 'includes/header.php';
         <div class="features">
             <?php foreach ($home['vakmanschap']['features'] as $index => $feature): ?>
                 <div class="feature-card">
-                    <div class="feature-icon"><?php echo h($feature['icon']); ?></div>
+                    <?php if (!empty($feature['image'])): ?>
+                        <div class="feature-image">
+                            <img src="/<?php echo h($feature['image']); ?>" alt="<?php echo h($feature['title']); ?>">
+                        </div>
+                    <?php else: ?>
+                        <div class="feature-icon"><?php echo h($feature['icon']); ?></div>
+                    <?php endif; ?>
                     <h3 style="color: <?php echo h($home['vakmanschap']['colors']['title']); ?>;" data-edit-path="vakmanschap.features.<?php echo $index; ?>.title"><?php echo h($feature['title']); ?></h3>
                     <p data-edit-path="vakmanschap.features.<?php echo $index; ?>.description"><?php echo h($feature['description']); ?></p>
                 </div>
@@ -57,11 +63,11 @@ include 'includes/header.php';
     </div>
 </section>
 
-<section class="section cta-section">
+<section class="section cta-section" style="background-image: url('<?php echo h($home['cta']['image']); ?>'); background-color: <?php echo h($home['cta']['colors']['background']); ?>;" data-edit-image="cta.image">
     <div class="container text-center">
-        <h2>Neem contact met ons op</h2>
-        <p>Wilt u meer weten of een vrijblijvende offerte aanvragen?</p>
-        <a href="/contact.php" class="btn btn-primary">Contacteer ons</a>
+        <h2 style="color: <?php echo h($home['cta']['colors']['text']); ?>; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);" data-edit-path="cta.title"><?php echo h($home['cta']['title']); ?></h2>
+        <p style="color: <?php echo h($home['cta']['colors']['text']); ?>; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);" data-edit-path="cta.subtitle"><?php echo h($home['cta']['subtitle']); ?></p>
+        <a href="<?php echo h($home['cta']['button_link']); ?>" class="btn btn-primary"><?php echo h($home['cta']['button_text']); ?></a>
     </div>
 </section>
 
