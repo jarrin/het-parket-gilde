@@ -64,4 +64,35 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+    
+    // Parallax effect for hero sections
+    function parallaxEffect() {
+        const heroes = document.querySelectorAll('.hero');
+        heroes.forEach(hero => {
+            const scrolled = window.pageYOffset;
+            const heroTop = hero.offsetTop;
+            const heroHeight = hero.offsetHeight;
+            
+            // Only apply parallax when hero is in viewport
+            if (scrolled < heroTop + heroHeight && scrolled + window.innerHeight > heroTop) {
+                const offset = (scrolled - heroTop) * 0.5;
+                hero.style.backgroundPositionY = offset + 'px';
+            }
+        });
+    }
+    
+    // Apply parallax on scroll
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                parallaxEffect();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Initial parallax setup
+    parallaxEffect();
 });
