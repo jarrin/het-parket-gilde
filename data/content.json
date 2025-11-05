@@ -165,14 +165,40 @@
                     "text": "#e8e8e8",
                     "title": "#d4af7a"
                 }
+            },
+            {
+                "title": "test",
+                "description": "test",
+                "image": "assets\/images\/img_690b284160a1f_1762338881.JPG",
+                "features": [
+                    "hier dit is een test met een foto en text"
+                ],
+                "colors": {
+                    "background": "#f5f5f5",
+                    "text": "#333333",
+                    "title": "#2b3a52"
+                }
+            },
+            {
+                "title": "hallo",
+                "description": "hallo",
+                "image": "assets\/images\/img_690b41b73dc68_1762345399.JPG",
+                "features": [
+                    "hallo"
+                ],
+                "colors": {
+                    "background": "#F5F5F5",
+                    "text": "#333333",
+                    "title": "#2B3A52"
+                }
             }
         ],
         "cta": {
-            "title": "",
-            "subtitle": "",
-            "button_text": "",
-            "button_link": "",
-            "image": "assets\/images\/img_690b384b95c2c_1762342987.jpg",
+            "title": "Interesse in onze diensten?",
+            "subtitle": "Neem vrijblijvend contact met ons op voor meer informatie of een offerte op maat.",
+            "button_text": "Contact opnemen",
+            "button_link": "\/contact.php",
+            "image": "",
             "colors": {
                 "background": "",
                 "text": "",
@@ -244,11 +270,11 @@
             "title": "#d4af7a"
         },
         "cta": {
-            "title": "",
-            "subtitle": "",
-            "button_text": "",
-            "button_link": "",
-            "image": "assets\/images\/img_690b38555392b_1762342997.jpg",
+            "title": "Wilt u ons beter leren kennen?",
+            "subtitle": "Neem contact met ons op voor een vrijblijvend gesprek.",
+            "button_text": "Neem contact op",
+            "button_link": "\/contact.php",
+            "image": "",
             "colors": {
                 "background": "",
                 "text": "",
@@ -265,7 +291,7 @@
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/img_690b4819976a7_1762347033.jpg",
+            "image": "assets\/images\/img_690b428194298_1762345601.JPG",
             "colors": {
                 "background": "#222e40",
                 "text": "#ffffff",
@@ -317,15 +343,15 @@
             }
         },
         "cta": {
-            "title": "",
-            "subtitle": "",
-            "button_text": "",
+            "title": "test",
+            "subtitle": "test",
+            "button_text": "hallo",
             "button_link": "",
-            "image": "assets\/images\/img_690b40c3af8f9_1762345155.jpg",
+            "image": "assets\/images\/img_690b44cbb15d9_1762346187.JPG",
             "colors": {
-                "background": "",
-                "text": "",
-                "overlay": "rgba(212, 175, 122, 0.8)"
+                "background": "#000000",
+                "text": "#000000",
+                "overlay": "rgba(34, 46, 64, 0.7)"
             }
         }
     }

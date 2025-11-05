@@ -26,10 +26,10 @@
     <div class="form-group">
         <label>Hero Achtergrond Afbeelding</label>
         <div class="image-input-group">
-            <input type="text" name="hero_image" id="contact_hero_image" value="<?php echo h($content['contact']['hero']['image']); ?>" required>
+            <input type="text" name="hero_image" id="contact_hero_image" value="<?php echo h($content['contact']['hero']['image']); ?>">
             <button type="button" class="btn btn-secondary" data-media-input="contact_hero_image">Bladeren</button>
         </div>
-        <small>Pad: assets/images/hero-contact.jpg</small>
+        <small>Upload een afbeelding via de Media Manager (aanbevolen: 1920x500px)</small>
     </div>
     
     <h3>Intro Tekst</h3>
@@ -245,6 +245,27 @@
     </div>
     
     <div class="form-group">
+        <label>Titel</label>
+        <input type="text" name="cta_title" value="<?php echo h($content['contact']['cta']['title'] ?? ''); ?>">
+    </div>
+    
+    <div class="form-group">
+        <label>Ondertitel</label>
+        <textarea name="cta_subtitle" rows="3"><?php echo h($content['contact']['cta']['subtitle'] ?? ''); ?></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label>Button Tekst</label>
+        <input type="text" name="cta_button_text" value="<?php echo h($content['contact']['cta']['button_text'] ?? ''); ?>">
+    </div>
+    
+    <div class="form-group">
+        <label>Button Link</label>
+        <input type="text" name="cta_button_link" value="<?php echo h($content['contact']['cta']['button_link'] ?? ''); ?>">
+        <small>Gebruik tel:+31612345678 voor telefoonlink of mailto:email@voorbeeld.nl voor email</small>
+    </div>
+    
+    <div class="form-group">
         <label>CTA Achtergrond Afbeelding</label>
         <div class="image-input-group">
             <input type="text" name="cta_image" id="contact_cta_image" value="<?php echo h($content['contact']['cta']['image'] ?? ''); ?>">
@@ -253,7 +274,18 @@
         <small>Optioneel - achtergrondafbeelding voor de CTA sectie (aanbevolen: 1920x400px)</small>
     </div>
     
+    <h4>Kleuren</h4>
+    <div class="form-group">
+        <label>Achtergrondkleur</label>
+        <input type="color" name="cta_bg" value="<?php echo h($content['contact']['cta']['colors']['background'] ?? '#222e40'); ?>">
+    </div>
+    
+    <div class="form-group">
+        <label>Tekstkleur</label>
+        <input type="color" name="cta_text" value="<?php echo h($content['contact']['cta']['colors']['text'] ?? '#ffffff'); ?>">
+    </div>
+    
     <div class="form-actions">
-        <button type="submit" class="btn btn-primary">CTA Afbeelding Opslaan</button>
+        <button type="submit" class="btn btn-primary">CTA Wijzigingen Opslaan</button>
     </div>
 </form>

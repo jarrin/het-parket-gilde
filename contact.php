@@ -76,8 +76,8 @@ include 'includes/header.php';
 
 <section class="section cta-section" style="background-image: url('<?php echo h($contact['cta']['image']); ?>'); background-color: <?php echo h($contact['cta']['colors']['background']); ?>;" data-edit-image="cta.image">
     <div class="container text-center">
-        <h2 style="color: <?php echo h($contact['cta']['colors']['text']); ?>; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);" data-edit-path="cta.title"><?php echo h($contact['cta']['title']); ?></h2>
-        <p style="color: <?php echo h($contact['cta']['colors']['text']); ?>; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);" data-edit-path="cta.subtitle"><?php echo h($contact['cta']['subtitle']); ?></p>
+        <h2 style="color: <?php echo h($contact['cta']['colors']['text']); ?>;" data-edit-path="cta.title"><?php echo h($contact['cta']['title']); ?></h2>
+        <p style="color: <?php echo h($contact['cta']['colors']['text']); ?>;" data-edit-path="cta.subtitle"><?php echo h($contact['cta']['subtitle']); ?></p>
         <a href="<?php echo h($contact['cta']['button_link']); ?>" class="btn btn-primary"><?php echo h($contact['cta']['button_text']); ?></a>
     </div>
 </section>
