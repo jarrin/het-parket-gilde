@@ -105,7 +105,7 @@
             {
                 "title": "Parketvloeren Leggen",
                 "description": "Wij leggen alle soorten parketvloeren, van klassieke visgraat tot moderne plankenvloeren. Elk project wordt met zorg en vakmanschap uitgevoerd.",
-                "image": "assets\/images\/service-leggen.jpg",
+                "image": "assets\/images\/img_690b09c084f8a_1762331072.jpg",
                 "colors": {
                     "background": "#2B3A52",
                     "text": "#E8E8E8",
@@ -121,7 +121,7 @@
             {
                 "title": "Schade Herstel & Renovatie",
                 "description": "Is uw parketvloer beschadigd of verouderd? Wij herstellen beschadigingen en renoveren oude vloeren tot in hun oude glorie.",
-                "image": "assets\/images\/service-herstel.jpg",
+                "image": "assets\/images\/img_690b09e761db0_1762331111.jpg",
                 "colors": {
                     "background": "#F5F5F5",
                     "text": "#2B3A52",
@@ -137,7 +137,7 @@
             {
                 "title": "Raamdecoratie",
                 "description": "Naast parketvloeren bieden wij ook maatwerk raamdecoratie. Van houten jaloezieën tot luxe shutters die perfect aansluiten bij uw interieur.",
-                "image": "assets\/images\/service-raam.jpg",
+                "image": "assets\/images\/img_690b09f03af40_1762331120.jpg",
                 "colors": {
                     "background": "#2B3A52",
                     "text": "#E8E8E8",
@@ -161,7 +161,7 @@
         "hero": {
             "title": "Over Het Parket Gilde",
             "subtitle": "Passie voor hout sinds 2008",
-            "image": "assets\/images\/hero-over-ons.jpg",
+            "image": "assets\/images\/img_690b09fdcfaf8_1762331133.jpg",
             "colors": {
                 "background": "#2b3a52",
                 "text": "#ffffff",

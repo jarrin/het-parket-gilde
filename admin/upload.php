@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Prevent any output before headers
 error_reporting(0);
 ini_set('display_errors', 0);
@@ -16,6 +16,26 @@ ob_clean();
 
 // Set header
 header('Content-Type: text/plain');
+// Capture any accidental output
+@ob_start();
+
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    @session_start();
+}
+
+// Clear any output that might have occurred
+@ob_end_clean();
+
+// Set header first
+header('Content-Type: text/plain; charset=utf-8');
+
+// Check authentication
+if (!isset($_SESSION['admin_user_id'])) {
+    http_response_code(401);
+    die('ERROR: Unauthorized');
+}
+
 // Define constants
 define('ROOT_PATH', dirname(__DIR__));
 define('UPLOAD_PATH', ROOT_PATH . '/assets/images');
