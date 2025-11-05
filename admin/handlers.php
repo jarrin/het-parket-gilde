@@ -63,6 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             break;
             
         case 'home_colors':
+            // Pagina achtergrond
+            $content['home']['colors']['sectionBg'] = $_POST['page_bg'] ?? '';
+            
             // Hero sectie kleuren
             $content['home']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
             $content['home']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
@@ -124,8 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             break;
             
         case 'diensten_colors':
-            // Pagina achtergrond kleur
-            $content['diensten']['colors']['page_background'] = $_POST['page_bg'] ?? '';
+            // Pagina achtergrond
+            $content['diensten']['colors']['sectionBg'] = $_POST['page_bg'] ?? '';
             
             // Hero sectie kleuren
             $content['diensten']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
@@ -160,6 +163,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             break;
             
         case 'over_ons_colors':
+            // Pagina achtergrond
+            $content['over_ons']['colors']['sectionBg'] = $_POST['page_bg'] ?? '';
+            
             // Hero sectie
             $content['over_ons']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
             $content['over_ons']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
@@ -233,6 +239,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['contact']['hours']['colors']['background'] = $_POST['hours_bg'] ?? '';
             $content['contact']['hours']['colors']['text'] = $_POST['hours_text'] ?? '';
             $content['contact']['hours']['colors']['title'] = $_POST['hours_title'] ?? '';
+            break;
+            
+        // CTA sections for all pages
+        case 'home_cta':
+            $content['home']['cta']['title'] = $_POST['cta_title'] ?? '';
+            $content['home']['cta']['subtitle'] = $_POST['cta_subtitle'] ?? '';
+            $content['home']['cta']['button_text'] = $_POST['cta_button_text'] ?? '';
+            $content['home']['cta']['button_link'] = $_POST['cta_button_link'] ?? '';
+            $content['home']['cta']['image'] = $_POST['cta_image'] ?? '';
+            $content['home']['cta']['colors']['background'] = $_POST['cta_bg'] ?? '';
+            $content['home']['cta']['colors']['text'] = $_POST['cta_text'] ?? '';
+            break;
+            
+        case 'diensten_cta':
+            $content['diensten']['cta']['title'] = $_POST['cta_title'] ?? '';
+            $content['diensten']['cta']['subtitle'] = $_POST['cta_subtitle'] ?? '';
+            $content['diensten']['cta']['button_text'] = $_POST['cta_button_text'] ?? '';
+            $content['diensten']['cta']['button_link'] = $_POST['cta_button_link'] ?? '';
+            $content['diensten']['cta']['image'] = $_POST['cta_image'] ?? '';
+            $content['diensten']['cta']['colors']['background'] = $_POST['cta_bg'] ?? '';
+            $content['diensten']['cta']['colors']['text'] = $_POST['cta_text'] ?? '';
+            break;
+            
+        case 'over_ons_cta':
+            $content['over_ons']['cta']['title'] = $_POST['cta_title'] ?? '';
+            $content['over_ons']['cta']['subtitle'] = $_POST['cta_subtitle'] ?? '';
+            $content['over_ons']['cta']['button_text'] = $_POST['cta_button_text'] ?? '';
+            $content['over_ons']['cta']['button_link'] = $_POST['cta_button_link'] ?? '';
+            $content['over_ons']['cta']['image'] = $_POST['cta_image'] ?? '';
+            $content['over_ons']['cta']['colors']['background'] = $_POST['cta_bg'] ?? '';
+            $content['over_ons']['cta']['colors']['text'] = $_POST['cta_text'] ?? '';
+            break;
+            
+        case 'contact_cta':
+            $content['contact']['cta']['title'] = $_POST['cta_title'] ?? '';
+            $content['contact']['cta']['subtitle'] = $_POST['cta_subtitle'] ?? '';
+            $content['contact']['cta']['button_text'] = $_POST['cta_button_text'] ?? '';
+            $content['contact']['cta']['button_link'] = $_POST['cta_button_link'] ?? '';
+            $content['contact']['cta']['image'] = $_POST['cta_image'] ?? '';
+            $content['contact']['cta']['colors']['background'] = $_POST['cta_bg'] ?? '';
+            $content['contact']['cta']['colors']['text'] = $_POST['cta_text'] ?? '';
             break;
     }
     

@@ -179,7 +179,19 @@
                     "title": "#2b3a52"
                 }
             }
-        ]
+        ],
+        "cta": {
+            "title": "Interesse in onze diensten?",
+            "subtitle": "Neem vrijblijvend contact met ons op voor meer informatie of een offerte op maat.",
+            "button_text": "Contact opnemen",
+            "button_link": "/contact.php",
+            "image": "",
+            "colors": {
+                "background": "#d4af7a",
+                "text": "#ffffff",
+                "overlay": "rgba(212, 175, 122, 0.8)"
+            }
+        }
     },
     "over_ons": {
         "colors": {
@@ -243,6 +255,18 @@
             "background": "#222e40",
             "text": "#222e40",
             "title": "#d4af7a"
+        },
+        "cta": {
+            "title": "Wilt u ons beter leren kennen?",
+            "subtitle": "Neem contact met ons op voor een vrijblijvend gesprek.",
+            "button_text": "Neem contact op",
+            "button_link": "/contact.php",
+            "image": "",
+            "colors": {
+                "background": "#d4af7a",
+                "text": "#ffffff",
+                "overlay": "rgba(212, 175, 122, 0.8)"
+            }
         }
     },
     "contact": {
@@ -303,6 +327,18 @@
                 "background": "#222e40",
                 "text": "#ffffff",
                 "title": "#d4af7a"
+            }
+        },
+        "cta": {
+            "title": "Klaar om uw project te starten?",
+            "subtitle": "Neem vandaag nog contact op en ontdek wat wij voor u kunnen betekenen.",
+            "button_text": "Bel ons direct",
+            "button_link": "tel:+31612345678",
+            "image": "",
+            "colors": {
+                "background": "#d4af7a",
+                "text": "#ffffff",
+                "overlay": "rgba(212, 175, 122, 0.8)"
             }
         }
     }

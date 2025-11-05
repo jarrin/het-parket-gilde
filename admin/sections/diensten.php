@@ -83,14 +83,14 @@
             <p>Pas de kleuren aan per sectie op de Diensten pagina.</p>
         </div>
         
-        <h4>Algemene Pagina Instellingen</h4>
+        <h4>Pagina Achtergrond</h4>
         <div class="form-group">
-            <label>Pagina Achtergrond Kleur</label>
+            <label>Pagina Achtergrondkleur</label>
             <div class="color-input-group">
-                <input type="color" name="page_bg" value="<?php echo h($content['diensten']['colors']['page_background'] ?? '#ffffff'); ?>" class="color-picker-input">
-                <input type="text" value="<?php echo h($content['diensten']['colors']['page_background'] ?? '#ffffff'); ?>" readonly class="color-text-input">
+                <input type="color" name="page_bg" value="<?php echo h($content['diensten']['colors']['sectionBg']); ?>" class="color-picker-input">
+                <input type="text" value="<?php echo h($content['diensten']['colors']['sectionBg']); ?>" readonly class="color-text-input">
             </div>
-            <small>De algemene achtergrondkleur van de Diensten pagina</small>
+            <small>De algemene achtergrondkleur van de hele pagina</small>
         </div>
         
         <h4>Hero Sectie (Banner Bovenaan)</h4>
@@ -145,6 +145,28 @@
         
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
+        </div>
+    </form>
+    
+    <form method="POST" style="margin-top: 30px;">
+        <input type="hidden" name="section" value="diensten_cta">
+        
+        <h3>CTA Sectie Bewerken</h3>
+        <div class="info-box" style="margin-bottom: 20px;">
+            <p>Pas de Call-to-Action sectie onderaan de pagina aan.</p>
+        </div>
+        
+        <div class="form-group">
+            <label>CTA Achtergrond Afbeelding</label>
+            <div class="image-input-group">
+                <input type="text" name="cta_image" id="diensten_cta_image" value="<?php echo h($content['diensten']['cta']['image'] ?? ''); ?>">
+                <button type="button" class="btn btn-secondary" data-media-input="diensten_cta_image">Bladeren</button>
+            </div>
+            <small>Optioneel - achtergrondafbeelding voor de CTA sectie (aanbevolen: 1920x400px)</small>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">CTA Afbeelding Opslaan</button>
         </div>
     </form>
 </div>

@@ -15,8 +15,14 @@ $currentPage = getCurrentPage();
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/dynamic-colors.php?page=<?php echo urlencode($currentPage); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <?php
+    // Get page-specific background color
+    $pageKey = $currentPage === 'home' ? 'home' : ($currentPage === 'diensten' ? 'diensten' : ($currentPage === 'over-ons' ? 'over_ons' : ($currentPage === 'contact' ? 'contact' : 'home')));
+    $pageBgColor = $content[$pageKey]['colors']['sectionBg'] ?? '#FFFFFF';
+    ?>
 </head>
-<body>
+<body style="background-color: <?php echo h($pageBgColor); ?>;">
+
     <header class="site-header" style="background-color: <?php echo h($site['colors']['header']['background']); ?>; color: <?php echo h($site['colors']['header']['text']); ?>;">
         <div class="container">
             <div class="header-content">

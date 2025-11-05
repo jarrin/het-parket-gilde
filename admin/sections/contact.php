@@ -130,11 +130,12 @@
         </div>
         
         <div class="form-group">
-            <label>Sectie Achtergrond</label>
+            <label>Pagina Achtergrondkleur</label>
             <div class="color-input-group">
                 <input type="color" id="contact_color_section_bg" name="color_section_bg" value="<?php echo h($content['contact']['colors']['sectionBg']); ?>">
                 <input type="text" id="contact_text_section_bg" value="<?php echo h($content['contact']['colors']['sectionBg']); ?>" readonly>
             </div>
+            <small>De algemene achtergrondkleur van de hele pagina</small>
         </div>
         
         <!-- Hero Colors -->
@@ -232,5 +233,27 @@
     
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
+    </div>
+</form>
+
+<form method="POST" style="margin-top: 30px;">
+    <input type="hidden" name="section" value="contact_cta">
+    
+    <h3>CTA Sectie Bewerken</h3>
+    <div class="info-box" style="margin-bottom: 20px;">
+        <p>Pas de Call-to-Action sectie onderaan de pagina aan.</p>
+    </div>
+    
+    <div class="form-group">
+        <label>CTA Achtergrond Afbeelding</label>
+        <div class="image-input-group">
+            <input type="text" name="cta_image" id="contact_cta_image" value="<?php echo h($content['contact']['cta']['image'] ?? ''); ?>">
+            <button type="button" class="btn btn-secondary" data-media-input="contact_cta_image">Bladeren</button>
+        </div>
+        <small>Optioneel - achtergrondafbeelding voor de CTA sectie (aanbevolen: 1920x400px)</small>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">CTA Afbeelding Opslaan</button>
     </div>
 </form>
