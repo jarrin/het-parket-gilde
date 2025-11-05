@@ -24,12 +24,14 @@ function openMediaBrowser(inputId) {
         }
         
         // Upload the file
-        const formData = new FormData();
-        formData.append('image', file);
-        
-        // Show loading state
         const targetInput = document.getElementById(inputId);
         const originalValue = targetInput.value;
+        
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('old_image', originalValue); // Send old image path for deletion
+        
+        // Show loading state
         targetInput.value = 'Uploading...';
         targetInput.disabled = true;
         
@@ -37,22 +39,29 @@ function openMediaBrowser(inputId) {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-            if (data.success) {
-                targetInput.value = data.path;
-                alert('Afbeelding succesvol geüpload: ' + data.filename);
+            console.log('Upload response:', data); // Debug logging
+            targetInput.disabled = false;
+            if (data.startsWith('SUCCESS:')) {
+                const imagePath = data.replace('SUCCESS:', '');
+                targetInput.value = imagePath;
+                alert('Afbeelding succesvol geüpload! Vergeet niet op "Wijzigingen Opslaan" te klikken.');
+            } else if (data.startsWith('ERROR:')) {
+                targetInput.value = originalValue;
+                const errorMsg = data.replace('ERROR:', '').trim();
+                alert('Upload mislukt: ' + errorMsg);
             } else {
                 targetInput.value = originalValue;
-                alert('Upload mislukt: ' + data.message);
+                console.error('Unexpected response:', data);
+                alert('Upload mislukt: Onbekende response. Zie console voor details.');
             }
         })
         .catch(error => {
+            console.error('Upload error:', error);
+            targetInput.disabled = false;
             targetInput.value = originalValue;
             alert('Upload mislukt: ' + error.message);
-        })
-        .finally(() => {
-            targetInput.disabled = false;
         });
     };
     

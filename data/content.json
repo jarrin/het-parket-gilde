@@ -19,14 +19,14 @@
             "white": "#FFFFFF",
             "border": "#3D4F6B",
             "header": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
-                "logo": "#D4AF7A"
+                "background": "#2b3a52",
+                "text": "#ffffff",
+                "logo": "#d4af7a"
             },
             "footer": {
-                "background": "#1E2838",
-                "text": "#E8E8E8",
-                "links": "#D4AF7A"
+                "background": "#1e2838",
+                "text": "#e8e8e8",
+                "links": "#d4af7a"
             }
         }
     },
@@ -40,7 +40,7 @@
             "title": "Het Parket Gilde",
             "subtitle": "Vakmanschap in hout",
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
-            "image": "assets\/images\/img_6909d4032460f2.94093668.jpg",
+            "image": "assets\/images\/img_690b07e011ee2_1762330592.png",
             "colors": {
                 "background": "#2B3A52",
                 "text": "#FFFFFF",
