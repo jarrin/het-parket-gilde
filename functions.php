@@ -261,7 +261,7 @@ function handleImageUpload($fileInputName) {
     finfo_close($finfo);
     
     if (!in_array($mimeType, ALLOWED_IMAGE_TYPES)) {
-        return ['success' => false, 'message' => 'Alleen JPG, PNG, GIF en WebP afbeeldingen zijn toegestaan'];
+        return ['success' => false, 'message' => 'Alleen JPG, PNG, GIF, WebP en SVG afbeeldingen zijn toegestaan'];
     }
     
     $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));

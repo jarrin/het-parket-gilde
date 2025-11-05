@@ -30,7 +30,7 @@ include 'includes/header.php';
                     <div class="contact-icon">☎</div>
                     <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['phone']['label']); ?></h3>
                     <p>
-                        <a href="<?php echo h($contact['info']['phone']['link']); ?>">
+                        <a href="<?php echo h($contact['info']['phone']['link']); ?>" style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
                             <?php echo h($contact['info']['phone']['value']); ?>
                         </a>
                     </p>
@@ -42,7 +42,7 @@ include 'includes/header.php';
                     <div class="contact-icon">@</div>
                     <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['email']['label']); ?></h3>
                     <p>
-                        <a href="<?php echo h($contact['info']['email']['link']); ?>">
+                        <a href="<?php echo h($contact['info']['email']['link']); ?>" style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
                             <?php echo h($contact['info']['email']['value']); ?>
                         </a>
                     </p>
@@ -53,7 +53,7 @@ include 'includes/header.php';
                 <div class="contact-card">
                     <div class="contact-icon">⌂</div>
                     <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['address']['label']); ?></h3>
-                    <p>
+                    <p style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
                         <?php echo h($contact['info']['address']['street']); ?><br>
                         <?php echo h($contact['info']['address']['city']); ?>
                     </p>

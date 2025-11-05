@@ -48,7 +48,7 @@ define('SESSION_LIFETIME', 7200); // 2 hours in seconds
 
 // Upload settings
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
-define('ALLOWED_IMAGE_TYPES', ['image/jpeg', 'image/png', 'image/gif', 'image/webp']);
+define('ALLOWED_IMAGE_TYPES', ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']);
 
 // Error reporting (set to 0 in production)
 error_reporting(E_ALL);

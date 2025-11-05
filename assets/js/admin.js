@@ -5,7 +5,7 @@ function openMediaBrowser(inputId) {
     // Create a temporary file input
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
-    fileInput.accept = 'image/*';
+    fileInput.accept = 'image/*,.svg';
     
     fileInput.onchange = function(e) {
         const file = e.target.files[0];
@@ -114,4 +114,121 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+    // Dynamic diensten management
+    initDienstenManager();
 });
+
+function initDienstenManager() {
+    const addBtn = document.getElementById('add-service-btn');
+    const container = document.getElementById('services-container');
+    const countInput = document.getElementById('service_count');
+    
+    if (!addBtn || !container) return;
+    
+    // Add new service
+    addBtn.addEventListener('click', function() {
+        const currentCount = container.querySelectorAll('.service-block').length;
+        const newIndex = currentCount;
+        
+        const newBlock = document.createElement('div');
+        newBlock.className = 'service-block';
+        newBlock.setAttribute('data-service-index', newIndex);
+        newBlock.style.cssText = 'border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 5px; position: relative;';
+        
+        newBlock.innerHTML = `
+            <button type="button" class="btn btn-danger btn-sm remove-service-btn" style="position: absolute; top: 10px; right: 10px;">✕ Verwijderen</button>
+            <h4>Dienst ${newIndex + 1}: Nieuwe Dienst</h4>
+            <div class="form-group">
+                <label>Dienst Naam</label>
+                <input type="text" name="service_title_${newIndex}" value="" required>
+            </div>
+            <div class="form-group">
+                <label>Dienst Beschrijving</label>
+                <textarea name="service_desc_${newIndex}" required></textarea>
+                <small>Uitleg over deze dienst</small>
+            </div>
+            <div class="form-group">
+                <label>Dienst Afbeelding</label>
+                <div class="image-input-group">
+                    <input type="text" name="service_image_${newIndex}" id="service_image_${newIndex}" value="" required>
+                    <button type="button" class="btn btn-secondary" data-media-input="service_image_${newIndex}">Bladeren</button>
+                </div>
+                <small>Pad: assets/images/service-${newIndex + 1}.jpg</small>
+            </div>
+            <div class="form-group">
+                <label>Features (één per regel)</label>
+                <textarea name="service_features_${newIndex}" rows="4"></textarea>
+                <small>Voer elke feature op een nieuwe regel in</small>
+            </div>
+        `;
+        
+        container.appendChild(newBlock);
+        countInput.value = newIndex + 1;
+        
+        // Reinitialize media browsers
+        initMediaBrowsers();
+        
+        // Add remove listener
+        newBlock.querySelector('.remove-service-btn').addEventListener('click', function() {
+            removeService(newBlock);
+        });
+    });
+    
+    // Remove service handlers
+    container.querySelectorAll('.remove-service-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            removeService(this.closest('.service-block'));
+        });
+    });
+}
+
+function removeService(block) {
+    if (document.querySelectorAll('.service-block').length <= 1) {
+        alert('Je moet minimaal 1 dienst hebben!');
+        return;
+    }
+    
+    if (confirm('Weet je zeker dat je deze dienst wilt verwijderen?')) {
+        block.remove();
+        
+        // Renumber remaining services
+        document.querySelectorAll('.service-block').forEach((block, idx) => {
+            block.setAttribute('data-service-index', idx);
+            const heading = block.querySelector('h4');
+            if (heading) {
+                const titleInput = block.querySelector('input[name^="service_title_"]');
+                const title = titleInput ? titleInput.value || 'Nieuwe Dienst' : 'Nieuwe Dienst';
+                heading.textContent = `Dienst ${idx + 1}: ${title}`;
+            }
+            
+            // Update field names
+            block.querySelectorAll('input, textarea').forEach(field => {
+                const name = field.getAttribute('name');
+                if (name && name.includes('_')) {
+                    const parts = name.split('_');
+                    parts[parts.length - 1] = idx;
+                    field.setAttribute('name', parts.join('_'));
+                }
+                if (field.id && field.id.includes('_')) {
+                    const parts = field.id.split('_');
+                    parts[parts.length - 1] = idx;
+                    field.id = parts.join('_');
+                }
+            });
+            
+            // Update media browser buttons
+            block.querySelectorAll('[data-media-input]').forEach(btn => {
+                const inputId = btn.getAttribute('data-media-input');
+                if (inputId && inputId.includes('_')) {
+                    const parts = inputId.split('_');
+                    parts[parts.length - 1] = idx;
+                    btn.setAttribute('data-media-input', parts.join('_'));
+                }
+            });
+        });
+        
+        // Update count
+        document.getElementById('service_count').value = document.querySelectorAll('.service-block').length;
+    }
+}

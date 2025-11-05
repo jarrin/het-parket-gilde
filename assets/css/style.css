@@ -136,6 +136,22 @@ p {
 .logo a {
     color: var(--primary-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    max-height: 60px;
+    height: auto;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .site-logo {
+        max-height: 45px;
+    }
 }
 
 .main-nav ul {
@@ -148,15 +164,23 @@ p {
 .main-nav a {
     color: var(--text-color);
     font-weight: 500;
-    padding: 8px 0;
-    border-bottom: 2px solid transparent;
+    padding: 8px 16px;
+    border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-.main-nav a:hover,
+.main-nav a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
 .main-nav a.active {
     color: var(--primary-color);
     border-bottom-color: var(--primary-color);
+    font-weight: 600;
+    background: rgba(212, 175, 122, 0.1);
+    border-radius: 4px 4px 0 0;
 }
 
 .mobile-menu-toggle {
@@ -176,9 +200,23 @@ p {
     transition: all 0.3s ease;
 }
 
+/* Hamburger animation */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: flex;
+        z-index: 1001;
     }
     
     .nav-menu {
@@ -191,6 +229,19 @@ p {
         flex-direction: column;
         padding: 20px;
         box-shadow: var(--shadow);
+        z-index: 1000;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     
     .nav-menu.active {
@@ -200,6 +251,23 @@ p {
     .main-nav ul {
         flex-direction: column;
         gap: 15px;
+    }
+    
+    .main-nav a {
+        padding: 12px 16px;
+        display: block;
+        border-radius: 5px;
+        border-bottom: none;
+    }
+    
+    .main-nav a.active {
+        background: var(--primary-color);
+        color: var(--white);
+    }
+    
+    .main-nav a:hover {
+        background: rgba(212, 175, 122, 0.2);
+        border-bottom: none;
     }
 }
 
@@ -319,8 +387,11 @@ p {
 }
 
 .intro-image {
+    width: 100%;
+    height: auto;
     border-radius: 10px;
     box-shadow: var(--shadow);
+    display: block;
 }
 
 .vakmanschap-section {
@@ -364,6 +435,21 @@ p {
     color: var(--primary-color);
 }
 
+.feature-image {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* ==========================================
    Services Page
    ========================================== */
@@ -372,7 +458,8 @@ p {
 }
 
 .service-item {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+    padding: 30px 0;
 }
 
 .service-item:last-child {
@@ -381,16 +468,20 @@ p {
 
 .service-item .row {
     align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .service-image {
     width: 100%;
+    max-height: 350px;
+    object-fit: cover;
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
 
 .service-content {
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .service-content h2 {
@@ -558,21 +649,44 @@ p {
    CTA Section
    ========================================== */
 .cta-section {
+    position: relative;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--white);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .cta-section h2 {
     color: var(--white);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
 .cta-section .btn-primary {
     background: var(--white);
     color: var(--primary-color);
+    font-size: 1.1rem;
+    padding: 15px 40px;
 }
 
 .cta-section .btn-primary:hover {
     background: var(--bg-light);
+    transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -630,27 +744,321 @@ p {
 /* ==========================================
    Responsive Design
    ========================================== */
+
+/* Large tablets and small desktops (992px and below) */
 @media (max-width: 992px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
     h3 { font-size: 1.5rem; }
     
+    .container {
+        padding: 0 20px;
+    }
+    
     .section {
         padding: 60px 0;
     }
+    
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .service-content {
+        padding: 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
 }
 
+/* Tablets (768px and below) */
 @media (max-width: 768px) {
+    /* Header and Navigation */
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    
+    .site-logo {
+        max-height: 45px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    /* Features Section */
+    .features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-card {
+        padding: 30px 20px;
+    }
+    
+    .feature-image {
+        height: 180px;
+    }
+    
+    /* Services Section */
+    .service-item {
+        margin-bottom: 40px;
+        padding: 20px 0;
+    }
+    
     .service-item .col-md-6 {
         order: 1 !important;
     }
     
     .service-item .service-image {
         margin-bottom: 20px;
+        max-height: 250px;
     }
     
+    .service-content {
+        padding: 10px;
+    }
+    
+    .service-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Intro Section */
+    .intro-section .row {
+        flex-direction: column;
+    }
+    
+    .intro-section .col-md-6 {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .intro-image {
+        max-height: 300px;
+        object-fit: cover;
+    }
+    
+    /* Story Section */
+    .story-content .row {
+        flex-direction: column;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        min-height: 300px;
+        padding: 40px 0;
+    }
+    
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+    }
+    
+    .cta-section .btn-primary {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
+        text-align: center;
+    }
+    
+    .site-footer {
+        padding: 40px 0 20px;
+    }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+    /* Typography */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    
+    body {
+        font-size: 0.95rem;
+    }
+    
+    /* Container */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Sections */
+    .section {
+        padding: 40px 0;
+    }
+    
+    /* Header */
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    
+    .site-logo {
+        max-height: 40px;
+    }
+    
+    /* Hero */
+    .hero {
+        height: 350px;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    
+    /* Feature Cards */
+    .feature-card {
+        padding: 20px 15px;
+    }
+    
+    .feature-image {
+        height: 150px;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+    
+    /* Services */
+    .service-item {
+        margin-bottom: 30px;
+    }
+    
+    .service-image {
+        max-height: 200px;
+    }
+    
+    .service-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .service-features li {
+        font-size: 0.9rem;
+        padding: 8px 0;
+        padding-left: 25px;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        min-height: 250px;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .cta-section p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Contact Page */
+    .contact-info {
+        padding: 15px;
+        margin-top: 30px;
+    }
+    
+    .contact-card {
+        padding: 25px 15px;
+        margin-bottom: 15px;
+    }
+    
+    .contact-icon {
+        font-size: 2.2rem;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Footer */
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices (360px and below) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .hero-title {
+        font-size: 1.4rem;
+    }
+    
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .service-item .row {
+        max-width: 100%;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: 300px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .section {
+        padding: 40px 0;
     }
 }

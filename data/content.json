@@ -2,6 +2,7 @@
     "site": {
         "title": "Het Parket Gilde",
         "description": "Vakmanschap in hout - Specialist in parketvloeren",
+        "logo": "assets\/images\/img_690b24a92ec1d_1762337961.svg",
         "contact": {
             "phone": "+31 6 12345678",
             "email": "info@hetparketgilde.nl",
@@ -70,19 +71,34 @@
                 {
                     "title": "Ervaring",
                     "description": "Meer dan 15 jaar expertise in parketvloeren",
-                    "icon": "+"
+                    "icon": "+",
+                    "image": "assets\/images\/img_690b27af99b35_1762338735.JPG"
                 },
                 {
                     "title": "Kwaliteit",
                     "description": "Uitsluitend hoogwaardige materialen",
-                    "icon": "+"
+                    "icon": "+",
+                    "image": "assets\/images\/img_690b27c6134e9_1762338758.JPG"
                 },
                 {
                     "title": "Maatwerk",
                     "description": "Elke vloer op maat gemaakt",
-                    "icon": "+"
+                    "icon": "+",
+                    "image": "assets\/images\/img_690b27da234a4_1762338778.JPG"
                 }
             ]
+        },
+        "cta": {
+            "title": "Neem contact met ons op",
+            "subtitle": "Wilt u meer weten of een vrijblijvende offerte aanvragen?",
+            "button_text": "Contacteer ons",
+            "button_link": "\/contact.php",
+            "image": "assets\/images\/img_690b29639835f_1762339171.JPG",
+            "colors": {
+                "background": "#d4af7a",
+                "text": "#ffffff",
+                "overlay": "rgba(212, 175, 122, 0.8)"
+            }
         }
     },
     "diensten": {
@@ -96,8 +112,8 @@
             "subtitle": "Compleet vakmanschap voor uw vloer",
             "image": "assets\/images\/img_690b0fe5c6ec1_1762332645.jpg",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
+                "background": "#2b3a52",
+                "text": "#ffffff",
                 "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
@@ -106,49 +122,62 @@
                 "title": "Parketvloeren Leggen",
                 "description": "Wij leggen alle soorten parketvloeren, van klassieke visgraat tot moderne plankenvloeren. Elk project wordt met zorg en vakmanschap uitgevoerd.",
                 "image": "assets\/images\/img_690b0e162693d_1762332182.jpg",
-                "colors": {
-                    "background": "#2B3A52",
-                    "text": "#E8E8E8",
-                    "title": "#D4AF7A"
-                },
                 "features": [
                     "Visgraatvloeren",
                     "Plankenvloeren",
                     "Hongaarse punt",
                     "Mozaïekparket"
-                ]
+                ],
+                "colors": {
+                    "background": "#2b3a52",
+                    "text": "#e8e8e8",
+                    "title": "#d4af7a"
+                }
             },
             {
                 "title": "Schade Herstel & Renovatie",
                 "description": "Is uw parketvloer beschadigd of verouderd? Wij herstellen beschadigingen en renoveren oude vloeren tot in hun oude glorie.",
                 "image": "assets\/images\/img_690b0e1ba97e4_1762332187.jpg",
-                "colors": {
-                    "background": "#F5F5F5",
-                    "text": "#2B3A52",
-                    "title": "#D4AF7A"
-                },
                 "features": [
                     "Krasverwijdering",
                     "Deukenherstel",
                     "Vervanging planken",
                     "Volledig schuren en afwerken"
-                ]
+                ],
+                "colors": {
+                    "background": "#fd4137",
+                    "text": "#2b3a52",
+                    "title": "#d4af7a"
+                }
             },
             {
                 "title": "Raamdecoratie",
                 "description": "Naast parketvloeren bieden wij ook maatwerk raamdecoratie. Van houten jaloezieën tot luxe shutters die perfect aansluiten bij uw interieur.",
                 "image": "assets\/images\/img_690b0e2234881_1762332194.jpg",
-                "colors": {
-                    "background": "#2B3A52",
-                    "text": "#E8E8E8",
-                    "title": "#D4AF7A"
-                },
                 "features": [
                     "Houten jaloezieën",
                     "Plantation shutters",
                     "Op maat gemaakt",
                     "Professionele montage"
-                ]
+                ],
+                "colors": {
+                    "background": "#2b3a52",
+                    "text": "#e8e8e8",
+                    "title": "#d4af7a"
+                }
+            },
+            {
+                "title": "test",
+                "description": "test",
+                "image": "assets\/images\/img_690b284160a1f_1762338881.JPG",
+                "features": [
+                    "hier dit is een test met een foto en text"
+                ],
+                "colors": {
+                    "background": "#f5f5f5",
+                    "text": "#333333",
+                    "title": "#2b3a52"
+                }
             }
         ]
     },
@@ -244,22 +273,22 @@
         "info": {
             "phone": {
                 "label": "Telefoon",
-                "value": "",
+                "value": "+31 6 12345678",
                 "link": "tel:+31612345678"
             },
             "email": {
                 "label": "E-mail",
-                "value": "",
+                "value": "info@hetparketgilde.nl",
                 "link": "mailto:info@hetparketgilde.nl"
             },
             "address": {
                 "label": "Adres",
-                "street": "",
-                "city": ""
+                "street": "Voorbeeldstraat 123",
+                "city": "1234 AB Amsterdam"
             },
             "colors": {
                 "background": "#2B3A52",
-                "text": "#E8E8E8",
+                "text": "#000000",
                 "title": "#D4AF7A"
             }
         },

@@ -4,11 +4,12 @@
         <a href="/diensten.php" target="_blank" class="preview-link">Bekijk Pagina</a>
     </div>
     <div class="info-box">
-        <p>Bewerk de diensten die u aanbiedt. Momenteel zijn er 3 diensten zichtbaar op de website.</p>
+        <p>Bewerk de diensten die u aanbiedt. Momenteel zijn er <?php echo count($content['diensten']['services']); ?> dienst(en) zichtbaar op de website.</p>
     </div>
     
-    <form method="POST">
+    <form method="POST" id="diensten-form">
         <input type="hidden" name="section" value="diensten">
+        <input type="hidden" name="service_count" id="service_count" value="<?php echo count($content['diensten']['services']); ?>">
         
         <h3>Hero Sectie</h3>
         
@@ -31,29 +32,42 @@
             <small>Pad: assets/images/hero-diensten.jpg</small>
         </div>
         
+        <h3>Diensten <button type="button" class="btn btn-success btn-sm" id="add-service-btn" style="margin-left: 10px;">+ Nieuwe Dienst Toevoegen</button></h3>
+        
+        <div id="services-container">
         <?php foreach ($content['diensten']['services'] as $index => $service): ?>
-            <h3>Dienst <?php echo $index + 1; ?>: <?php echo h($service['title']); ?></h3>
+            <div class="service-block" data-service-index="<?php echo $index; ?>" style="border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 5px; position: relative;">
+                <button type="button" class="btn btn-danger btn-sm remove-service-btn" style="position: absolute; top: 10px; right: 10px;">✕ Verwijderen</button>
+                <h4>Dienst <?php echo $index + 1; ?>: <?php echo h($service['title']); ?></h4>
             
-            <div class="form-group">
-                <label>Dienst Naam</label>
-                <input type="text" name="service_title_<?php echo $index; ?>" value="<?php echo h($service['title']); ?>" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Dienst Beschrijving</label>
-                <textarea name="service_desc_<?php echo $index; ?>" required><?php echo h($service['description']); ?></textarea>
-                <small>Uitleg over deze dienst</small>
-            </div>
-            
-            <div class="form-group">
-                <label>Dienst Afbeelding</label>
-                <div class="image-input-group">
-                    <input type="text" name="service_image_<?php echo $index; ?>" id="service_image_<?php echo $index; ?>" value="<?php echo h($service['image']); ?>" required>
-                    <button type="button" class="btn btn-secondary" data-media-input="service_image_<?php echo $index; ?>">Bladeren</button>
+                <div class="form-group">
+                    <label>Dienst Naam</label>
+                    <input type="text" name="service_title_<?php echo $index; ?>" value="<?php echo h($service['title']); ?>" required>
                 </div>
-                <small>Pad: assets/images/service-<?php echo $index + 1; ?>.jpg</small>
+                
+                <div class="form-group">
+                    <label>Dienst Beschrijving</label>
+                    <textarea name="service_desc_<?php echo $index; ?>" required><?php echo h($service['description']); ?></textarea>
+                    <small>Uitleg over deze dienst</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Dienst Afbeelding</label>
+                    <div class="image-input-group">
+                        <input type="text" name="service_image_<?php echo $index; ?>" id="service_image_<?php echo $index; ?>" value="<?php echo h($service['image']); ?>" required>
+                        <button type="button" class="btn btn-secondary" data-media-input="service_image_<?php echo $index; ?>">Bladeren</button>
+                    </div>
+                    <small>Pad: assets/images/service-<?php echo $index + 1; ?>.jpg</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Features (één per regel)</label>
+                    <textarea name="service_features_<?php echo $index; ?>" rows="4"><?php echo implode("\n", $service['features']); ?></textarea>
+                    <small>Voer elke feature op een nieuwe regel in</small>
+                </div>
             </div>
         <?php endforeach; ?>
+        </div>
         
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Wijzigingen Opslaan</button>

@@ -21,7 +21,15 @@ $currentPage = getCurrentPage();
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1><a href="/index.php" style="color: <?php echo h($site['colors']['header']['logo']); ?>;"><?php echo h($site['title']); ?></a></h1>
+                    <h1>
+                        <a href="/index.php" style="color: <?php echo h($site['colors']['header']['logo']); ?>;">
+                            <?php if (!empty($site['logo'])): ?>
+                                <img src="/<?php echo h($site['logo']); ?>" alt="<?php echo h($site['title']); ?>" class="site-logo">
+                            <?php else: ?>
+                                <?php echo h($site['title']); ?>
+                            <?php endif; ?>
+                        </a>
+                    </h1>
                 </div>
                 <nav class="main-nav">
                     <button class="mobile-menu-toggle" aria-label="Menu">
