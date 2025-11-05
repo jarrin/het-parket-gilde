@@ -194,11 +194,11 @@
             }
         ],
         "cta": {
-            "title": "Interesse in onze diensten?",
-            "subtitle": "Neem vrijblijvend contact met ons op voor meer informatie of een offerte op maat.",
-            "button_text": "Contact opnemen",
-            "button_link": "\/contact.php",
-            "image": "",
+            "title": "",
+            "subtitle": "",
+            "button_text": "",
+            "button_link": "",
+            "image": "assets\/images\/img_690b4a7540bc4_1762347637.jpg",
             "colors": {
                 "background": "",
                 "text": "",
@@ -270,11 +270,11 @@
             "title": "#d4af7a"
         },
         "cta": {
-            "title": "Wilt u ons beter leren kennen?",
-            "subtitle": "Neem contact met ons op voor een vrijblijvend gesprek.",
-            "button_text": "Neem contact op",
-            "button_link": "\/contact.php",
-            "image": "",
+            "title": "",
+            "subtitle": "",
+            "button_text": "",
+            "button_link": "",
+            "image": "assets\/images\/img_690b4a6bf3318_1762347627.jpg",
             "colors": {
                 "background": "",
                 "text": "",
@@ -291,7 +291,7 @@
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/img_690b428194298_1762345601.JPG",
+            "image": "assets\/images\/img_690b4943b7c82_1762347331.jpg",
             "colors": {
                 "background": "#222e40",
                 "text": "#ffffff",
@@ -343,14 +343,14 @@
             }
         },
         "cta": {
-            "title": "test",
-            "subtitle": "test",
-            "button_text": "hallo",
+            "title": "Neem contact met ons op",
+            "subtitle": "Neem contact met ons op voor uw persoonlijke offerte ",
+            "button_text": "Contact",
             "button_link": "",
-            "image": "assets\/images\/img_690b44cbb15d9_1762346187.JPG",
+            "image": "assets\/images\/img_690b49f457faf_1762347508.jpg",
             "colors": {
                 "background": "#000000",
-                "text": "#000000",
+                "text": "#ffffff",
                 "overlay": "rgba(34, 46, 64, 0.7)"
             }
         }
