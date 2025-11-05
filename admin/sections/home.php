@@ -187,6 +187,16 @@
             <p>Pas de kleuren aan per sectie op de Home pagina.</p>
         </div>
         
+        <h4>Pagina Achtergrond</h4>
+        <div class="form-group">
+            <label for="home_page_bg">Pagina Achtergrondkleur</label>
+            <div class="color-input-group">
+                <input id="home_page_bg" type="color" name="page_bg" value="<?php echo h($content['home']['colors']['sectionBg']); ?>" class="color-picker-input">
+                <input type="text" value="<?php echo h($content['home']['colors']['sectionBg']); ?>" readonly class="color-text-input">
+            </div>
+            <small>De algemene achtergrondkleur van de hele pagina</small>
+        </div>
+        
         <h4>Hero Sectie (Banner Bovenaan)</h4>
         <div class="form-group">
             <label for="home_hero_bg">Hero Achtergrond</label>
@@ -286,6 +296,28 @@
         
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Kleuren Opslaan</button>
+        </div>
+    </form>
+    
+    <form method="POST" style="margin-top: 30px;">
+        <input type="hidden" name="section" value="home_cta">
+        
+        <h3>CTA Sectie Bewerken</h3>
+        <div class="info-box" style="margin-bottom: 20px;">
+            <p>Pas de Call-to-Action sectie onderaan de pagina aan.</p>
+        </div>
+        
+        <div class="form-group">
+            <label>CTA Achtergrond Afbeelding</label>
+            <div class="image-input-group">
+                <input type="text" name="cta_image" id="home_cta_image" value="<?php echo h($content['home']['cta']['image'] ?? ''); ?>">
+                <button type="button" class="btn btn-secondary" data-media-input="home_cta_image">Bladeren</button>
+            </div>
+            <small>Optioneel - achtergrondafbeelding voor de CTA sectie (aanbevolen: 1920x400px)</small>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">CTA Afbeelding Opslaan</button>
         </div>
     </form>
 </div>

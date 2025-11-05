@@ -45,11 +45,11 @@ include 'includes/header.php';
     </div>
 </section>
 
-<section class="section cta-section">
+<section class="section cta-section" style="background-image: url('<?php echo h($diensten['cta']['image']); ?>'); background-color: <?php echo h($diensten['cta']['colors']['background']); ?>;" data-edit-image="cta.image">
     <div class="container text-center">
-        <h2>Interesse in onze diensten?</h2>
-        <p>Neem vrijblijvend contact met ons op voor meer informatie of een offerte op maat.</p>
-        <a href="/contact.php" class="btn btn-primary">Contact opnemen</a>
+        <h2 style="color: <?php echo h($diensten['cta']['colors']['text']); ?>; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);" data-edit-path="cta.title"><?php echo h($diensten['cta']['title']); ?></h2>
+        <p style="color: <?php echo h($diensten['cta']['colors']['text']); ?>; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);" data-edit-path="cta.subtitle"><?php echo h($diensten['cta']['subtitle']); ?></p>
+        <a href="<?php echo h($diensten['cta']['button_link']); ?>" class="btn btn-primary"><?php echo h($diensten['cta']['button_text']); ?></a>
     </div>
 </section>
 
