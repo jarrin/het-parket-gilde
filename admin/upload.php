@@ -1,15 +1,23 @@
-﻿<?php
-// Start session first before any output
-session_start();
+<?php
+// Capture any accidental output
+@ob_start();
+
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    @session_start();
+}
+
+// Clear any output that might have occurred
+@ob_end_clean();
+
+// Set header first
+header('Content-Type: text/plain; charset=utf-8');
 
 // Check authentication
 if (!isset($_SESSION['admin_user_id'])) {
     http_response_code(401);
     die('ERROR: Unauthorized');
 }
-
-// Set header
-header('Content-Type: text/plain');
 
 // Define constants
 define('ROOT_PATH', dirname(__DIR__));
