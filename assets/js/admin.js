@@ -1,5 +1,75 @@
 // Admin Panel JavaScript
 
+// Custom styled confirm dialog
+function showCustomConfirm(message, onConfirm) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center;';
+    
+    // Create dialog
+    const dialog = document.createElement('div');
+    dialog.style.cssText = 'background: white; border-radius: 8px; padding: 30px; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);';
+    
+    dialog.innerHTML = `
+        <h3 style="margin: 0 0 20px 0; color: #2c3e50; font-size: 18px;">Bevestiging</h3>
+        <p style="margin: 0 0 25px 0; color: #555; line-height: 1.6;">${message}</p>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button class="custom-cancel-btn" style="padding: 10px 24px; border: 2px solid #95a5a6; background: white; color: #555; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">Annuleren</button>
+            <button class="custom-confirm-btn" style="padding: 10px 24px; border: none; background: #e74c3c; color: white; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">Verwijderen</button>
+        </div>
+    `;
+    
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+    
+    // Handle buttons
+    dialog.querySelector('.custom-cancel-btn').onclick = function() {
+        document.body.removeChild(overlay);
+    };
+    
+    dialog.querySelector('.custom-confirm-btn').onclick = function() {
+        document.body.removeChild(overlay);
+        onConfirm();
+    };
+    
+    // Close on overlay click
+    overlay.onclick = function(e) {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    };
+}
+
+// Custom styled alert
+function showCustomAlert(message) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center;';
+    
+    const dialog = document.createElement('div');
+    dialog.style.cssText = 'background: white; border-radius: 8px; padding: 30px; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);';
+    
+    dialog.innerHTML = `
+        <h3 style="margin: 0 0 20px 0; color: #2c3e50; font-size: 18px;">Let op</h3>
+        <p style="margin: 0 0 25px 0; color: #555; line-height: 1.6;">${message}</p>
+        <div style="display: flex; justify-content: flex-end;">
+            <button class="custom-ok-btn" style="padding: 10px 24px; border: none; background: #3498db; color: white; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">OK</button>
+        </div>
+    `;
+    
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+    
+    dialog.querySelector('.custom-ok-btn').onclick = function() {
+        document.body.removeChild(overlay);
+    };
+    
+    overlay.onclick = function(e) {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    };
+}
+
 // Direct file upload functionality
 function openMediaBrowser(inputId) {
     // Create a temporary file input
@@ -124,7 +194,12 @@ function initDienstenManager() {
     const container = document.getElementById('services-container');
     const countInput = document.getElementById('service_count');
     
-    if (!addBtn || !container) return;
+    if (!addBtn || !container) {
+        console.log('Diensten manager niet geinitialiseerd - elementen niet gevonden');
+        return;
+    }
+    
+    console.log('Diensten manager geinitialiseerd');
     
     // Add new service
     addBtn.addEventListener('click', function() {
@@ -168,21 +243,24 @@ function initDienstenManager() {
         
         // Reinitialize media browsers
         initMediaBrowsers();
-        
-        // Add remove listener
-        newBlock.querySelector('.remove-service-btn').addEventListener('click', function() {
-            removeService(newBlock);
-        });
     });
     
-    // Remove service handlers for existing services
-    container.querySelectorAll('.remove-service-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+    // Use event delegation for remove buttons (works for existing and new buttons)
+    container.addEventListener('click', function(e) {
+        // Check if clicked element or its parent is a remove button
+        const removeBtn = e.target.closest('.remove-service-btn');
+        if (removeBtn) {
             e.preventDefault();
-            console.log('Remove button clicked');
-            removeService(this.closest('.service-block'));
-        });
+            e.stopPropagation();
+            console.log('Remove button clicked via delegation');
+            const block = removeBtn.closest('.service-block');
+            if (block) {
+                removeService(block);
+            }
+        }
     });
+    
+    console.log('Event delegation ingesteld voor remove buttons');
 }
 
 function removeService(block) {
@@ -191,11 +269,11 @@ function removeService(block) {
     console.log('Total services:', totalServices);
     
     if (totalServices <= 1) {
-        alert('Je moet minimaal 1 dienst hebben!');
+        showCustomAlert('Je moet minimaal 1 dienst hebben!');
         return;
     }
     
-    if (confirm('Weet je zeker dat je deze dienst wilt verwijderen?')) {
+    showCustomConfirm('Weet je zeker dat je deze dienst wilt verwijderen?', function() {
         console.log('User confirmed removal');
         block.remove();
         
@@ -236,6 +314,52 @@ function removeService(block) {
         });
         
         // Update count
-        document.getElementById('service_count').value = document.querySelectorAll('.service-block').length;
+        const countInput = document.getElementById('service_count');
+        if (countInput) {
+            countInput.value = document.querySelectorAll('.service-block').length;
+        }
+        
+        // Show save reminder
+        showSaveReminder();
+    });
+}
+
+function showSaveReminder() {
+    // Check if reminder already exists
+    if (document.getElementById('save-reminder')) return;
+    
+    const reminder = document.createElement('div');
+    reminder.id = 'save-reminder';
+    reminder.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #f39c12; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; font-weight: 600; animation: slideIn 0.3s ease;';
+    reminder.innerHTML = '⚠️ Vergeet niet op "Wijzigingen Opslaan" te klikken!';
+    
+    document.body.appendChild(reminder);
+    
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = '@keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }';
+    document.head.appendChild(style);
+    
+    // Remove after form submit or 10 seconds
+    setTimeout(() => {
+        if (reminder.parentNode) {
+            reminder.style.animation = 'slideOut 0.3s ease';
+            style.textContent += '@keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }';
+            setTimeout(() => {
+                if (reminder.parentNode) {
+                    document.body.removeChild(reminder);
+                }
+            }, 300);
+        }
+    }, 10000);
+    
+    // Remove on form submit
+    const form = document.getElementById('diensten-form');
+    if (form) {
+        form.addEventListener('submit', function() {
+            if (reminder.parentNode) {
+                document.body.removeChild(reminder);
+            }
+        }, { once: true });
     }
 }
