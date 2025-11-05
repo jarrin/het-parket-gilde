@@ -69,6 +69,16 @@
             <p>Pas de kleuren aan per sectie op de Diensten pagina.</p>
         </div>
         
+        <h4>Algemene Pagina Instellingen</h4>
+        <div class="form-group">
+            <label>Pagina Achtergrond Kleur</label>
+            <div class="color-input-group">
+                <input type="color" name="page_bg" value="<?php echo h($content['diensten']['colors']['page_background'] ?? '#ffffff'); ?>" class="color-picker-input">
+                <input type="text" value="<?php echo h($content['diensten']['colors']['page_background'] ?? '#ffffff'); ?>" readonly class="color-text-input">
+            </div>
+            <small>De algemene achtergrondkleur van de Diensten pagina</small>
+        </div>
+        
         <h4>Hero Sectie (Banner Bovenaan)</h4>
         <div class="form-group">
             <label>Hero Achtergrond</label>

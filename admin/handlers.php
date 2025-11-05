@@ -74,6 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             break;
             
         case 'diensten_colors':
+            // Pagina achtergrond kleur
+            $content['diensten']['colors']['page_background'] = $_POST['page_bg'] ?? '';
+            
             // Hero sectie kleuren
             $content['diensten']['hero']['colors']['background'] = $_POST['hero_bg'] ?? '';
             $content['diensten']['hero']['colors']['text'] = $_POST['hero_text'] ?? '';
