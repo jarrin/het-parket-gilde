@@ -40,10 +40,10 @@
             "title": "Het Parket Gilde",
             "subtitle": "Vakmanschap in hout",
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
-            "image": "assets\/images\/img_690b0b8a25f7b_1762331530.JPG",
+            "image": "assets\/images\/img_690b0d866322f_1762332038.jpg",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
+                "background": "#2b3a52",
+                "text": "#ffffff",
                 "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
@@ -52,9 +52,9 @@
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
             "image": "assets\/images\/img_690b09812104b_1762331009.JPG",
             "colors": {
-                "background": "#F5F5F5",
-                "text": "#2B3A52",
-                "title": "#D4AF7A"
+                "background": "#f5f5f5",
+                "text": "#2b3a52",
+                "title": "#d4af7a"
             }
         },
         "vakmanschap": {
@@ -62,9 +62,9 @@
             "subtitle": "Traditie en kwaliteit",
             "text": "Elke vloer vertelt een verhaal. Wij combineren traditionele technieken met moderne innovaties om duurzame en tijdloze parketvloeren te creëren. Onze vakmannen werken met respect voor het materiaal en oog voor detail.",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
-                "title": "#D4AF7A"
+                "background": "#2b3a52",
+                "text": "#ffffff",
+                "title": "#d4af7a"
             },
             "features": [
                 {
@@ -94,7 +94,7 @@
         "hero": {
             "title": "Onze Diensten",
             "subtitle": "Compleet vakmanschap voor uw vloer",
-            "image": "assets\/images\/hero-diensten.jpg",
+            "image": "assets\/images\/img_690b0fe5c6ec1_1762332645.jpg",
             "colors": {
                 "background": "#2B3A52",
                 "text": "#FFFFFF",
@@ -105,7 +105,7 @@
             {
                 "title": "Parketvloeren Leggen",
                 "description": "Wij leggen alle soorten parketvloeren, van klassieke visgraat tot moderne plankenvloeren. Elk project wordt met zorg en vakmanschap uitgevoerd.",
-                "image": "assets\/images\/img_690b09c084f8a_1762331072.jpg",
+                "image": "assets\/images\/img_690b0e162693d_1762332182.jpg",
                 "colors": {
                     "background": "#2B3A52",
                     "text": "#E8E8E8",
@@ -121,7 +121,7 @@
             {
                 "title": "Schade Herstel & Renovatie",
                 "description": "Is uw parketvloer beschadigd of verouderd? Wij herstellen beschadigingen en renoveren oude vloeren tot in hun oude glorie.",
-                "image": "assets\/images\/img_690b09e761db0_1762331111.jpg",
+                "image": "assets\/images\/img_690b0e1ba97e4_1762332187.jpg",
                 "colors": {
                     "background": "#F5F5F5",
                     "text": "#2B3A52",
@@ -137,7 +137,7 @@
             {
                 "title": "Raamdecoratie",
                 "description": "Naast parketvloeren bieden wij ook maatwerk raamdecoratie. Van houten jaloezieën tot luxe shutters die perfect aansluiten bij uw interieur.",
-                "image": "assets\/images\/img_690b09f03af40_1762331120.jpg",
+                "image": "assets\/images\/img_690b0e2234881_1762332194.jpg",
                 "colors": {
                     "background": "#2B3A52",
                     "text": "#E8E8E8",
@@ -161,7 +161,7 @@
         "hero": {
             "title": "Over Het Parket Gilde",
             "subtitle": "Passie voor hout sinds 2008",
-            "image": "assets\/images\/img_690b0b9720ede_1762331543.png",
+            "image": "assets\/images\/img_690b0fd65eed8_1762332630.jpg",
             "colors": {
                 "background": "#2b3a52",
                 "text": "#ffffff",
@@ -185,7 +185,7 @@
             "name": "Mathijs Gerrits",
             "title": "Oprichter & Vakman",
             "quote": "Elke vloer is uniek, en verdient de volledige aandacht en toewijding van een vakman. Dat is wat wij elke dag bieden.",
-            "image": "assets\/images\/img_690b0ce8ce7d7_1762331880.JPG",
+            "image": "assets\/images\/img_690b0eab9daa3_1762332331.jpg",
             "colors": {
                 "background": "#2b3a52",
                 "text": "#e8e8e8",
@@ -225,7 +225,7 @@
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/img_690b0bb49d6fd_1762331572.JPG",
+            "image": "assets\/images\/img_690b0ed7183dc_1762332375.jpg",
             "colors": {
                 "background": "#2B3A52",
                 "text": "#FFFFFF",
