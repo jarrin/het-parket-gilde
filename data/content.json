@@ -42,8 +42,8 @@
             "description": "Specialist in het leggen, renoveren en onderhouden van parketvloeren",
             "image": "assets\/images\/img_690b0d866322f_1762332038.jpg",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
+                "background": "#2b3a52",
+                "text": "#ffffff",
                 "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
@@ -52,9 +52,9 @@
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
             "image": "assets\/images\/img_690b09812104b_1762331009.JPG",
             "colors": {
-                "background": "#F5F5F5",
-                "text": "#2B3A52",
-                "title": "#D4AF7A"
+                "background": "#f5f5f5",
+                "text": "#2b3a52",
+                "title": "#d4af7a"
             }
         },
         "vakmanschap": {
@@ -62,9 +62,9 @@
             "subtitle": "Traditie en kwaliteit",
             "text": "Elke vloer vertelt een verhaal. Wij combineren traditionele technieken met moderne innovaties om duurzame en tijdloze parketvloeren te creëren. Onze vakmannen werken met respect voor het materiaal en oog voor detail.",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
-                "title": "#D4AF7A"
+                "background": "#2b3a52",
+                "text": "#ffffff",
+                "title": "#d4af7a"
             },
             "features": [
                 {

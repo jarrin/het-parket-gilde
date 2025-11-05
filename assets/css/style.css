@@ -291,6 +291,7 @@ p {
 
 .btn-primary:hover {
     background: var(--secondary-color);
+    color: #000000;
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
 }
@@ -303,7 +304,7 @@ p {
 
 .btn-secondary:hover {
     background: var(--primary-color);
-    color: var(--white);
+    color: #000000;
 }
 
 /* ==========================================
