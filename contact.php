@@ -6,7 +6,7 @@ $pageTitle = 'Contact';
 include 'includes/header.php';
 ?>
 
-<section class="hero" style="background-image: url('<?php echo h($contact['hero']['image']); ?>'); background-color: <?php echo h($contact['hero']['colors']['background']); ?>;" data-edit-image="hero.image">
+<section class="hero" style="<?php if (!empty($contact['hero']['image']) && file_exists($contact['hero']['image'])): ?>background-image: url('<?php echo h($contact['hero']['image']); ?>');<?php endif; ?> background-color: <?php echo h($contact['hero']['colors']['background']); ?>;" data-edit-image="hero.image">
     <div class="hero-overlay" style="background: <?php echo h($contact['hero']['colors']['overlay']); ?>;">
         <div class="container">
             <div class="hero-content" style="color: <?php echo h($contact['hero']['colors']['text']); ?>;">
