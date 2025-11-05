@@ -178,13 +178,26 @@
                     "text": "#333333",
                     "title": "#2b3a52"
                 }
+            },
+            {
+                "title": "hallo",
+                "description": "hallo",
+                "image": "assets\/images\/img_690b41b73dc68_1762345399.JPG",
+                "features": [
+                    "hallo"
+                ],
+                "colors": {
+                    "background": "#F5F5F5",
+                    "text": "#333333",
+                    "title": "#2B3A52"
+                }
             }
         ],
         "cta": {
             "title": "Interesse in onze diensten?",
             "subtitle": "Neem vrijblijvend contact met ons op voor meer informatie of een offerte op maat.",
             "button_text": "Contact opnemen",
-            "button_link": "/contact.php",
+            "button_link": "\/contact.php",
             "image": "",
             "colors": {
                 "background": "#d4af7a",
@@ -260,7 +273,7 @@
             "title": "Wilt u ons beter leren kennen?",
             "subtitle": "Neem contact met ons op voor een vrijblijvend gesprek.",
             "button_text": "Neem contact op",
-            "button_link": "/contact.php",
+            "button_link": "\/contact.php",
             "image": "",
             "colors": {
                 "background": "#d4af7a",
@@ -278,7 +291,7 @@
         "hero": {
             "title": "Contact",
             "subtitle": "Neem vrijblijvend contact met ons op",
-            "image": "assets\/images\/img_690b0ed7183dc_1762332375.jpg",
+            "image": "assets\/images\/img_690b428194298_1762345601.JPG",
             "colors": {
                 "background": "#222e40",
                 "text": "#ffffff",
@@ -330,15 +343,15 @@
             }
         },
         "cta": {
-            "title": "Klaar om uw project te starten?",
-            "subtitle": "Neem vandaag nog contact op en ontdek wat wij voor u kunnen betekenen.",
-            "button_text": "Bel ons direct",
-            "button_link": "tel:+31612345678",
-            "image": "",
+            "title": "test",
+            "subtitle": "test",
+            "button_text": "hallo",
+            "button_link": "",
+            "image": "assets\/images\/img_690b44cbb15d9_1762346187.JPG",
             "colors": {
-                "background": "#d4af7a",
-                "text": "#ffffff",
-                "overlay": "rgba(212, 175, 122, 0.8)"
+                "background": "#000000",
+                "text": "#000000",
+                "overlay": "rgba(34, 46, 64, 0.7)"
             }
         }
     }
