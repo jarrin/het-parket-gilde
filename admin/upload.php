@@ -1,16 +1,21 @@
 ﻿<?php
-// Start session first before any output
-session_start();
+// Prevent any output before headers
+error_reporting(0);
+ini_set('display_errors', 0);
 
-// Check authentication
-if (!isset($_SESSION['admin_user_id'])) {
-    http_response_code(401);
-    die('ERROR: Unauthorized');
+// Start output buffering to catch any unwanted output
+ob_start();
+
+// Start session first before any output
+if (session_status() === PHP_SESSION_NONE) {
+    @session_start();
 }
+
+// Clear any output that might have occurred
+ob_clean();
 
 // Set header
 header('Content-Type: text/plain');
-
 // Define constants
 define('ROOT_PATH', dirname(__DIR__));
 define('UPLOAD_PATH', ROOT_PATH . '/assets/images');
@@ -35,7 +40,7 @@ if ($file['error'] !== UPLOAD_ERR_OK) {
 }
 
 // Check file size (5MB)
-$maxSize = 5 * 1024 * 1024;
+$maxSize = 10 * 1024 * 1024;
 if ($file['size'] > $maxSize) {
     http_response_code(400);
     die('ERROR: File too large. Max size: 5MB');

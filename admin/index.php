@@ -73,11 +73,10 @@ $currentSection = $_GET['section'] ?? 'site';
                     <?php endif; ?>
                     
                     <?php if ($currentSection === 'over_ons'): ?>
-                        <?php include __DIR__ . '/sections/over_ons.php'; ?>
-                            <div class="page-title">
-                                <h2>Over Ons</h2>
-                                <a href="/over-ons.php" target="_blank" class="preview-link">Bekijk Pagina</a>
-                            </div>
+                        <div class="page-title">
+                            <h2>Over Ons</h2>
+                            <a href="/over-ons.php" target="_blank" class="preview-link">Bekijk Pagina</a>
+                        </div>
                             <div class="info-box">
                                 <p>Vertel uw verhaal. Laat klanten kennismaken met uw bedrijf en de mensen erachter.</p>
                             </div>

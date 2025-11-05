@@ -50,7 +50,7 @@
         "intro": {
             "title": "Welkom bij Het Parket Gilde",
             "text": "Bij Het Parket Gilde staat vakmanschap voorop. Met jarenlange ervaring in het werken met hout, bieden wij hoogwaardige diensten op het gebied van parketvloeren. Van traditionele visgraat tot moderne plankenvloeren, wij realiseren uw droomvloer met precisie en passie.",
-            "image": "assets\/images\/intro.jpg",
+            "image": "assets\/images\/img_690b09812104b_1762331009.JPG",
             "colors": {
                 "background": "#F5F5F5",
                 "text": "#2B3A52",
@@ -163,8 +163,8 @@
             "subtitle": "Passie voor hout sinds 2008",
             "image": "assets\/images\/hero-over-ons.jpg",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#FFFFFF",
+                "background": "#2b3a52",
+                "text": "#ffffff",
                 "overlay": "rgba(30, 40, 56, 0.7)"
             }
         },
@@ -176,9 +176,9 @@
                 "Bij Het Parket Gilde geloven we in eerlijk advies, transparante communicatie en het leveren van werk waar we trots op zijn. Uw tevredenheid is onze drijfveer."
             ],
             "colors": {
-                "background": "#F5F5F5",
-                "text": "#2B3A52",
-                "title": "#D4AF7A"
+                "background": "#f5f5f5",
+                "text": "#2b3a52",
+                "title": "#d4af7a"
             }
         },
         "founder": {
@@ -187,9 +187,9 @@
             "quote": "Elke vloer is uniek, en verdient de volledige aandacht en toewijding van een vakman. Dat is wat wij elke dag bieden.",
             "image": "assets\/images\/mathijs.jpg",
             "colors": {
-                "background": "#2B3A52",
-                "text": "#E8E8E8",
-                "title": "#D4AF7A"
+                "background": "#2b3a52",
+                "text": "#e8e8e8",
+                "title": "#d4af7a"
             }
         },
         "values": [
@@ -211,9 +211,9 @@
             }
         ],
         "values_colors": {
-            "background": "#F5F5F5",
-            "text": "#2B3A52",
-            "title": "#D4AF7A"
+            "background": "#f5f5f5",
+            "text": "#2b3a52",
+            "title": "#d4af7a"
         }
     },
     "contact": {
