@@ -194,14 +194,14 @@
             }
         ],
         "cta": {
-            "title": "",
-            "subtitle": "",
-            "button_text": "",
+            "title": "Neem contact met ons op",
+            "subtitle": "Neem contact met ons op voor uw persoonlijke offerte ",
+            "button_text": "Contact",
             "button_link": "",
             "image": "assets\/images\/img_690b4a7540bc4_1762347637.jpg",
             "colors": {
-                "background": "",
-                "text": "",
+                "background": "#000000",
+                "text": "#ffffff",
                 "overlay": "rgba(212, 175, 122, 0.8)"
             }
         }
@@ -270,14 +270,14 @@
             "title": "#d4af7a"
         },
         "cta": {
-            "title": "",
-            "subtitle": "",
-            "button_text": "",
+            "title": "Neem contact met ons op",
+            "subtitle": "Neem contact met ons op voor uw persoonlijke offerte ",
+            "button_text": "Contact",
             "button_link": "",
-            "image": "assets\/images\/img_690b4a6bf3318_1762347627.jpg",
+            "image": "",
             "colors": {
-                "background": "",
-                "text": "",
+                "background": "#000000",
+                "text": "#ffffff",
                 "overlay": "rgba(212, 175, 122, 0.8)"
             }
         }
@@ -347,7 +347,7 @@
             "subtitle": "Neem contact met ons op voor uw persoonlijke offerte ",
             "button_text": "Contact",
             "button_link": "",
-            "image": "assets\/images\/img_690b49f457faf_1762347508.jpg",
+            "image": "assets\/images\/img_690b4cf1e8d14_1762348273.jpg",
             "colors": {
                 "background": "#000000",
                 "text": "#ffffff",
