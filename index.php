@@ -46,14 +46,14 @@ include 'includes/header.php';
         </div>
         
         <div class="features-wrapper">
-            <?php if (count($home['vakmanschap']['features']) > 4): ?>
+            <?php if (count($home['vakmanschap']['features']) > 3): ?>
             <div class="scroll-nav">
                 <button class="scroll-btn left" onclick="scrollFeatures('left')" aria-label="Scroll links">‹</button>
                 <button class="scroll-btn right" onclick="scrollFeatures('right')" aria-label="Scroll rechts">›</button>
             </div>
             <?php endif; ?>
             
-            <div class="features<?php echo count($home['vakmanschap']['features']) > 4 ? ' scrollable' : ''; ?>" id="featuresContainer">
+            <div class="features<?php echo count($home['vakmanschap']['features']) > 3 ? ' scrollable' : ''; ?>" id="featuresContainer">
                 <?php foreach ($home['vakmanschap']['features'] as $index => $feature): ?>
                     <div class="feature-card">
                         <?php if (!empty($feature['image'])): ?>
