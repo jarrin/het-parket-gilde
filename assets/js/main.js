@@ -102,3 +102,62 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial parallax setup
     parallaxEffect();
 });
+
+// Feature boxes horizontal scroll functionality
+function scrollFeatures(direction) {
+    const container = document.getElementById('featuresContainer');
+    if (!container) return;
+    
+    const scrollAmount = 350; // Scroll by one card width + gap
+    
+    if (direction === 'left') {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    } else if (direction === 'right') {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Update button states after scroll
+    setTimeout(updateScrollButtons, 300);
+}
+
+// Update scroll button states based on scroll position
+function updateScrollButtons() {
+    const container = document.getElementById('featuresContainer');
+    if (!container) return;
+    
+    const leftBtn = document.querySelector('.scroll-btn.left');
+    const rightBtn = document.querySelector('.scroll-btn.right');
+    
+    if (!leftBtn || !rightBtn) return;
+    
+    // Disable left button if at start
+    if (container.scrollLeft <= 0) {
+        leftBtn.disabled = true;
+    } else {
+        leftBtn.disabled = false;
+    }
+    
+    // Disable right button if at end
+    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+        rightBtn.disabled = true;
+    } else {
+        rightBtn.disabled = false;
+    }
+}
+
+// Initialize scroll buttons on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('featuresContainer');
+    if (container && container.classList.contains('scrollable')) {
+        updateScrollButtons();
+        
+        // Update buttons on scroll
+        container.addEventListener('scroll', updateScrollButtons);
+    }
+});
