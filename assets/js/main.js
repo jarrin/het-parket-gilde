@@ -3,10 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
+    console.log('Mobile menu elements:', { menuToggle, navMenu });
+    
     if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Menu toggle clicked!');
             navMenu.classList.toggle('active');
             this.classList.toggle('active');
+            console.log('Menu active:', navMenu.classList.contains('active'));
         });
         
         // Close menu when clicking outside
