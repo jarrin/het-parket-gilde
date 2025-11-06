@@ -41,18 +41,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['home']['vakmanschap']['subtitle'] = $_POST['vak_subtitle'] ?? '';
             $content['home']['vakmanschap']['text'] = $_POST['vak_text'] ?? '';
             
-            // Update feature boxes
-            $content['home']['vakmanschap']['features'][0]['title'] = $_POST['feature1_title'] ?? '';
-            $content['home']['vakmanschap']['features'][0]['description'] = $_POST['feature1_description'] ?? '';
-            $content['home']['vakmanschap']['features'][0]['image'] = $_POST['feature1_image'] ?? '';
+            // Update feature boxes dynamically
+            $features = [];
+            $featureCount = $_POST['feature_count'] ?? 0;
             
-            $content['home']['vakmanschap']['features'][1]['title'] = $_POST['feature2_title'] ?? '';
-            $content['home']['vakmanschap']['features'][1]['description'] = $_POST['feature2_description'] ?? '';
-            $content['home']['vakmanschap']['features'][1]['image'] = $_POST['feature2_image'] ?? '';
+            for ($i = 0; $i < $featureCount; $i++) {
+                if (isset($_POST['feature_' . $i . '_exists']) && isset($_POST['feature_' . $i . '_title'])) {
+                    $features[] = [
+                        'title' => $_POST['feature_' . $i . '_title'] ?? '',
+                        'description' => $_POST['feature_' . $i . '_description'] ?? '',
+                        'icon' => $_POST['feature_' . $i . '_icon'] ?? '+',
+                        'image' => $_POST['feature_' . $i . '_image'] ?? ''
+                    ];
+                }
+            }
             
-            $content['home']['vakmanschap']['features'][2]['title'] = $_POST['feature3_title'] ?? '';
-            $content['home']['vakmanschap']['features'][2]['description'] = $_POST['feature3_description'] ?? '';
-            $content['home']['vakmanschap']['features'][2]['image'] = $_POST['feature3_image'] ?? '';
+            // Ensure at least one feature box exists
+            if (empty($features)) {
+                $features[] = [
+                    'title' => 'Ervaring',
+                    'description' => 'Meer dan 15 jaar expertise',
+                    'icon' => '+',
+                    'image' => ''
+                ];
+            }
+            
+            $content['home']['vakmanschap']['features'] = $features;
             
             // Update CTA section
             $content['home']['cta']['title'] = $_POST['cta_title'] ?? '';

@@ -45,20 +45,29 @@ include 'includes/header.php';
             <p data-edit-path="vakmanschap.text"><?php echo h($home['vakmanschap']['text']); ?></p>
         </div>
         
-        <div class="features">
-            <?php foreach ($home['vakmanschap']['features'] as $index => $feature): ?>
-                <div class="feature-card">
-                    <?php if (!empty($feature['image'])): ?>
-                        <div class="feature-image">
-                            <img src="/<?php echo h($feature['image']); ?>" alt="<?php echo h($feature['title']); ?>">
-                        </div>
-                    <?php else: ?>
-                        <div class="feature-icon"><?php echo h($feature['icon']); ?></div>
-                    <?php endif; ?>
-                    <h3 style="color: <?php echo h($home['vakmanschap']['colors']['title']); ?>;" data-edit-path="vakmanschap.features.<?php echo $index; ?>.title"><?php echo h($feature['title']); ?></h3>
-                    <p data-edit-path="vakmanschap.features.<?php echo $index; ?>.description"><?php echo h($feature['description']); ?></p>
-                </div>
-            <?php endforeach; ?>
+        <div class="features-wrapper">
+            <?php if (count($home['vakmanschap']['features']) > 4): ?>
+            <div class="scroll-nav">
+                <button class="scroll-btn left" onclick="scrollFeatures('left')" aria-label="Scroll links">‹</button>
+                <button class="scroll-btn right" onclick="scrollFeatures('right')" aria-label="Scroll rechts">›</button>
+            </div>
+            <?php endif; ?>
+            
+            <div class="features<?php echo count($home['vakmanschap']['features']) > 4 ? ' scrollable' : ''; ?>" id="featuresContainer">
+                <?php foreach ($home['vakmanschap']['features'] as $index => $feature): ?>
+                    <div class="feature-card">
+                        <?php if (!empty($feature['image'])): ?>
+                            <div class="feature-image">
+                                <img src="/<?php echo h($feature['image']); ?>" alt="<?php echo h($feature['title']); ?>">
+                            </div>
+                        <?php else: ?>
+                            <div class="feature-icon"><?php echo h($feature['icon']); ?></div>
+                        <?php endif; ?>
+                        <h3 style="color: <?php echo h($home['vakmanschap']['colors']['title']); ?>;" data-edit-path="vakmanschap.features.<?php echo $index; ?>.title"><?php echo h($feature['title']); ?></h3>
+                        <p data-edit-path="vakmanschap.features.<?php echo $index; ?>.description"><?php echo h($feature['description']); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>

@@ -78,68 +78,130 @@
             <textarea name="vak_text" required><?php echo h($content['home']['vakmanschap']['text']); ?></textarea>
         </div>
         
-        <h4>Feature Box 1 - Ervaring</h4>
-        
-        <div class="form-group">
-            <label>Ervaring Titel</label>
-            <input type="text" name="feature1_title" value="<?php echo h($content['home']['vakmanschap']['features'][0]['title']); ?>" required>
+        <h3>Feature Boxes</h3>
+        <div class="info-box">
+            <p>Beheer de feature boxes in de vakmanschap sectie. U kunt boxes toevoegen, bewerken of verwijderen.</p>
         </div>
         
-        <div class="form-group">
-            <label>Ervaring Beschrijving</label>
-            <textarea name="feature1_description" required><?php echo h($content['home']['vakmanschap']['features'][0]['description']); ?></textarea>
+        <div id="feature-boxes-container">
+            <?php foreach ($content['home']['vakmanschap']['features'] as $index => $feature): ?>
+                <div class="feature-box-item" style="border: 2px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 8px; background: #f9f9f9;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="margin: 0;">Feature Box <?php echo $index + 1; ?>: <?php echo h($feature['title']); ?></h4>
+                        <button type="button" class="btn btn-secondary" onclick="removeFeatureBox(<?php echo $index; ?>)" style="background: #dc3545; color: white; padding: 5px 15px;">Verwijderen</button>
+                    </div>
+                    
+                    <input type="hidden" name="feature_<?php echo $index; ?>_exists" value="1">
+                    
+                    <div class="form-group">
+                        <label>Titel</label>
+                        <input type="text" name="feature_<?php echo $index; ?>_title" value="<?php echo h($feature['title']); ?>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Beschrijving</label>
+                        <textarea name="feature_<?php echo $index; ?>_description" required><?php echo h($feature['description']); ?></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Icon</label>
+                        <input type="text" name="feature_<?php echo $index; ?>_icon" value="<?php echo h($feature['icon'] ?? '+'); ?>" placeholder="+">
+                        <small>Een enkel teken of emoji</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Afbeelding</label>
+                        <div class="image-input-group">
+                            <input type="text" name="feature_<?php echo $index; ?>_image" id="feature_<?php echo $index; ?>_image" value="<?php echo h($feature['image'] ?? ''); ?>">
+                            <button type="button" class="btn btn-secondary" data-media-input="feature_<?php echo $index; ?>_image">Bladeren</button>
+                        </div>
+                        <small>Optioneel - afbeelding voor deze feature box</small>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
         
-        <div class="form-group">
-            <label>Ervaring Afbeelding</label>
-            <div class="image-input-group">
-                <input type="text" name="feature1_image" id="feature1_image" value="<?php echo h($content['home']['vakmanschap']['features'][0]['image'] ?? ''); ?>">
-                <button type="button" class="btn btn-secondary" data-media-input="feature1_image">Bladeren</button>
-            </div>
-            <small>Optioneel - afbeelding voor de Ervaring box</small>
-        </div>
+        <button type="button" class="btn btn-secondary" onclick="addFeatureBox()" style="margin-bottom: 30px;">
+            + Nieuwe Feature Box Toevoegen
+        </button>
         
-        <h4>Feature Box 2 - Kwaliteit</h4>
+        <input type="hidden" name="feature_count" id="feature_count" value="<?php echo count($content['home']['vakmanschap']['features']); ?>">
         
-        <div class="form-group">
-            <label>Kwaliteit Titel</label>
-            <input type="text" name="feature2_title" value="<?php echo h($content['home']['vakmanschap']['features'][1]['title']); ?>" required>
-        </div>
+        <script>
+        let featureCount = <?php echo count($content['home']['vakmanschap']['features']); ?>;
         
-        <div class="form-group">
-            <label>Kwaliteit Beschrijving</label>
-            <textarea name="feature2_description" required><?php echo h($content['home']['vakmanschap']['features'][1]['description']); ?></textarea>
-        </div>
+        function addFeatureBox() {
+            const container = document.getElementById('feature-boxes-container');
+            const newIndex = featureCount;
+            
+            const boxHtml = `
+                <div class="feature-box-item" style="border: 2px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 8px; background: #f9f9f9;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="margin: 0;">Feature Box ${newIndex + 1}: Nieuw</h4>
+                        <button type="button" class="btn btn-secondary" onclick="removeFeatureBox(${newIndex})" style="background: #dc3545; color: white; padding: 5px 15px;">Verwijderen</button>
+                    </div>
+                    
+                    <input type="hidden" name="feature_${newIndex}_exists" value="1">
+                    
+                    <div class="form-group">
+                        <label>Titel</label>
+                        <input type="text" name="feature_${newIndex}_title" value="" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Beschrijving</label>
+                        <textarea name="feature_${newIndex}_description" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Icon</label>
+                        <input type="text" name="feature_${newIndex}_icon" value="+" placeholder="+">
+                        <small>Een enkel teken of emoji</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Afbeelding</label>
+                        <div class="image-input-group">
+                            <input type="text" name="feature_${newIndex}_image" id="feature_${newIndex}_image" value="">
+                            <button type="button" class="btn btn-secondary" data-media-input="feature_${newIndex}_image">Bladeren</button>
+                        </div>
+                        <small>Optioneel - afbeelding voor deze feature box</small>
+                    </div>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', boxHtml);
+            featureCount++;
+            document.getElementById('feature_count').value = featureCount;
+            
+            // Re-initialize media browser buttons
+            if (typeof initMediaBrowsers === 'function') {
+                initMediaBrowsers();
+            }
+        }
         
-        <div class="form-group">
-            <label>Kwaliteit Afbeelding</label>
-            <div class="image-input-group">
-                <input type="text" name="feature2_image" id="feature2_image" value="<?php echo h($content['home']['vakmanschap']['features'][1]['image'] ?? ''); ?>">
-                <button type="button" class="btn btn-secondary" data-media-input="feature2_image">Bladeren</button>
-            </div>
-            <small>Optioneel - afbeelding voor de Kwaliteit box</small>
-        </div>
+        function removeFeatureBox(index) {
+            if (confirm('Weet u zeker dat u deze feature box wilt verwijderen?')) {
+                const boxes = document.querySelectorAll('.feature-box-item');
+                if (boxes.length > 1) {
+                    boxes[index].remove();
+                    // Renumber remaining boxes
+                    updateFeatureBoxNumbers();
+                } else {
+                    alert('U moet minimaal 1 feature box behouden.');
+                }
+            }
+        }
         
-        <h4>Feature Box 3 - Maatwerk</h4>
-        
-        <div class="form-group">
-            <label>Maatwerk Titel</label>
-            <input type="text" name="feature3_title" value="<?php echo h($content['home']['vakmanschap']['features'][2]['title']); ?>" required>
-        </div>
-        
-        <div class="form-group">
-            <label>Maatwerk Beschrijving</label>
-            <textarea name="feature3_description" required><?php echo h($content['home']['vakmanschap']['features'][2]['description']); ?></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label>Maatwerk Afbeelding</label>
-            <div class="image-input-group">
-                <input type="text" name="feature3_image" id="feature3_image" value="<?php echo h($content['home']['vakmanschap']['features'][2]['image'] ?? ''); ?>">
-                <button type="button" class="btn btn-secondary" data-media-input="feature3_image">Bladeren</button>
-            </div>
-            <small>Optioneel - afbeelding voor de Maatwerk box</small>
-        </div>
+        function updateFeatureBoxNumbers() {
+            const boxes = document.querySelectorAll('.feature-box-item');
+            boxes.forEach((box, idx) => {
+                const title = box.querySelector('h4');
+                const titleText = title.textContent.split(':')[1] || 'Nieuw';
+                title.textContent = `Feature Box ${idx + 1}:${titleText}`;
+            });
+        }
+        </script>
         
         <h3>CTA Sectie (Contact Oproep Onderaan)</h3>
         
