@@ -64,7 +64,7 @@ include 'includes/header.php';
                             <div class="feature-icon"><?php echo h($feature['icon']); ?></div>
                         <?php endif; ?>
                         <h3 style="color: <?php echo h($home['vakmanschap']['colors']['title']); ?>;" data-edit-path="vakmanschap.features.<?php echo $index; ?>.title"><?php echo h($feature['title']); ?></h3>
-                        <p data-edit-path="vakmanschap.features.<?php echo $index; ?>.description"><?php echo h($feature['description']); ?></p>
+                        <p style="color: <?php echo h($feature['text_color'] ?? '#333333'); ?>;" data-edit-path="vakmanschap.features.<?php echo $index; ?>.description"><?php echo h($feature['description']); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>

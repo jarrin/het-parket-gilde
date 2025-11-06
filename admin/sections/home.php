@@ -117,6 +117,15 @@
                         </div>
                         <small>Optioneel - afbeelding voor deze feature box</small>
                     </div>
+                    
+                    <div class="form-group">
+                        <label>Tekstkleur</label>
+                        <div class="color-input-group">
+                            <input type="color" name="feature_<?php echo $index; ?>_text_color" value="<?php echo h($feature['text_color'] ?? '#333333'); ?>" class="color-picker-input">
+                            <input type="text" value="<?php echo h($feature['text_color'] ?? '#333333'); ?>" readonly class="color-text-input">
+                        </div>
+                        <small>Kleur van de beschrijvingstekst in deze feature box</small>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -166,6 +175,15 @@
                             <button type="button" class="btn btn-secondary" data-media-input="feature_${newIndex}_image">Bladeren</button>
                         </div>
                         <small>Optioneel - afbeelding voor deze feature box</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tekstkleur</label>
+                        <div class="color-input-group">
+                            <input type="color" name="feature_${newIndex}_text_color" value="#333333" class="color-picker-input">
+                            <input type="text" value="#333333" readonly class="color-text-input">
+                        </div>
+                        <small>Kleur van de beschrijvingstekst in deze feature box</small>
                     </div>
                 </div>
             `;
