@@ -51,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
                         'title' => $_POST['feature_' . $i . '_title'] ?? '',
                         'description' => $_POST['feature_' . $i . '_description'] ?? '',
                         'icon' => $_POST['feature_' . $i . '_icon'] ?? '+',
-                        'image' => $_POST['feature_' . $i . '_image'] ?? ''
+                        'image' => $_POST['feature_' . $i . '_image'] ?? '',
+                        'text_color' => $_POST['feature_' . $i . '_text_color'] ?? '#333333'
                     ];
                 }
             }

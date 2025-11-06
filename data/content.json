@@ -72,19 +72,29 @@
                     "title": "Ervaring",
                     "description": "Meer dan 15 jaar expertise in parketvloeren",
                     "icon": "+",
-                    "image": "assets\/images\/img_690b3258e3405_1762341464.jpg"
+                    "image": "assets\/images\/img_690b3258e3405_1762341464.jpg",
+                    "text_color": "#000000"
                 },
                 {
                     "title": "Kwaliteit",
                     "description": "Uitsluitend hoogwaardige materialen",
                     "icon": "+",
-                    "image": "assets\/images\/img_690b32f2ccfad_1762341618.jpg"
+                    "image": "assets\/images\/img_690b32f2ccfad_1762341618.jpg",
+                    "text_color": "#000000"
                 },
                 {
                     "title": "Maatwerk",
                     "description": "Elke vloer op maat gemaakt",
                     "icon": "+",
-                    "image": "assets\/images\/img_690b333b6b5ac_1762341691.jpg"
+                    "image": "assets\/images\/img_690b333b6b5ac_1762341691.jpg",
+                    "text_color": "#000000"
+                },
+                {
+                    "title": "Vertouwd ",
+                    "description": "wij zijn al jaren één van de betrouwbaarste bedrijven voor parket leggen!",
+                    "icon": "+",
+                    "image": "assets\/images\/img_690c604bc419f_1762418763.jpg",
+                    "text_color": "#000000"
                 }
             ]
         },
@@ -93,7 +103,7 @@
             "subtitle": "Hoe zou u uw vloer willen laat ons dat weten",
             "button_text": "Contacteer ons",
             "button_link": "\/contact.php",
-            "image": "assets\/images\/img_690b59d35e03f_1762351571.jpg",
+            "image": "assets\/images\/img_690c65c9aec62_1762420169.png",
             "colors": {
                 "background": "#d4af7a",
                 "text": "#ffffff",
