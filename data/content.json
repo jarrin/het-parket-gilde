@@ -103,7 +103,7 @@
             "subtitle": "Hoe zou u uw vloer willen laat ons dat weten",
             "button_text": "Contacteer ons",
             "button_link": "\/contact.php",
-            "image": "assets\/images\/img_690c65c9aec62_1762420169.png",
+            "image": "assets\/images\/img_690c699d7aac6_1762421149.png",
             "colors": {
                 "background": "#d4af7a",
                 "text": "#ffffff",
@@ -182,7 +182,7 @@
             "subtitle": "Ongeacht de klus kunnen wij het klaar krijgen vraag een offerte aan",
             "button_text": "Contacteer ons",
             "button_link": "",
-            "image": "assets\/images\/img_690b4a7540bc4_1762347637.jpg",
+            "image": "assets\/images\/img_690c736d8df4b_1762423661.png",
             "colors": {
                 "background": "#000000",
                 "text": "#ffffff",
@@ -194,7 +194,7 @@
         "colors": {
             "header": "#2B3A52",
             "heroText": "#FFFFFF",
-            "sectionBg": "#F5F5F5"
+            "sectionBg": "#f5f5f5"
         },
         "hero": {
             "title": "Over Het Parket Gilde",
@@ -244,8 +244,12 @@
                 "description": "Alleen de beste materialen en perfecte afwerking"
             },
             {
-                "title": "Persoonlijk Contact",
-                "description": "Directe communicatie en maatwerk voor elke klant"
+                "title": "Ervaring  ",
+                "description": "Wij zijn ervaren parket legers en zullen uw vloer er beter uit laten zien dan ooit!"
+            },
+            {
+                "title": "Snelheid ",
+                "description": "Wij zullen uw project zo snel en effiecent mogelijk afmaken "
             }
         ],
         "values_colors": {
@@ -258,7 +262,7 @@
             "subtitle": "Maak een aanvraag en wij zullen snel terug komen!",
             "button_text": "Contacteer ons",
             "button_link": "",
-            "image": "assets\/images\/img_690b528d942c6_1762349709.jpg",
+            "image": "assets\/images\/img_690c7379be55d_1762423673.png",
             "colors": {
                 "background": "#000000",
                 "text": "#ffffff",

@@ -167,14 +167,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['over_ons']['hero']['image'] = $_POST['hero_image'] ?? '';
             
             $content['over_ons']['story']['title'] = $_POST['story_title'] ?? '';
-            $content['over_ons']['story']['paragraphs'][0] = $_POST['story_p1'] ?? '';
-            $content['over_ons']['story']['paragraphs'][1] = $_POST['story_p2'] ?? '';
-            $content['over_ons']['story']['paragraphs'][2] = $_POST['story_p3'] ?? '';
+            // Handle dynamic story paragraphs
+            $content['over_ons']['story']['paragraphs'] = [];
+            for ($i = 0; $i < 3; $i++) {
+                if (isset($_POST['story_paragraph_' . $i])) {
+                    $content['over_ons']['story']['paragraphs'][] = $_POST['story_paragraph_' . $i];
+                }
+            }
             
             $content['over_ons']['founder']['name'] = $_POST['founder_name'] ?? '';
             $content['over_ons']['founder']['title'] = $_POST['founder_title'] ?? '';
             $content['over_ons']['founder']['quote'] = $_POST['founder_quote'] ?? '';
             $content['over_ons']['founder']['image'] = $_POST['founder_image'] ?? '';
+            
+            // Handle dynamic values
+            $valueCount = intval($_POST['value_count'] ?? 0);
+            $content['over_ons']['values'] = [];
+            for ($i = 0; $i < $valueCount; $i++) {
+                if (isset($_POST['value_title_' . $i]) && isset($_POST['value_description_' . $i])) {
+                    $content['over_ons']['values'][] = [
+                        'title' => $_POST['value_title_' . $i],
+                        'description' => $_POST['value_description_' . $i]
+                    ];
+                }
+            }
+            
+            // CTA section
+            $content['over_ons']['cta']['title'] = $_POST['cta_title'] ?? '';
+            $content['over_ons']['cta']['subtitle'] = $_POST['cta_subtitle'] ?? '';
+            $content['over_ons']['cta']['button_text'] = $_POST['cta_button_text'] ?? '';
+            $content['over_ons']['cta']['button_link'] = $_POST['cta_button_link'] ?? '';
+            $content['over_ons']['cta']['image'] = $_POST['cta_image'] ?? '';
             break;
             
         case 'over_ons_colors':

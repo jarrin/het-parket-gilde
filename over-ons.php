@@ -49,7 +49,11 @@ include 'includes/header.php';
 <section class="section values-section" style="background-color: <?php echo h($overOns['values_colors']['background']); ?>; color: <?php echo h($overOns['values_colors']['text']); ?>;">
     <div class="container">
         <h2 class="text-center" style="color: <?php echo h($overOns['values_colors']['title']); ?>;">Onze Waarden</h2>
-        <div class="values-grid">
+        <?php if (count($overOns['values']) > 4): ?>
+            <button class="scroll-btn scroll-left" onclick="scrollValues('left')" id="scroll-left-values">‹</button>
+            <button class="scroll-btn scroll-right" onclick="scrollValues('right')" id="scroll-right-values">›</button>
+        <?php endif; ?>
+        <div class="values-grid<?php echo count($overOns['values']) > 4 ? ' scrollable' : ''; ?>">
             <?php foreach ($overOns['values'] as $vIndex => $value): ?>
                 <div class="value-card">
                     <h3 style="color: <?php echo h($overOns['values_colors']['title']); ?>;" data-edit-path="values.<?php echo $vIndex; ?>.title"><?php echo h($value['title']); ?></h3>

@@ -126,6 +126,29 @@ function scrollFeatures(direction) {
     setTimeout(updateScrollButtons, 300);
 }
 
+// Values horizontal scroll functionality
+function scrollValues(direction) {
+    const container = document.querySelector('.values-grid.scrollable');
+    if (!container) return;
+    
+    const scrollAmount = 330; // Scroll by one card width + gap
+    
+    if (direction === 'left') {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    } else if (direction === 'right') {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Update button states after scroll
+    setTimeout(updateValuesScrollButtons, 300);
+}
+
 // Update scroll button states based on scroll position
 function updateScrollButtons() {
     const container = document.getElementById('featuresContainer');
@@ -133,6 +156,31 @@ function updateScrollButtons() {
     
     const leftBtn = document.querySelector('.scroll-btn.left');
     const rightBtn = document.querySelector('.scroll-btn.right');
+    
+    if (!leftBtn || !rightBtn) return;
+    
+    // Disable left button if at start
+    if (container.scrollLeft <= 0) {
+        leftBtn.disabled = true;
+    } else {
+        leftBtn.disabled = false;
+    }
+    
+    // Disable right button if at end
+    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+        rightBtn.disabled = true;
+    } else {
+        rightBtn.disabled = false;
+    }
+}
+
+// Update values scroll button states based on scroll position
+function updateValuesScrollButtons() {
+    const container = document.querySelector('.values-grid.scrollable');
+    if (!container) return;
+    
+    const leftBtn = document.getElementById('scroll-left-values');
+    const rightBtn = document.getElementById('scroll-right-values');
     
     if (!leftBtn || !rightBtn) return;
     
@@ -159,5 +207,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update buttons on scroll
         container.addEventListener('scroll', updateScrollButtons);
+    }
+    
+    // Initialize values scroll buttons
+    const valuesContainer = document.querySelector('.values-grid.scrollable');
+    if (valuesContainer) {
+        updateValuesScrollButtons();
+        
+        // Update buttons on scroll
+        valuesContainer.addEventListener('scroll', updateValuesScrollButtons);
     }
 });
