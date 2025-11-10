@@ -1,5 +1,5 @@
     </main>
-    <footer class="site-footer">
+    <footer class="site-footer" style="background-color: <?php echo h($site['colors']['footer']['background']); ?>; color: <?php echo h($site['colors']['footer']['text']); ?>;">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -9,8 +9,8 @@
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <p>
-                        <strong>Telefoon:</strong> <a href="tel:<?php echo h($site['contact']['phone']); ?>"><?php echo h($site['contact']['phone']); ?></a><br>
-                        <strong>E-mail:</strong> <a href="mailto:<?php echo h($site['contact']['email']); ?>"><?php echo h($site['contact']['email']); ?></a>
+                        <strong>Telefoon:</strong> <a href="tel:<?php echo h($site['contact']['phone']); ?>" style="color: <?php echo h($site['colors']['footer']['links']); ?>;"><?php echo h($site['contact']['phone']); ?></a><br>
+                        <strong>E-mail:</strong> <a href="mailto:<?php echo h($site['contact']['email']); ?>" style="color: <?php echo h($site['colors']['footer']['links']); ?>;"><?php echo h($site['contact']['email']); ?></a>
                     </p>
                 </div>
                 <div class="footer-section">
@@ -25,13 +25,14 @@
                 <p>&copy; <?php echo date('Y'); ?> <?php echo h($site['title']); ?>. Alle rechten voorbehouden.</p>
                 <?php if (isAdmin()): ?>
                     <p class="admin-link">
-                        <a href="/admin/">Admin Panel</a> | 
-                        <a href="/admin/logout.php">Uitloggen</a>
+                        <a href="/admin/" style="color: <?php echo h($site['colors']['footer']['links']); ?>;">Admin Panel</a> | 
+                        <a href="/admin/live-edit-page.php" style="color: <?php echo h($site['colors']['footer']['links']); ?>;">Live Edit</a>
                     </p>
                 <?php endif; ?>
             </div>
         </div>
     </footer>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/live-edit.js"></script>
 </body>
 </html>
