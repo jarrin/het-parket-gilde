@@ -357,6 +357,39 @@ body {
     background: #f8f9fa;
 }
 
+/* Contact Item Groups */
+.contact-item-group {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.contact-item-header h4 {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+#contactItemsContainer {
+    margin-bottom: 20px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .admin-layout {

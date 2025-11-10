@@ -298,24 +298,50 @@
         "info": {
             "phone": {
                 "label": "Telefoon",
-                "value": "+31 6 12345678",
-                "link": "tel:+31612345678"
+                "value": "",
+                "link": ""
             },
             "email": {
                 "label": "E-mail",
-                "value": "info@hetparketgilde.nl",
-                "link": "mailto:info@hetparketgilde.nl"
+                "value": "",
+                "link": ""
             },
             "address": {
                 "label": "Adres",
-                "street": "Voorbeeldstraat 123",
-                "city": "1234 AB Amsterdam"
+                "street": "",
+                "city": ""
             },
             "colors": {
                 "background": "#2B3A52",
                 "text": "#000000",
                 "title": "#D4AF7A"
-            }
+            },
+            "items": [
+                {
+                    "label": "Telefoon",
+                    "icon": "☎",
+                    "value": "+31 6 12345678",
+                    "link": "tel:+31612345678"
+                },
+                {
+                    "label": "E-mail",
+                    "icon": "@",
+                    "value": "parketgild@gmail.com",
+                    "link": ""
+                },
+                {
+                    "label": "Adres",
+                    "icon": "⌂",
+                    "value": "Ergens 1234",
+                    "link": ""
+                },
+                {
+                    "label": "Zo snell mogelijk",
+                    "icon": "📱",
+                    "value": "wij komen zo snel mogelijk bij u terug ",
+                    "link": ""
+                }
+            ]
         },
         "hours": {
             "title": "Openingstijden",

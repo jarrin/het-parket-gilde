@@ -187,7 +187,110 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dynamic diensten management
     initDienstenManager();
+    
+    // Contact items management
+    window.addContactItem = addContactItem;
+    window.removeContactItem = removeContactItem;
 });
+
+// Contact box management functions
+function addContactItem() {
+    const container = document.getElementById('contactItemsContainer');
+    const countInput = document.getElementById('contactItemsCount');
+    const currentCount = parseInt(countInput.value) || 0;
+    const newIndex = currentCount;
+    
+    const newItem = document.createElement('div');
+    newItem.className = 'contact-item-group';
+    newItem.setAttribute('data-index', newIndex);
+    
+    newItem.innerHTML = `
+        <div class="contact-item-header">
+            <h4>Contact Box ${newIndex + 1}</h4>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeContactItem(${newIndex})">Verwijderen</button>
+        </div>
+        
+        <div class="form-group">
+            <label>Label</label>
+            <input type="text" name="contact_item_label_${newIndex}" value="" required>
+            <small>Bijvoorbeeld: Telefoon, E-mail, Adres</small>
+        </div>
+        
+        <div class="form-group">
+            <label>Icoon</label>
+            <input type="text" name="contact_item_icon_${newIndex}" value="📱" required>
+            <small>Emoji of karakter voor het icoon (bijvoorbeeld: ☎, @, ⌂, 📱, 🏢)</small>
+        </div>
+        
+        <div class="form-group">
+            <label>Waarde</label>
+            <textarea name="contact_item_value_${newIndex}" rows="2" required></textarea>
+            <small>De inhoud die wordt weergegeven. Gebruik Enter voor meerdere regels.</small>
+        </div>
+        
+        <div class="form-group">
+            <label>Link (optioneel)</label>
+            <input type="text" name="contact_item_link_${newIndex}" value="">
+            <small>Bijvoorbeeld: tel:+31612345678, mailto:info@example.nl, of laat leeg voor geen link</small>
+        </div>
+    `;
+    
+    container.appendChild(newItem);
+    countInput.value = newIndex + 1;
+    
+    showSaveReminder();
+}
+
+function removeContactItem(index) {
+    const items = document.querySelectorAll('.contact-item-group');
+    
+    if (items.length <= 1) {
+        showCustomAlert('Je moet minimaal 1 contact box hebben!');
+        return;
+    }
+    
+    showCustomConfirm('Weet je zeker dat je deze contact box wilt verwijderen?', function() {
+        const item = document.querySelector(`.contact-item-group[data-index="${index}"]`);
+        if (item) {
+            item.remove();
+            
+            // Renumber remaining items
+            const remainingItems = document.querySelectorAll('.contact-item-group');
+            remainingItems.forEach((item, idx) => {
+                item.setAttribute('data-index', idx);
+                
+                // Update header
+                const header = item.querySelector('.contact-item-header h4');
+                if (header) {
+                    header.textContent = `Contact Box ${idx + 1}`;
+                }
+                
+                // Update button onclick
+                const removeBtn = item.querySelector('.btn-danger');
+                if (removeBtn) {
+                    removeBtn.setAttribute('onclick', `removeContactItem(${idx})`);
+                }
+                
+                // Update field names
+                item.querySelectorAll('input, textarea').forEach(field => {
+                    const name = field.getAttribute('name');
+                    if (name) {
+                        const baseName = name.replace(/_\d+$/, '');
+                        field.setAttribute('name', `${baseName}_${idx}`);
+                    }
+                });
+            });
+            
+            // Update count
+            const countInput = document.getElementById('contactItemsCount');
+            if (countInput) {
+                countInput.value = remainingItems.length;
+            }
+            
+            showSaveReminder();
+        }
+    });
+}
 
 function initDienstenManager() {
     const addBtn = document.getElementById('add-service-btn');
