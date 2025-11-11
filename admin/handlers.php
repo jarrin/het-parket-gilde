@@ -233,13 +233,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['section'])) {
             $content['contact']['intro']['title'] = $_POST['intro_title'] ?? '';
             $content['contact']['intro']['text'] = $_POST['intro_text'] ?? '';
             
-            // Contact info
-            $content['contact']['info']['phone']['value'] = $_POST['phone_value'] ?? '';
-            $content['contact']['info']['phone']['link'] = $_POST['phone_link'] ?? '';
-            $content['contact']['info']['email']['value'] = $_POST['email_value'] ?? '';
-            $content['contact']['info']['email']['link'] = $_POST['email_link'] ?? '';
-            $content['contact']['info']['address']['street'] = $_POST['address_street'] ?? '';
-            $content['contact']['info']['address']['city'] = $_POST['address_city'] ?? '';
+            // Contact info items - dynamic handling
+            $contactItemsCount = intval($_POST['contact_items_count'] ?? 0);
+            $contactItems = [];
+            
+            for ($i = 0; $i < $contactItemsCount; $i++) {
+                if (isset($_POST['contact_item_label_' . $i])) {
+                    $contactItems[] = [
+                        'label' => $_POST['contact_item_label_' . $i] ?? '',
+                        'icon' => $_POST['contact_item_icon_' . $i] ?? '',
+                        'value' => $_POST['contact_item_value_' . $i] ?? '',
+                        'link' => $_POST['contact_item_link_' . $i] ?? ''
+                    ];
+                }
+            }
+            
+            // Ensure at least one item exists
+            if (empty($contactItems)) {
+                $contactItems[] = [
+                    'label' => 'Telefoon',
+                    'icon' => '☎',
+                    'value' => '+31 6 12345678',
+                    'link' => 'tel:+31612345678'
+                ];
+            }
+            
+            $content['contact']['info']['items'] = $contactItems;
             
             // Hours
             $content['contact']['hours']['title'] = $_POST['hours_title'] ?? '';

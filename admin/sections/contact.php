@@ -46,38 +46,52 @@
     
     <h3>Contactgegevens</h3>
     
-    <div class="form-group">
-        <label>Telefoonnummer (Weergave)</label>
-        <input type="text" name="phone_value" value="<?php echo h($content['contact']['info']['phone']['value']); ?>" required>
-        <small>Bijvoorbeeld: +31 6 12345678</small>
+    <div class="info-box">
+        <p>Beheer de contactinformatie boxen. Voeg boxen toe, bewerk of verwijder ze.</p>
     </div>
     
-    <div class="form-group">
-        <label>Telefoonnummer (Link)</label>
-        <input type="text" name="phone_link" value="<?php echo h($content['contact']['info']['phone']['link']); ?>" required>
-        <small>Bijvoorbeeld: tel:+31612345678 (geen spaties!)</small>
+    <div id="contactItemsContainer">
+        <?php 
+        $items = $content['contact']['info']['items'] ?? [];
+        foreach ($items as $index => $item): 
+        ?>
+        <div class="contact-item-group" data-index="<?php echo $index; ?>">
+            <div class="contact-item-header">
+                <h4>Contact Box <?php echo $index + 1; ?></h4>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeContactItem(<?php echo $index; ?>)">Verwijderen</button>
+            </div>
+            
+            <div class="form-group">
+                <label>Label</label>
+                <input type="text" name="contact_item_label_<?php echo $index; ?>" value="<?php echo h($item['label']); ?>" required>
+                <small>Bijvoorbeeld: Telefoon, E-mail, Adres</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Icoon</label>
+                <input type="text" name="contact_item_icon_<?php echo $index; ?>" value="<?php echo h($item['icon']); ?>" required>
+                <small>Emoji of karakter voor het icoon (bijvoorbeeld: ☎, @, ⌂, 📱, 🏢)</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Waarde</label>
+                <textarea name="contact_item_value_<?php echo $index; ?>" rows="2" required><?php echo h($item['value']); ?></textarea>
+                <small>De inhoud die wordt weergegeven. Gebruik Enter voor meerdere regels.</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Link (optioneel)</label>
+                <input type="text" name="contact_item_link_<?php echo $index; ?>" value="<?php echo h($item['link'] ?? ''); ?>">
+                <small>Bijvoorbeeld: tel:+31612345678, mailto:info@example.nl, of laat leeg voor geen link</small>
+            </div>
+        </div>
+        <?php endforeach; ?>
     </div>
     
-    <div class="form-group">
-        <label>Email Adres</label>
-        <input type="email" name="email_value" value="<?php echo h($content['contact']['info']['email']['value']); ?>" required>
-    </div>
+    <input type="hidden" name="contact_items_count" id="contactItemsCount" value="<?php echo count($items); ?>">
     
     <div class="form-group">
-        <label>Email Link</label>
-        <input type="text" name="email_link" value="<?php echo h($content['contact']['info']['email']['link']); ?>" required>
-        <small>Bijvoorbeeld: mailto:info@hetparketgilde.nl</small>
-    </div>
-    
-    <div class="form-group">
-        <label>Straat + Huisnummer</label>
-        <input type="text" name="address_street" value="<?php echo h($content['contact']['info']['address']['street']); ?>" required>
-    </div>
-    
-    <div class="form-group">
-        <label>Postcode + Stad</label>
-        <input type="text" name="address_city" value="<?php echo h($content['contact']['info']['address']['city']); ?>" required>
-        <small>Bijvoorbeeld: 1234 AB Amsterdam</small>
+        <button type="button" class="btn btn-secondary" onclick="addContactItem()">+ Voeg Contact Box Toe</button>
     </div>
     
     <h3>Openingstijden</h3>

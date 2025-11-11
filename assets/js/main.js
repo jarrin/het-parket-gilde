@@ -217,4 +217,69 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update buttons on scroll
         valuesContainer.addEventListener('scroll', updateValuesScrollButtons);
     }
+    
+    // Initialize contact cards scroll buttons
+    const contactContainer = document.getElementById('contactInfoScroll');
+    if (contactContainer) {
+        updateContactScrollButtons();
+        
+        // Update buttons on scroll
+        contactContainer.addEventListener('scroll', updateContactScrollButtons);
+    }
 });
+
+// Contact cards horizontal scroll functionality
+function scrollContactCards(direction) {
+    const container = document.getElementById('contactInfoScroll');
+    if (!container) return;
+    
+    const scrollAmount = 320; // Scroll by one card width + gap
+    
+    if (direction === 'left') {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    } else if (direction === 'right') {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Update button states after scroll
+    setTimeout(updateContactScrollButtons, 300);
+}
+
+// Update contact scroll button states based on scroll position
+function updateContactScrollButtons() {
+    const container = document.getElementById('contactInfoScroll');
+    if (!container) return;
+    
+    const leftBtn = document.querySelector('.contact-scroll-left');
+    const rightBtn = document.querySelector('.contact-scroll-right');
+    
+    if (!leftBtn || !rightBtn) return;
+    
+    // Disable left button if at start
+    if (container.scrollLeft <= 0) {
+        leftBtn.style.opacity = '0.5';
+        leftBtn.style.cursor = 'not-allowed';
+        leftBtn.disabled = true;
+    } else {
+        leftBtn.style.opacity = '1';
+        leftBtn.style.cursor = 'pointer';
+        leftBtn.disabled = false;
+    }
+    
+    // Disable right button if at end
+    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+        rightBtn.style.opacity = '0.5';
+        rightBtn.style.cursor = 'not-allowed';
+        rightBtn.disabled = true;
+    } else {
+        rightBtn.style.opacity = '1';
+        rightBtn.style.cursor = 'pointer';
+        rightBtn.disabled = false;
+    }
+}

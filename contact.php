@@ -24,40 +24,32 @@ include 'includes/header.php';
             <p data-edit-path="intro.text"><?php echo h($contact['intro']['text']); ?></p>
         </div>
         
-        <div class="row contact-info" style="background-color: <?php echo h($contact['info']['colors']['background']); ?>; color: <?php echo h($contact['info']['colors']['text']); ?>;">
-            <div class="col-md-4">
-                <div class="contact-card">
-                    <div class="contact-icon">☎</div>
-                    <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['phone']['label']); ?></h3>
-                    <p>
-                        <a href="<?php echo h($contact['info']['phone']['link']); ?>" style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
-                            <?php echo h($contact['info']['phone']['value']); ?>
-                        </a>
-                    </p>
-                </div>
-            </div>
+        <div class="contact-info-wrapper">
+            <?php if (!empty($contact['info']['items']) && count($contact['info']['items']) > 3): ?>
+            <button class="contact-scroll-btn contact-scroll-left" onclick="scrollContactCards('left')" aria-label="Scroll links">‹</button>
+            <button class="contact-scroll-btn contact-scroll-right" onclick="scrollContactCards('right')" aria-label="Scroll rechts">›</button>
+            <?php endif; ?>
             
-            <div class="col-md-4">
-                <div class="contact-card">
-                    <div class="contact-icon">@</div>
-                    <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['email']['label']); ?></h3>
-                    <p>
-                        <a href="<?php echo h($contact['info']['email']['link']); ?>" style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
-                            <?php echo h($contact['info']['email']['value']); ?>
-                        </a>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="contact-card">
-                    <div class="contact-icon">⌂</div>
-                    <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($contact['info']['address']['label']); ?></h3>
-                    <p style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
-                        <?php echo h($contact['info']['address']['street']); ?><br>
-                        <?php echo h($contact['info']['address']['city']); ?>
-                    </p>
-                </div>
+            <div class="contact-info-scroll" id="contactInfoScroll" style="background-color: <?php echo h($contact['info']['colors']['background']); ?>; color: <?php echo h($contact['info']['colors']['text']); ?>;">
+                <?php if (!empty($contact['info']['items'])): ?>
+                    <?php foreach ($contact['info']['items'] as $item): ?>
+                        <div class="contact-card">
+                            <div class="contact-icon"><?php echo h($item['icon']); ?></div>
+                            <h3 style="color: <?php echo h($contact['info']['colors']['title']); ?>;"><?php echo h($item['label']); ?></h3>
+                            <p>
+                                <?php if (!empty($item['link'])): ?>
+                                    <a href="<?php echo h($item['link']); ?>" style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
+                                        <?php echo nl2br(h($item['value'])); ?>
+                                    </a>
+                                <?php else: ?>
+                                    <span style="color: <?php echo h($contact['info']['colors']['text']); ?> !important;">
+                                        <?php echo nl2br(h($item['value'])); ?>
+                                    </span>
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
